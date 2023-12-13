@@ -65,6 +65,9 @@ public class Health : MonoBehaviour
         Physics2D.IgnoreLayerCollision(10, 11, false);
         invulnerable = false;
     }
+    public void camera_shake_dead() {
+        CameraShake.Instance.ShakeCamera(3f, 0.2f);
+    }
     public void destroy_player()
     {
 
