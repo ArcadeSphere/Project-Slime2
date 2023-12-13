@@ -10,7 +10,7 @@ public class TakingDamage : MonoBehaviour
     {
         if (collision.tag == "Player")
             collision.GetComponent<Health>().take_damage(damage);
-            CameraShake.Instance.ShakeCamera(2f, 0.2f);
+           
     }
 }
 
