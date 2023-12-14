@@ -6,6 +6,10 @@ public class PlayerCombat : MonoBehaviour
 {
 
     [SerializeField] private float attackCooldown;
+    [SerializeField] private float attackrange;
+    [SerializeField] private Transform attackpoint;
+    [SerializeField] private float damageamount;
+    public LayerMask enemieslayer;
     private Animator anim;
     private float cooldownTimer = Mathf.Infinity;
 
@@ -26,5 +30,17 @@ public class PlayerCombat : MonoBehaviour
     {
         anim.SetTrigger("attack");
         cooldownTimer = 0;
+        Collider2D[] hittarget = Physics2D.OverlapCircleAll(attackpoint.position, attackrange, enemieslayer);
+
+        foreach (Collider2D target in hittarget) {
+
+            target.GetComponent<Health>().take_damage(damageamount);
+        }
+    }
+
+     void OnDrawGizmosSelected()
+    {
+       
+        Gizmos.DrawWireSphere(attackpoint.position, attackrange); 
     }
 }
