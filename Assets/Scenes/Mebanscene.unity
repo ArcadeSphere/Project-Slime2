@@ -2935,9 +2935,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2469525419819737858, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
+      propertyPath: m_GravityScale
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2469525419819737859, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469525419819737861, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
+      propertyPath: dashingTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469525419819737861, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
+      propertyPath: dashDistance
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469525419819737861, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
+      propertyPath: dashDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469525419819737861, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
+      propertyPath: dashingPower
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 2469525419819737862, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
       propertyPath: m_RootOrder

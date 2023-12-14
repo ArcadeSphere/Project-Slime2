@@ -94,9 +94,11 @@ public class PlayerMovement : MonoBehaviour
         isDashing = true;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
+        animator.SetTrigger("dash");
         rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         //tr.emitting = true;
         yield return new WaitForSeconds(dashingTime);
+        animator.SetTrigger("dashends");
         //tr.emitting = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
