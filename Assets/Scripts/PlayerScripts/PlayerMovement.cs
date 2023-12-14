@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isDashing || isAttacking)
+        if (isDashing)
         {
             return;
         }
@@ -101,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
             horizontal = 0f;
             rb.velocity = Vector2.zero;
         }
-        isAttacking = !enable; // Set isAttacking based on the provided enable parameter
+        isAttacking = !enable; 
         enabled = enable;
     }
     private IEnumerator Dash()
