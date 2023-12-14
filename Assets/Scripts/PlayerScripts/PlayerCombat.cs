@@ -12,24 +12,36 @@ public class PlayerCombat : MonoBehaviour
     public LayerMask enemieslayer;
     private Animator anim;
     private float cooldownTimer = Mathf.Infinity;
+    private PlayerMovement pm;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        
+        pm = GetComponent<PlayerMovement>();
+
     }
 
     private void Update()
     {
-        if (Input.GetMouseButton(0) && cooldownTimer > attackCooldown)
-            player_attack_anim();
+        if (!pm.IsDashing() && Input.GetMouseButton(0) && cooldownTimer > attackCooldown)
+            StartCoroutine(PerformAttack());
+
 
         cooldownTimer += Time.deltaTime;
     }
-    private void player_attack_anim() {
+    private IEnumerator PerformAttack()
+    {
+        pm.EnablePlayerMovement(false);
 
+        
         anim.SetTrigger("attack");
         cooldownTimer = 0;
+
+       
+        yield return new WaitForSeconds(0.4f);
+
+      
+        pm.EnablePlayerMovement(true);
     }
     public void target_gets_damage()
     {

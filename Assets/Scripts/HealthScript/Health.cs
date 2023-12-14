@@ -39,7 +39,6 @@ public class Health : MonoBehaviour
 
                 foreach (Behaviour component in behviourcomponents)
                     component.enabled = false;
-                Debug.Log("taken damage");
                 flashing.flash_time();
                 anim.SetBool("grounded", true);
                 anim.SetTrigger("dying");

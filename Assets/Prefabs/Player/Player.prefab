@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldown: 0
-  attackrange: 1
+  attackrange: 1.19
   attackpoint: {fileID: 1618201319565819746}
   damageamount: 0
   enemieslayer:
@@ -216,6 +216,7 @@ MonoBehaviour:
   numberOfFlashes: 3
   behviourcomponents:
   - {fileID: 2469525419819737861}
+  - {fileID: 7747913105208640600}
   flashing: {fileID: 2469525419819737860}
 --- !u!114 &2469525419819737860
 MonoBehaviour:

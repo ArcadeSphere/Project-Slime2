@@ -12,8 +12,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashingCooldown = 1f;
     private bool canDash = true;
     private bool isDashing;
+    private bool isAttacking;
     private bool isFacingRight = true;
-
+   
 
 
     [SerializeField] private Rigidbody2D rb;
@@ -25,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (isDashing)
+        if (isDashing || isAttacking)
         {
             return;
         }
@@ -71,6 +72,10 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     }
 
+    public bool IsDashing()
+    {
+        return isDashing;
+    }
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
@@ -88,6 +93,16 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
+   
+    public void EnablePlayerMovement(bool enable)
+    {
+        if (!enable)
+        {
+            horizontal = 0f;
+            rb.velocity = Vector2.zero;
+        }
+        enabled = enable;
+    }
     private IEnumerator Dash()
     {
         canDash = false;
@@ -103,5 +118,6 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
+
 }
 
