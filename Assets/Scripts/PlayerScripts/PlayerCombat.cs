@@ -21,15 +21,20 @@ public class PlayerCombat : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(0) && cooldownTimer > attackCooldown )
-            Attack();
+        if (Input.GetMouseButton(0) && cooldownTimer > attackCooldown)
+            player_attack_anim();
 
         cooldownTimer += Time.deltaTime;
     }
-    private void Attack()
-    {
+    private void player_attack_anim() {
+
         anim.SetTrigger("attack");
         cooldownTimer = 0;
+    }
+    public void target_gets_damage()
+    {
+        
+        
         Collider2D[] hittarget = Physics2D.OverlapCircleAll(attackpoint.position, attackrange, enemieslayer);
 
         foreach (Collider2D target in hittarget) {
