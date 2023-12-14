@@ -7,6 +7,11 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     [SerializeField] private float speed = 8f;
     [SerializeField] private float jumpingPower = 16f;
+    [SerializeField] private float dashingPower = 24f;
+    [SerializeField] private float dashingTime = 0.2f;
+    [SerializeField] private float dashingCooldown = 1f;
+    private bool canDash = true;
+    private bool isDashing;
     private bool isFacingRight = true;
 
 
@@ -20,12 +25,16 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-
+        if (isDashing)
+        {
+            return;
+        }
 
         horizontal = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("run", Mathf.Abs(horizontal));
         animator.SetBool("grounded", IsGrounded());
 
+    
 
         if (Input.GetButtonDown("Jump"))
         {
@@ -44,14 +53,21 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
 
         }
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        {
 
+            StartCoroutine(Dash());
+        }
 
         Flip();
     }
 
     private void FixedUpdate()
     {
-
+        if (isDashing)
+        {
+            return;
+        }
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     }
 
@@ -72,4 +88,20 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        //tr.emitting = true;
+        yield return new WaitForSeconds(dashingTime);
+        //tr.emitting = false;
+        rb.gravityScale = originalGravity;
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
+    }
 }
+
