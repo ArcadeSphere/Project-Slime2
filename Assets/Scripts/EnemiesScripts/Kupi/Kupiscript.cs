@@ -33,12 +33,12 @@ public void OnPlayerIsIn()
     {
        
 
-        anim.SetBool("IsShooting", true);
+     
 
         
         if (cooldownTimer >= attackCooldown)
         {
-            RangedAttack();
+            anim.SetBool("IsShooting", true);
         }
     }
 
