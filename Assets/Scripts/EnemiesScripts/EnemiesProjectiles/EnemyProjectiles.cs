@@ -4,52 +4,46 @@ using UnityEngine;
 
 public class EnemyProjectiles : TakingDamage
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float resetTime;
-    private float lifetime;
-    private Animator anim;
-    private BoxCollider2D coll;
+    public float destroyDelay = 2f;
+    public Animator hitAnimator;
 
-    private bool hit;
+    private Vector2 direction;
+    private float speed;
 
-    private void Awake()
+    private void Start()
     {
-        anim = GetComponent<Animator>();
-        coll = GetComponent<BoxCollider2D>();
+        // Destroy the projectile after a delay if it doesn't hit anything
+        Destroy(gameObject, destroyDelay);
     }
 
-    public void ActivateProjectile()
-    {
-        hit = false;
-        lifetime = 0;
-        gameObject.SetActive(true);
-        coll.enabled = true;
-    }
     private void Update()
     {
-        if (hit) return;
-        float movementSpeed = speed * Time.deltaTime;
-        transform.Translate(movementSpeed, 0, 0);
-
-        lifetime += Time.deltaTime;
-        if (lifetime > resetTime)
-            gameObject.SetActive(false);
+        // Move the projectile in its set direction
+        transform.Translate(direction * speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void SetDirection(Vector2 dir)
     {
-        hit = true;
-        base.OnTriggerEnter2D(collision); 
-        coll.enabled = false;
-
-        if (anim != null)
-            anim.SetTrigger("explode"); 
-        else
-            gameObject.SetActive(false);
+        direction = dir;
     }
-    private void Deactivate()
+
+    public void SetSpeed(float projectileSpeed)
     {
-        gameObject.SetActive(false);
+        speed = projectileSpeed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+      
+        if (other.CompareTag("Player")) 
+        {
+            // Play hit animation
+            if (hitAnimator != null)
+            {
+                hitAnimator.SetTrigger("explode");
+            }
+            Destroy(gameObject, 0.2f);
+        }
     }
 }
 

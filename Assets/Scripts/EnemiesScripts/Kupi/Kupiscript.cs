@@ -5,12 +5,11 @@ using UnityEngine;
 public class Kupiscript : PlayerDetector
 {
 
-    [SerializeField] private float attackCooldown;
-    [SerializeField] private Transform firepoint;
-    [SerializeField] private GameObject[] fireballs;
-    private float cooldownTimer = Mathf.Infinity;
+    public Transform firePoint;
+    public GameObject projectilePrefab;
     private Animator anim;
-
+    public float projectileSpeed = 5f;
+  
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -26,20 +25,14 @@ public class Kupiscript : PlayerDetector
         {
             OnPlayerIsOut();
         }
-        cooldownTimer += Time.deltaTime;
+        
     }
 
 public void OnPlayerIsIn()
     {
        
-
-     
-
+   anim.SetBool("IsShooting", true);
         
-        if (cooldownTimer >= attackCooldown)
-        {
-            anim.SetBool("IsShooting", true);
-        }
     }
 
     public void OnPlayerIsOut()
@@ -48,21 +41,21 @@ public void OnPlayerIsIn()
         anim.SetBool("IsShooting", false);
     }
 
-    private void RangedAttack()
-    {
-        cooldownTimer = 0;
-        int fireballIndex = FindFireball();
-        fireballs[fireballIndex].transform.position = firepoint.position;
-        fireballs[fireballIndex].GetComponent<EnemyProjectiles>().ActivateProjectile();
-    }
 
-    private int FindFireball()
+
+    public void shoot_at_player()
     {
-        for (int i = 0; i < fireballs.Length; i++)
+        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+
+        // Access the Projectile script and set its direction and speed
+        EnemyProjectiles projectileComponent = projectile.GetComponent<EnemyProjectiles>();
+        if (projectileComponent != null)
         {
-            if (!fireballs[i].activeInHierarchy)
-                return i;
+            // Set the shoot direction to always be towards the right
+            Vector2 shootDirection = Vector2.right;
+
+            projectileComponent.SetDirection(shootDirection);
+            projectileComponent.SetSpeed(projectileSpeed);
         }
-        return 0;
     }
 }
