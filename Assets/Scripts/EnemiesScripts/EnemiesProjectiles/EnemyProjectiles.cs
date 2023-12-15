@@ -5,19 +5,18 @@ using UnityEngine;
 public class EnemyProjectiles : MonoBehaviour
 {
     public float destroyDelay = 2f;
-    public Animator hitAnimator;
-
+    public GameObject explodeanimation;
     private float speed;
 
     private void Start()
     {
-        // Destroy the projectile after a delay if it doesn't hit anything
+      
         Destroy(gameObject, destroyDelay);
     }
 
     private void Update()
     {
-        // Move the projectile to the right
+       
         transform.Translate(Vector2.left * speed * Time.deltaTime);
     }
   
@@ -29,22 +28,18 @@ public class EnemyProjectiles : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-      
+
+        Instantiate(explodeanimation, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
         if (other.CompareTag("Player")) 
         {
-            
-            if (hitAnimator != null)
-            {
-                hitAnimator.SetTrigger("explode");
-            }
 
+            Instantiate(explodeanimation,transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
         
         }
     }
 
-    public void destroybullet()
-    {
-        Destroy(this.gameObject);
-    }
+
 }
 
