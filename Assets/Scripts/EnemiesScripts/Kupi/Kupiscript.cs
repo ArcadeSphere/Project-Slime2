@@ -52,9 +52,9 @@ public void OnPlayerIsIn()
         if (projectileComponent != null)
         {
             // Set the shoot direction to always be towards the right
-            Vector2 shootDirection = Vector2.right;
+            Vector2 shootDirection = Vector2.left;
 
-            projectileComponent.SetDirection(shootDirection);
+           
             projectileComponent.SetSpeed(projectileSpeed);
         }
     }
