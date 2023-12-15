@@ -4,39 +4,44 @@ using UnityEngine;
 
 public class Kupiscript : PlayerDetection
 {
- 
+
     [SerializeField] private float attackCooldown;
     [SerializeField] private Transform firepoint;
     [SerializeField] private GameObject[] fireballs;
     private float cooldownTimer = Mathf.Infinity;
     private Animator anim;
 
-    
-
     private void Awake()
     {
         anim = GetComponent<Animator>();
-     
     }
 
     private void Update()
     {
         cooldownTimer += Time.deltaTime;
+    }
+
+    override public void OnPlayerIn()
+    {
+        
+        anim.SetBool("IsShooting", true);
 
     }
-    override public void OnPlayerIn() {
-        
+
+    override public void OnPlayerOut()
+    {
        
+        anim.SetBool("IsShooting", false);
     }
-    override public void OnPlayerOut() { 
-    
-    }
+
     private void RangedAttack()
     {
         cooldownTimer = 0;
-        fireballs[FindFireball()].transform.position = firepoint.position;
-        fireballs[FindFireball()].GetComponent<EnemyProjectiles>().ActivateProjectile();
+        int fireballIndex = FindFireball();
+        fireballs[fireballIndex].transform.position = firepoint.position;
+        fireballs[fireballIndex].GetComponent<EnemyProjectiles>().ActivateProjectile();
     }
+
     private int FindFireball()
     {
         for (int i = 0; i < fireballs.Length; i++)
@@ -46,7 +51,4 @@ public class Kupiscript : PlayerDetection
         }
         return 0;
     }
-
-  
- 
 }

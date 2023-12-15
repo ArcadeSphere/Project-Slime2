@@ -1301,21 +1301,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ffe009375f09d140ae8cd84134d4842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <playerDetected>k__BackingField: 0
+  <PlayerDetected>k__BackingField: 0
   detectorOrigin: {fileID: 1490241277}
-  detectorSize: {x: 7.25, y: 4.5}
-  detectorOriginOffset: {x: -4.15, y: 0}
-  detectionDelay: 0.3
+  detectorSize: {x: 16.28, y: 7}
+  detectorOriginOffset: {x: -8.4, y: 1}
+  detectionDelay: 0
   detectorLayerMask:
     serializedVersion: 2
     m_Bits: 1024
   gizmoIdleColor: {r: 0, g: 1, b: 0, a: 0.4}
   gizmoDetectedColor: {r: 1, g: 0, b: 0, a: 0.4}
   showGizmo: 1
-  projectilePrefab: {fileID: 0}
-  shootPoint: {fileID: 0}
-  shootCooldown: 2
-  anim: {fileID: 1490241280}
+  attackCooldown: 1
+  firepoint: {fileID: 0}
+  fireballs: []
 --- !u!1001 &1527865407
 PrefabInstance:
   m_ObjectHideFlags: 0
