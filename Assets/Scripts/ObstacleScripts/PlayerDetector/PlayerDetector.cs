@@ -11,7 +11,7 @@ public class PlayerDetector : MonoBehaviour
    public Vector2 DirectionToTarget => target.transform.position - detectorOrigin.position;
 
    [Header("OverlapBox parameters")]
-   [SerializeField] private Transform detectorOrigin;
+   public Transform detectorOrigin;
    [SerializeField] private Vector2 detectorSize = Vector2.one;
    [SerializeField] private Vector2 detectorOriginOffset = Vector2.zero;
    [SerializeField] private float detectionDelay = 0.3f;
