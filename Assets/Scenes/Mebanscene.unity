@@ -450,13 +450,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 575994649}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8519639a07af6ab4b9099879ddffe631, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bd872a5e928c0948a9daedda08ac37c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <playerDetected>k__BackingField: 0
+  <PlayerDetected>k__BackingField: 0
   detectorOrigin: {fileID: 575994652}
-  detectorSize: {x: 8, y: 4}
-  detectorOriginOffset: {x: 0, y: 1.5}
+  detectorSize: {x: 6, y: 4}
+  detectorOriginOffset: {x: 0, y: 1}
   detectionDelay: 0.3
   detectorLayerMask:
     serializedVersion: 2
