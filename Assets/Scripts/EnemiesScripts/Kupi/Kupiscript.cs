@@ -47,14 +47,12 @@ public void OnPlayerIsIn()
     {
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
 
-        // Access the Projectile script and set its direction and speed
+       
         EnemyProjectiles projectileComponent = projectile.GetComponent<EnemyProjectiles>();
         if (projectileComponent != null)
         {
-            // Set the shoot direction to always be towards the right
-            Vector2 shootDirection = Vector2.left;
-
            
+            Vector2 shootDirection = Vector2.left;
             projectileComponent.SetSpeed(projectileSpeed);
         }
     }
