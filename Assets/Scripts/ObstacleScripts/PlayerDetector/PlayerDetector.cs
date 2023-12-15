@@ -1,25 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerDetector : MonoBehaviour
 {
    [field: SerializeField]
-   public bool playerDetected {get; private set;}
-   public Vector2 directionToTarget => target.transform.position - detectorOrigin.position;
+   public bool PlayerDetected {get; set;}
+   public Vector2 DirectionToTarget => target.transform.position - detectorOrigin.position;
 
    [Header("OverlapBox parameters")]
    [SerializeField] private Transform detectorOrigin;
    [SerializeField] private Vector2 detectorSize = Vector2.one;
    [SerializeField] private Vector2 detectorOriginOffset = Vector2.zero;
-   public float detectionDelay = 0.3f;
-   public LayerMask detectorLayerMask;
+   [SerializeField] private float detectionDelay = 0.3f;
+   [SerializeField] private LayerMask detectorLayerMask;
 
    [Header("Gizmo parameters")]
-   public Color gizmoIdleColor = new Color(0f, 1f, 0f, 0.4f);
-   public Color gizmoDetectedColor = new Color(1f, 0f, 0f, 0.4f);
-   public bool showGizmo = true;
+   [SerializeField] private Color gizmoIdleColor = new Color(0f, 1f, 0f, 0.4f);
+   [SerializeField] private Color gizmoDetectedColor = new Color(1f, 0f, 0f, 0.4f);
+   [SerializeField] private bool showGizmo = true;
 
 
    private GameObject target;
@@ -30,7 +31,7 @@ public class PlayerDetector : MonoBehaviour
         private set 
         {
             target = value;
-            playerDetected = target != null;
+            PlayerDetected = target != null;
         }
     }
 
@@ -63,12 +64,12 @@ public class PlayerDetector : MonoBehaviour
         if (showGizmo && detectorOrigin != null)
         {
             Gizmos.color = gizmoIdleColor;
-            if (playerDetected)
+            if (PlayerDetected)
             {
                 Gizmos.color = gizmoDetectedColor;
             }
             Gizmos.DrawCube((Vector2)detectorOrigin.position + detectorOriginOffset, detectorSize);
         }
     }
-
+    
 }
