@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Kupiscript : PlayerDetection
+public class Kupiscript : PlayerDetector
 {
 
     [SerializeField] private float attackCooldown;
@@ -18,17 +18,31 @@ public class Kupiscript : PlayerDetection
 
     private void Update()
     {
+        if (PlayerDetected)
+        {
+            OnPlayerIsIn();
+        }
+        else
+        {
+            OnPlayerIsOut();
+        }
         cooldownTimer += Time.deltaTime;
     }
 
-    override public void OnPlayerIn()
+public void OnPlayerIsIn()
     {
-        
+       
+
         anim.SetBool("IsShooting", true);
 
+        
+        if (cooldownTimer >= attackCooldown)
+        {
+            RangedAttack();
+        }
     }
 
-    override public void OnPlayerOut()
+    public void OnPlayerIsOut()
     {
        
         anim.SetBool("IsShooting", false);
