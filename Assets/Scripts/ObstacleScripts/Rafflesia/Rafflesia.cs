@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class Rafflesia : PlayerDetection
 {
+    private enum RafflesiaState {idle, attack}
+
+   
     override public void OnPlayerIn() {
-        Debug.Log("shoot poison");
+        ChangeState(RafflesiaState.attack);
     }
 
     override public void OnPlayerOut() {
-        Debug.Log("stop shoot poison");
+        ChangeState(RafflesiaState.idle);
+
     }
+
+    void ChangeState(RafflesiaState state) {
+        detectorOriginAnim.SetInteger("state", (int)state);
+    }
+
 }
