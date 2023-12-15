@@ -492,6 +492,7 @@ MonoBehaviour:
   detectorLayerMask:
     serializedVersion: 2
     m_Bits: 1024
+  detectorOriginAnim: {fileID: 0}
   gizmoIdleColor: {r: 0, g: 1, b: 0, a: 0.4}
   gizmoDetectedColor: {r: 1, g: 0, b: 0, a: 0.4}
   showGizmo: 1
@@ -1178,7 +1179,7 @@ GameObject:
   - component: {fileID: 1490241281}
   - component: {fileID: 1490241282}
   m_Layer: 11
-  m_Name: Kupi
+  m_Name: 'Kupi '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1269,7 +1270,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1490241274}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.56, y: -1.597, z: 0}
+  m_LocalPosition: {x: -4.67, y: -1.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 196643707}
@@ -1360,6 +1361,7 @@ MonoBehaviour:
   detectorLayerMask:
     serializedVersion: 2
     m_Bits: 1024
+  detectorOriginAnim: {fileID: 0}
   gizmoIdleColor: {r: 0, g: 1, b: 0, a: 0.4}
   gizmoDetectedColor: {r: 1, g: 0, b: 0, a: 0.4}
   showGizmo: 1
