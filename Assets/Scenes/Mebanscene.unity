@@ -1196,6 +1196,45 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 1158757804351639865, guid: f361449a1d889114c95dbce0c732526e, type: 3}
   m_PrefabInstance: {fileID: 1158757804115096338}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &914601683 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1158757804351639864, guid: f361449a1d889114c95dbce0c732526e, type: 3}
+  m_PrefabInstance: {fileID: 1158757804115096338}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &914601691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914601683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d8a1ff3d663794688edfa91485e6dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjectRef: {fileID: 1398093918}
+--- !u!50 &914601692
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914601683}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &924978781
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,6 +1566,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4821323809411066733, guid: 9f886dab146efc8469c115cfbe67c421, type: 3}
   m_PrefabInstance: {fileID: 1360921646}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1398093918 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7991646208471986990, guid: f361449a1d889114c95dbce0c732526e, type: 3}
+  m_PrefabInstance: {fileID: 1158757804115096338}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1527865407
 PrefabInstance:
@@ -8481,6 +8525,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1158757804351639840, guid: f361449a1d889114c95dbce0c732526e, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 914601692}
+    - target: {fileID: 1158757804351639840, guid: f361449a1d889114c95dbce0c732526e, type: 3}
       propertyPath: behviourcomponents.Array.data[0]
       value: 
       objectReference: {fileID: 871014955}
@@ -8490,6 +8538,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1158757804351639864, guid: f361449a1d889114c95dbce0c732526e, type: 3}
       propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1158757804351639865, guid: f361449a1d889114c95dbce0c732526e, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1158757804351639868, guid: f361449a1d889114c95dbce0c732526e, type: 3}
