@@ -9,8 +9,10 @@ public class TakingDamage : MonoBehaviour
     protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
+        {
             collision.GetComponent<Health>().take_damage(damage);
             CameraShake.Instance.ShakeCamera(2f, 0.2f);
+        }
     }
 }
 
