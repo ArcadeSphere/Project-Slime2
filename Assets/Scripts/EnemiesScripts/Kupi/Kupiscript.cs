@@ -28,7 +28,7 @@ public class Kupiscript : PlayerDetector
         
     }
 
-public void OnPlayerIsIn()
+    public void OnPlayerIsIn()
     {
 
         anim.SetBool("IsShooting", true);
