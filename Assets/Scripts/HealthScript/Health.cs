@@ -15,11 +15,13 @@ public class Health : MonoBehaviour
     [SerializeField] private Behaviour[] behviourcomponents;
     private bool invulnerable;
     [SerializeField] private Flash flashing;
+    [SerializeField] private Rigidbody2D rb;
     private void Awake()
     {
         currenthealth = startinglives;
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
     }
     public void take_damage(float _damage)
     {
@@ -34,7 +36,7 @@ public class Health : MonoBehaviour
         }
         else
         {
-            if (!isdead)
+            if (!isdead && rb != null)
             {
 
                 foreach (Behaviour component in behviourcomponents)
@@ -43,6 +45,7 @@ public class Health : MonoBehaviour
                 anim.SetBool("grounded", true);
                 anim.SetTrigger("dying");
                 isdead = true;
+                rb.sharedMaterial = null;
 
             }
         }

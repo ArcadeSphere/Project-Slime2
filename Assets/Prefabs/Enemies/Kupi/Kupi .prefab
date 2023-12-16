@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 9203180104031233134}
   - component: {fileID: 9203180104031233135}
   - component: {fileID: 9203180104031233132}
+  - component: {fileID: 8547765622240814593}
   m_Layer: 11
   m_Name: 'Kupi '
   m_TagString: Untagged
@@ -163,6 +164,7 @@ MonoBehaviour:
   behviourcomponents:
   - {fileID: 9203180104031233429}
   flashing: {fileID: 9203180104031233424}
+  rb: {fileID: 8547765622240814593}
 --- !u!114 &9203180104031233424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,3 +238,24 @@ MonoBehaviour:
   firePoint: {fileID: 9203180103277914133}
   projectilePrefab: {fileID: 79972667933630219, guid: 28183e64a58b7f24a9b320c8837174f0, type: 3}
   projectileSpeed: 9
+--- !u!50 &8547765622240814593
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9203180104031233428}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 6200000, guid: 7612ef1708b70c74c9930c8fe0493b2a, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
