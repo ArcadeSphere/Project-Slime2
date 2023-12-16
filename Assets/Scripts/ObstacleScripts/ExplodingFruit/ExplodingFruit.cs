@@ -6,7 +6,7 @@ public class ExplodingFruit : PlayerDetector
 {
     [SerializeField] private Rigidbody2D rb;
     public float fruitgravity;
-
+    public GameObject fruitimpact;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,20 +19,19 @@ public class ExplodingFruit : PlayerDetector
         {
             Playernearfruit();
         }
-        else
-        {
-            PlayerfarFruit();
-        }
+       
     }
     public void Playernearfruit()
     {
-        Debug.Log("PLAYER NEAR");
+     
         rb.gravityScale = fruitgravity;
 
     }
-    public void PlayerfarFruit()
+   
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("so far away");
+        Instantiate(fruitimpact, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
     }
- 
 }

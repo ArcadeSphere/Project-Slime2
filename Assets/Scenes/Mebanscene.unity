@@ -1002,7 +1002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d918b1d8c87db04e846f1bedf8f364a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
 --- !u!61 &767279870
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1055,6 +1055,7 @@ MonoBehaviour:
   showGizmo: 1
   rb: {fileID: 767279866}
   fruitgravity: 2
+  fruitimpact: {fileID: 8191496383761327364, guid: c1dd46db0326a0841b90df1875f16916, type: 3}
 --- !u!1001 &847267361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8393,11 +8394,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9203180104031233427, guid: 9565ac4ec160a0d4d9d0f3a35ba4ede2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.45
+      value: 38.89
       objectReference: {fileID: 0}
     - target: {fileID: 9203180104031233427, guid: 9565ac4ec160a0d4d9d0f3a35ba4ede2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.86
+      value: -1.77
       objectReference: {fileID: 0}
     - target: {fileID: 9203180104031233427, guid: 9565ac4ec160a0d4d9d0f3a35ba4ede2, type: 3}
       propertyPath: m_LocalPosition.z
