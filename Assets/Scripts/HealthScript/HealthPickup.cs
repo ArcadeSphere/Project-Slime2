@@ -10,7 +10,7 @@ public class HealthPickup : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            collision.GetComponent<Health>().add_health(healingvalue);
+            collision.GetComponent<Health>().AddHealth(healingvalue);
             gameObject.SetActive(false);
         }
     }

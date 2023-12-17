@@ -23,7 +23,7 @@ public class Health : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
     }
-    public void take_damage(float _damage)
+    public void TakeDamage(float _damage)
     {
         if (invulnerable) return;
         currenthealth = Mathf.Clamp(currenthealth - _damage, 0, startinglives);
@@ -50,7 +50,7 @@ public class Health : MonoBehaviour
             }
         }
     }
-    public void add_health(float _value)
+    public void AddHealth(float _value)
     {
         currenthealth = Mathf.Clamp(currenthealth + _value, 0, startinglives);
     }

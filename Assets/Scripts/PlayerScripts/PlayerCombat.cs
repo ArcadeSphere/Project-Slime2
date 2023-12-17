@@ -6,10 +6,10 @@ public class PlayerCombat : MonoBehaviour
 {
 
     [SerializeField] private float attackCooldown;
-    [SerializeField] private float attackrange;
-    [SerializeField] private Transform attackpoint;
-    [SerializeField] private float damageamount;
-    public LayerMask enemieslayer;
+    [SerializeField] private float attackRange;
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float damageAmount;
+    public LayerMask enemiesLayer;
     private Animator anim;
     private float cooldownTimer = Mathf.Infinity;
     private PlayerMovement pm;
@@ -43,21 +43,21 @@ public class PlayerCombat : MonoBehaviour
       
         pm.EnablePlayerMovement(true);
     }
-    public void target_gets_damage()
+    public void DamageTarget()
     {
         
         
-        Collider2D[] hittarget = Physics2D.OverlapCircleAll(attackpoint.position, attackrange, enemieslayer);
+        Collider2D[] hittarget = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemiesLayer);
 
         foreach (Collider2D target in hittarget) {
 
-            target.GetComponent<Health>().take_damage(damageamount);
+            target.GetComponent<Health>().TakeDamage(damageAmount);
         }
     }
 
      void OnDrawGizmosSelected()
     {
        
-        Gizmos.DrawWireSphere(attackpoint.position, attackrange); 
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange); 
     }
 }

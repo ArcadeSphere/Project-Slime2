@@ -5,9 +5,9 @@ using UnityEngine;
 public class SwingingThing : MonoBehaviour
 {
     private Rigidbody2D swtrb;
-    [SerializeField] private float swtspeed;
-    [SerializeField] private float LeftAngle;
-    [SerializeField] private float RightAngle;
+    [SerializeField] private float chainSpeed;
+    [SerializeField] private float leftAngle;
+    [SerializeField] private float rightAngle;
     bool ClockWiseMovement;
     void Start()
     {
@@ -15,7 +15,7 @@ public class SwingingThing : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+  
     void Update()
     {
 
@@ -24,11 +24,11 @@ public class SwingingThing : MonoBehaviour
 
     public void ChainDirection() { 
     
-    if(transform.rotation.z > RightAngle)
+    if(transform.rotation.z > rightAngle)
         {
             ClockWiseMovement = false;
         }
-        if (transform.rotation.z < LeftAngle)
+        if (transform.rotation.z < leftAngle)
         {
             ClockWiseMovement = true;
         }
@@ -39,11 +39,11 @@ public class SwingingThing : MonoBehaviour
         ChainDirection();
         if (ClockWiseMovement)
         {
-            swtrb.angularVelocity = swtspeed;
+            swtrb.angularVelocity = chainSpeed;
         }
         if (!ClockWiseMovement)
         {
-            swtrb.angularVelocity = -1 * swtspeed;
+            swtrb.angularVelocity = -1 * chainSpeed;
         }
     }
 }

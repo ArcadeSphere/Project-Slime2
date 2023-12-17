@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc31ce67f3f6c3142a221005895ea878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  playerSpeed: 8
   jumpingPower: 15
   dashingPower: 24
   dashingTime: 0.2
@@ -192,11 +192,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cbc5903dacbf6c4e80172c64082b416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 0
-  attackrange: 1.19
-  attackpoint: {fileID: 1618201319565819746}
-  damageamount: 0
-  enemieslayer:
+  attackCooldown: 0.6
+  attackRange: 0.76
+  attackPoint: {fileID: 1618201319565819746}
+  damageAmount: 1
+  enemiesLayer:
     serializedVersion: 2
     m_Bits: 2048
 --- !u!114 &2469525419819737867
@@ -218,6 +218,7 @@ MonoBehaviour:
   - {fileID: 2469525419819737861}
   - {fileID: 7747913105208640600}
   flashing: {fileID: 2469525419819737860}
+  rb: {fileID: 2469525419819737858}
 --- !u!114 &2469525419819737860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,7 +287,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5866182333728197303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.956, y: -0.253, z: 0}
+  m_LocalPosition: {x: 0.833, y: -0.253, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2469525419819737862}

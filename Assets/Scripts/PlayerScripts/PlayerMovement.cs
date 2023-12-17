@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
-    [SerializeField] private float speed = 8f;
+    [SerializeField] private float playerSpeed = 8f;
     [SerializeField] private float jumpingPower = 16f;
     [SerializeField] private float dashingPower = 24f;
     [SerializeField] private float dashingTime = 0.2f;
@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        rb.velocity = new Vector2(horizontal * playerSpeed, rb.velocity.y);
     }
 
     public bool IsDashing()

@@ -43,7 +43,7 @@ public class Kupiscript : PlayerDetector
 
 
 
-    public void shoot_at_player()
+    public void ShootPlayer()
     {
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
 
