@@ -22,8 +22,4 @@ public class Venus : MonoBehaviour
         currentState = venusState.openMouth;
         anim.SetInteger("state", (int)currentState);
     }
-
-    void DestroyObject() {
-        Destroy(this.gameObject);
-    }
 }
