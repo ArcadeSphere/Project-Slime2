@@ -1,31 +1,34 @@
 fileFormatVersion: 2
-guid: 2bc48320660ec044bbc15fa86fbe9894
+guid: 5a3b0423a4fdc9545a164567f9f31f56
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3579181775848011311
-    second: rafflesia_plant_idle_spritesheet_0
+      213: -5794660257000557844
+    second: chomper_plant_idle_spritesheet_0
   - first:
-      213: 8953638062471730415
-    second: rafflesia_plant_idle_spritesheet_1
+      213: -6573072572459524287
+    second: chomper_plant_idle_spritesheet_1
   - first:
-      213: -2920148796598120991
-    second: rafflesia_plant_idle_spritesheet_2
+      213: 2940141330275698162
+    second: chomper_plant_idle_spritesheet_2
   - first:
-      213: -1008650556512004795
-    second: rafflesia_plant_idle_spritesheet_3
+      213: -2935957523162110918
+    second: chomper_plant_idle_spritesheet_3
   - first:
-      213: -3374826625085448100
-    second: rafflesia_plant_idle_spritesheet_4
+      213: 6423655970240572137
+    second: chomper_plant_idle_spritesheet_4
   - first:
-      213: -4366801412451299404
-    second: rafflesia_plant_idle_spritesheet_5
+      213: 760012673568375122
+    second: chomper_plant_idle_spritesheet_5
   - first:
-      213: -3745854038248784052
-    second: rafflesia_plant_idle_spritesheet_6
+      213: -9164030391532944530
+    second: chomper_plant_idle_spritesheet_6
   - first:
-      213: 5563260065110566836
-    second: rafflesia_plant_idle_spritesheet_7
+      213: 1442356270089953533
+    second: chomper_plant_idle_spritesheet_7
+  - first:
+      213: -6995572851325915115
+    second: chomper_plant_idle_spritesheet_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -70,7 +73,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 10
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -115,13 +118,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rafflesia_plant_idle_spritesheet_0
+      name: chomper_plant_idle_spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -129,41 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d907006321345ec0800000000000000
-      internalID: -3579181775848011311
+      spriteID: ce2786b923b359fa0800000000000000
+      internalID: -5794660257000557844
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rafflesia_plant_idle_spritesheet_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fe45b012166b14c70800000000000000
-      internalID: 8953638062471730415
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rafflesia_plant_idle_spritesheet_2
+      name: chomper_plant_idle_spritesheet_1
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,41 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ed0c7f142c8977d0800000000000000
-      internalID: -2920148796598120991
+      spriteID: 14fdfab2251c7c4a0800000000000000
+      internalID: -6573072572459524287
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rafflesia_plant_idle_spritesheet_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5451a94b9ad8002f0800000000000000
-      internalID: -1008650556512004795
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rafflesia_plant_idle_spritesheet_4
+      name: chomper_plant_idle_spritesheet_2
       rect:
         serializedVersion: 2
         x: 128
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,41 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c506049a0153a21d0800000000000000
-      internalID: -3374826625085448100
+      spriteID: 2f5078c56fa7dc820800000000000000
+      internalID: 2940141330275698162
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rafflesia_plant_idle_spritesheet_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4bf8a2e60410663c0800000000000000
-      internalID: -4366801412451299404
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rafflesia_plant_idle_spritesheet_6
+      name: chomper_plant_idle_spritesheet_3
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4ff7bd399d040cc0800000000000000
-      internalID: -3745854038248784052
+      spriteID: a34694420326147d0800000000000000
+      internalID: -2935957523162110918
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rafflesia_plant_idle_spritesheet_7
+      name: chomper_plant_idle_spritesheet_4
       rect:
         serializedVersion: 2
-        x: 224
+        x: 256
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -276,8 +216,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b72806cd8ba43d40800000000000000
-      internalID: 5563260065110566836
+      spriteID: 9eaa1892219652950800000000000000
+      internalID: 6423655970240572137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chomper_plant_idle_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25186d8ff7b1c8a00800000000000000
+      internalID: 760012673568375122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chomper_plant_idle_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e638bc979e2d2d080800000000000000
+      internalID: -9164030391532944530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chomper_plant_idle_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df0e44eb267440410800000000000000
+      internalID: 1442356270089953533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chomper_plant_idle_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5103a5c4e8bbaee90800000000000000
+      internalID: -6995572851325915115
       vertices: []
       indices: 
       edges: []
