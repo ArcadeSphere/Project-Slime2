@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SpitPoison : MonoBehaviour
 {
-    public GameObject poisonPrefab;
+    [SerializeField] GameObject poisonPrefab;
     private Animator poisonAnim;
 
     private void Start() {

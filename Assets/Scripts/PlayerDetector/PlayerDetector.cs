@@ -6,12 +6,11 @@ using UnityEngine;
 
 public class PlayerDetector : MonoBehaviour
 {
-   [field: SerializeField]
    public bool PlayerDetected {get; set;}
    public Vector2 DirectionToTarget => target.transform.position - detectorOrigin.position;
 
    [Header("OverlapBox parameters")]
-   public Transform detectorOrigin;
+   [SerializeField] private Transform detectorOrigin;
    [SerializeField] private Vector2 detectorSize = Vector2.one;
    [SerializeField] private Vector2 detectorOriginOffset = Vector2.zero;
    [SerializeField] private float detectionDelay = 0.3f;
