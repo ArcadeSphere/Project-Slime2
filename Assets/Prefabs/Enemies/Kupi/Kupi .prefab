@@ -107,7 +107,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: -7525545415551052116, guid: 5f085b65e104ac64b98454d4deaafc6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -209,7 +209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ffe009375f09d140ae8cd84134d4842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <PlayerDetected>k__BackingField: 0
   detectorOrigin: {fileID: 9203180104031233427}
   detectorSize: {x: 11.2, y: 7}
   detectorOriginOffset: {x: -4.9, y: 1}
