@@ -37,7 +37,7 @@ public class Kupiscript : PlayerDetector
 
     public void OnPlayerIsOut()
     {
-       
+
         anim.SetBool("IsShooting", false);
     }
 
