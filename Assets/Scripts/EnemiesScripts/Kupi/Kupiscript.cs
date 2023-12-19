@@ -9,7 +9,8 @@ public class Kupiscript : PlayerDetector
     public GameObject projectilePrefab;
     private Animator anim;
     public float projectileSpeed = 5f;
-  
+ 
+   
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -40,7 +41,6 @@ public class Kupiscript : PlayerDetector
 
         anim.SetBool("IsShooting", false);
     }
-
 
 
     public void ShootPlayer()

@@ -28,7 +28,7 @@ public class MeleeGoblin :PlayerDetector
         }
         else
         {
-            isAttacking = false;
+            DontAttackPlayer();
         }
     }
 
