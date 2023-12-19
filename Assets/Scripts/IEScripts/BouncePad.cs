@@ -10,8 +10,13 @@ public class BouncePad : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * bounceForce, ForceMode2D.Impulse);
+            PlayerMovement playerMovement = collision.gameObject.GetComponent<PlayerMovement>();
 
+            // Check if the player is not currently dashing or jumping
+            if (!playerMovement.IsDashing() && !playerMovement.IsJumping())
+            {
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * bounceForce, ForceMode2D.Impulse);
+            }
         }
     }
 }

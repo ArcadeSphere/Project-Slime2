@@ -690,6 +690,7 @@ GameObject:
   - component: {fileID: 657144995}
   - component: {fileID: 657144998}
   - component: {fileID: 657144997}
+  - component: {fileID: 657144999}
   m_Layer: 0
   m_Name: BouncePad
   m_TagString: Untagged
@@ -756,7 +757,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657144994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42.759, y: -6.351, z: 0}
+  m_LocalPosition: {x: 42.92, y: -6.351, z: 0}
   m_LocalScale: {x: 1.0061753, y: 1.2579203, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -774,7 +775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b877479d27110614dbe2b863784b7344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceForce: 20
+  bounceForce: 21
 --- !u!61 &657144998
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -788,7 +789,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: -0.025232315, y: 0.5203557}
+  m_Offset: {x: 0.0060171187, y: 0.54822934}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -799,8 +800,27 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6361198, y: 0.119288445}
+  m_Size: {x: 1.6276367, y: 0.063541174}
   m_EdgeRadius: 0
+--- !u!251 &657144999
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657144994}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1001 &692178287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1290,7 +1310,7 @@ MonoBehaviour:
   gizmoDetectedColor: {r: 1, g: 0, b: 0, a: 0.4}
   showGizmo: 1
   rb: {fileID: 767279866}
-  fruitgravity: 2
+  fruitgravity: 3
   fruitimpact: {fileID: 8191496383761327364, guid: c1dd46db0326a0841b90df1875f16916, type: 3}
 --- !u!61 &871014955 stripped
 BoxCollider2D:

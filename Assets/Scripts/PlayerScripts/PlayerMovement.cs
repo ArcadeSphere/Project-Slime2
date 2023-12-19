@@ -71,6 +71,10 @@ public class PlayerMovement : MonoBehaviour
         }
         rb.velocity = new Vector2(horizontal * playerSpeed, rb.velocity.y);
     }
+    public bool IsJumping()
+    {
+        return !IsGrounded() && rb.velocity.y > 0f;
+    }
 
     public bool IsDashing()
     {
