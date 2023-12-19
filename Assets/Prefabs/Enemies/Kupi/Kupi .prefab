@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9203180103277914132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.135, y: 0.036, z: 0}
+  m_LocalPosition: {x: -0.341, y: 0.036, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9203180104031233427}
@@ -126,7 +126,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9203180104031233428}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectorOrigin: {fileID: 9203180104031233427}
   detectorSize: {x: 11.2, y: 7}
-  detectorOriginOffset: {x: -4.9, y: 1}
+  detectorOriginOffset: {x: -5.84, y: 1}
   detectionDelay: 0.3
   detectorLayerMask:
     serializedVersion: 2
@@ -223,7 +223,6 @@ MonoBehaviour:
   firePoint: {fileID: 9203180103277914133}
   projectilePrefab: {fileID: 79972667933630219, guid: 28183e64a58b7f24a9b320c8837174f0, type: 3}
   projectileSpeed: 9
-  attackCooldown: 0.9
 --- !u!50 &8547765622240814593
 Rigidbody2D:
   serializedVersion: 4

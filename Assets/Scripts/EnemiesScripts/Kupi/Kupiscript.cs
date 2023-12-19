@@ -22,11 +22,6 @@ public class Kupiscript : PlayerDetector
         {
             OnPlayerIsIn();
         }
-        else
-        {
-            OnPlayerIsOut();
-        }
-        
     }
 
     public void OnPlayerIsIn()
