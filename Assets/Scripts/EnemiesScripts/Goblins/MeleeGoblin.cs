@@ -5,10 +5,14 @@ using UnityEngine;
 public class MeleeGoblin :PlayerDetector
 {
     private Animator anim;
-    // private Health healthScript;
+  
+    [SerializeField] private float attackRange;
+    [SerializeField] private Transform attackPoint;
     private bool isAttacking = false;
-    public float attackCooldown = 2f; 
+    [SerializeField] private float attackCooldown = 2f; 
     private float currentCooldown = 0f;
+    public LayerMask playerLayer;
+    [SerializeField] private float damageAmount;
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -50,6 +54,22 @@ public class MeleeGoblin :PlayerDetector
     {
         isAttacking = false;
     }
-   
-  
+
+    public void DamagePlayer()
+    {
+
+
+        Collider2D[] hittarget = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
+
+        foreach (Collider2D target in hittarget)
+        {
+
+            target.GetComponent<Health>().TakeDamage(damageAmount);
+        }
+    }
+    void OnDrawGizmosSelected()
+    {
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
 }
