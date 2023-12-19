@@ -317,6 +317,7 @@ GameObject:
   - component: {fileID: 339383618}
   - component: {fileID: 339383617}
   - component: {fileID: 339383616}
+  - component: {fileID: 339383620}
   m_Layer: 11
   m_Name: TestMelee
   m_TagString: Untagged
@@ -409,7 +410,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 339383612}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 58.82, y: -5.86, z: 0}
+  m_LocalPosition: {x: -9.5, y: -1.87, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -487,6 +488,30 @@ MonoBehaviour:
   behviourcomponents: []
   flashing: {fileID: 339383618}
   rb: {fileID: 339383617}
+--- !u!114 &339383620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339383612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37214065a60b7e74786e02d4cdc995c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectorOrigin: {fileID: 339383615}
+  detectorSize: {x: 3.36, y: 4.66}
+  detectorOriginOffset: {x: -1.71, y: -0.55}
+  detectionDelay: 0.3
+  detectorLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  detectorOriginAnim: {fileID: 0}
+  gizmoIdleColor: {r: 0, g: 1, b: 0, a: 0.4}
+  gizmoDetectedColor: {r: 1, g: 0, b: 0, a: 0.4}
+  showGizmo: 1
+  attackCooldown: 0.6
 --- !u!1 &365795231
 GameObject:
   m_ObjectHideFlags: 0
@@ -2007,7 +2032,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1542674643
 MonoBehaviour:
@@ -2045,7 +2070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5505411758264803079, guid: d20b8043e26daf144ae2b85a5112f5c7, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5505411758264803079, guid: d20b8043e26daf144ae2b85a5112f5c7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7237,7 +7262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9203180104031233427, guid: 9565ac4ec160a0d4d9d0f3a35ba4ede2, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9203180104031233427, guid: 9565ac4ec160a0d4d9d0f3a35ba4ede2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7662,7 +7687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2469525419819737862, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2469525419819737862, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
       propertyPath: m_LocalPosition.x
