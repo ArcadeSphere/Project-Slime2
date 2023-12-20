@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MeleeGoblin :PlayerDetector
 {
+    [Header("Goblin Settings")]
     private Animator anim;
-
     [SerializeField] private float attackRange;
     [SerializeField] private Transform attackPoint;
     private bool isAttacking = false;
@@ -35,7 +35,7 @@ public class MeleeGoblin :PlayerDetector
         {
             if (isPatrolling)
             {
-                Patrol();
+                MeleePatrol();
             }
             else
             {
@@ -44,9 +44,9 @@ public class MeleeGoblin :PlayerDetector
         }
     }
 
-    private void Patrol()
+    private void MeleePatrol()
     {
-        // Patrol logic
+     
         transform.Translate(Vector2.right * patrolSpeed * Time.deltaTime);
         anim.SetFloat("moveSpeed", Mathf.Abs(patrolSpeed));
 
@@ -54,7 +54,7 @@ public class MeleeGoblin :PlayerDetector
         if ((patrolSpeed > 0 && transform.position.x >= rightPoint.position.x) ||
             (patrolSpeed < 0 && transform.position.x <= leftPoint.position.x))
         {
-            Flip();
+            FlipGoblin();
         }
     }
 
@@ -73,7 +73,7 @@ public class MeleeGoblin :PlayerDetector
         }
     }
 
-    private void Flip()
+    private void FlipGoblin()
     {
         patrolSpeed *= -1;
         Vector3 scale = transform.localScale;
@@ -115,7 +115,7 @@ public class MeleeGoblin :PlayerDetector
     {
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
 
-        // Draw lines between patrol points
+        
         Gizmos.DrawLine(leftPoint.position, rightPoint.position);
     }
 }
