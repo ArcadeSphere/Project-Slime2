@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1158757804351639842}
   - component: {fileID: 1158757804351639843}
   - component: {fileID: 1158757804351639840}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Rafflesia
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
