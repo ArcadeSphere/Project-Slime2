@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeGoblin :PlayerDetector
+public class MeleeGoblin : MonoBehaviour
 {
     [Header("Goblin Settings")]
     private Animator anim;
@@ -13,43 +13,25 @@ public class MeleeGoblin :PlayerDetector
     private float currentCooldown = 0f;
     public LayerMask playerLayer;
     [SerializeField] private float damageAmount;
+    private bool isAttackAnimationInProgress = false;
 
     [Header("Patrol Settings")]
     [SerializeField] private Transform leftPoint;
     [SerializeField] private Transform rightPoint;
     [SerializeField] private float patrolSpeed = 2f;
     private bool isPatrolling = true;
-    private bool isFacingRight = true;
+    public bool IsPatrolling { get { return isPatrolling; } }
     private void Awake()
     {
         anim = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        if (PlayerDetected)
-        {
-            StopPatrolAndAttack();
-        }
-        else
-        {
-            if (isPatrolling)
-            {
-                MeleePatrol();
-            }
-            else
-            {
-                DontAttackPlayer();
-            }
-        }
-    }
+  
 
-    private void MeleePatrol()
+    public void MeleePatrol()
     {
-
         transform.Translate(Vector2.right * patrolSpeed * Time.deltaTime);
         anim.SetFloat("moveSpeed", Mathf.Abs(patrolSpeed));
-
 
         if ((patrolSpeed > 0 && transform.position.x >= rightPoint.position.x) ||
             (patrolSpeed < 0 && transform.position.x <= leftPoint.position.x))
@@ -58,7 +40,7 @@ public class MeleeGoblin :PlayerDetector
         }
     }
 
-    private void StopPatrolAndAttack()
+    public void StopPatrolAndAttack()
     {
         isPatrolling = false;
         anim.SetFloat("moveSpeed", 0f);
@@ -86,21 +68,30 @@ public class MeleeGoblin :PlayerDetector
         yield return new WaitForSeconds(attackCooldown);
         isAttacking = false;
         currentCooldown = attackCooldown;
+
+        // Resume patrolling after the attack cooldown is finished
+        isAttackAnimationInProgress = false;
     }
 
     public void AttackPlayer()
     {
-        anim.SetTrigger("AttackPlayer");
-        isAttacking = true;
-        StartCoroutine(AttackCooldown());
+        if (!isAttackAnimationInProgress)
+        {
+            anim.SetTrigger("AttackPlayer");
+            isAttacking = true;
+            isAttackAnimationInProgress = true;
+            StartCoroutine(AttackCooldown());
+        }
     }
 
     public void DontAttackPlayer()
     {
-        isPatrolling = true;
-        isAttacking = false;
+        if (!isAttackAnimationInProgress)
+        {
+            isPatrolling = true;
+            isAttacking = false;
+        }
     }
-
     public void DamagePlayer()
     {
         Collider2D[] hittarget = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);

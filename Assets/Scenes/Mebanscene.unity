@@ -507,6 +507,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1792800250}
+  - {fileID: 1499043455}
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -595,18 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37214065a60b7e74786e02d4cdc995c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectorOrigin: {fileID: 339383615}
-  detectorSize: {x: 2.13, y: 2.65}
-  detectorOriginOffset: {x: 1.12, y: -0.55}
-  detectionDelay: 0.3
-  detectorLayerMask:
-    serializedVersion: 2
-    m_Bits: 1024
-  detectorOriginAnim: {fileID: 0}
-  gizmoIdleColor: {r: 0, g: 1, b: 0, a: 0.4}
-  gizmoDetectedColor: {r: 1, g: 0, b: 0, a: 0.4}
-  showGizmo: 1
-  attackRange: 0
+  attackRange: 1
   attackPoint: {fileID: 1792800250}
   attackCooldown: 0.9
   playerLayer:
@@ -2263,6 +2253,61 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1499043454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1499043455}
+  - component: {fileID: 1499043456}
+  m_Layer: 11
+  m_Name: DetectionPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1499043455
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499043454}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.664, y: -0.45, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 339383615}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1499043456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499043454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ef80fa38a32eb4fa4dfbdaca5f6c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectorOrigin: {fileID: 1499043455}
+  detectorSize: {x: 1.36, y: 1.48}
+  detectorOriginOffset: {x: 0, y: 0}
+  detectionDelay: 0.3
+  detectorLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  detectorOriginAnim: {fileID: 0}
+  gizmoIdleColor: {r: 0, g: 1, b: 0, a: 0.4}
+  gizmoDetectedColor: {r: 1, g: 0, b: 0, a: 0.4}
+  showGizmo: 1
+  meleeGoblin: {fileID: 339383620}
 --- !u!1001 &1505375591
 PrefabInstance:
   m_ObjectHideFlags: 0
