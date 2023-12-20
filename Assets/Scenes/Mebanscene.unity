@@ -808,7 +808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37214065a60b7e74786e02d4cdc995c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 1
+  attackRange: 1.33
   attackPoint: {fileID: 1792800250}
   attackCooldown: 0.9
   playerLayer:
