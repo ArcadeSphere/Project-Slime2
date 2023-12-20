@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
+    [Header("Player Stats")]
     [SerializeField] private float playerSpeed = 8f;
     [SerializeField] private float jumpingPower = 16f;
     [SerializeField] private float dashingPower = 24f;
@@ -14,16 +15,18 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing;
     private bool isAttacking;
     private bool isFacingRight = true;
-   
 
-
+    [Header("Player Dependencies")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Animator animator;
+
+    [Header("Platform Disabler Parameters")]
+    [SerializeField] private BoxCollider2D playerBoxCollider;
+    [SerializeField] private float platformDisableDuration = 0.2f;
+    private GameObject currentOneWayPlatform;
     
-
-
     void Update()
     {
         if (isDashing)
@@ -31,33 +34,41 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
+        // horizontal movement
         horizontal = Input.GetAxisRaw("Horizontal");
+
+        // animations
         animator.SetFloat("run", Mathf.Abs(horizontal));
         animator.SetBool("grounded", IsGrounded());
 
-    
-
+        // jump
         if (Input.GetButtonDown("Jump"))
         {
             if (IsGrounded())
             {
-
- 
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-
-
             }
         }
-
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-
         }
+        
+
+        // dash
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
-
             StartCoroutine(Dash());
+        }
+
+        // one-way platform
+        // onkeydown disable one-way platform collision if on it
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            if (currentOneWayPlatform != null)
+            {
+                StartCoroutine(DisablePlatformCollider());
+            }
         }
 
         Flip();
@@ -122,6 +133,27 @@ public class PlayerMovement : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.CompareTag("OneWayPlatform"))
+        {
+            currentOneWayPlatform = collision.gameObject;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision) {
+        if (collision.gameObject.CompareTag("OneWayPlatform"))
+        {
+            currentOneWayPlatform = null;
+        }
+    }
+    private IEnumerator DisablePlatformCollider() 
+    {
+        BoxCollider2D currentPlatformCollider = currentOneWayPlatform.GetComponent<BoxCollider2D>();
+        Physics2D.IgnoreCollision(playerBoxCollider, currentPlatformCollider);
+        yield return new WaitForSeconds(platformDisableDuration);
+        Physics2D.IgnoreCollision(playerBoxCollider, currentPlatformCollider, false);
     }
 
 }

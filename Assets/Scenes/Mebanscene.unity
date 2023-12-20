@@ -260,6 +260,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: OneWayPlatform2
       objectReference: {fileID: 0}
+    - target: {fileID: 8507382020543156185, guid: e9f81bde3d0cf0c498c2590ccdea6a78, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507382020543156185, guid: e9f81bde3d0cf0c498c2590ccdea6a78, type: 3}
+      propertyPath: m_TagString
+      value: OneWayPlatform
+      objectReference: {fileID: 0}
     - target: {fileID: 8507382020543156191, guid: e9f81bde3d0cf0c498c2590ccdea6a78, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -7745,6 +7753,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2469525419819737859, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
   m_PrefabInstance: {fileID: 2469525420769867635}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &2022368915 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2469525419819737857, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
+  m_PrefabInstance: {fileID: 2469525420769867635}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2022368917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8227,6 +8240,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2469525419819737861, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
+      propertyPath: isOneWay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469525419819737861, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
       propertyPath: dashingTime
       value: 0.2
       objectReference: {fileID: 0}
@@ -8243,8 +8260,24 @@ PrefabInstance:
       value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 2469525419819737861, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
+      propertyPath: playerCollider
+      value: 
+      objectReference: {fileID: 2022368915}
+    - target: {fileID: 2469525419819737861, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
       propertyPath: dashingCooldown
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469525419819737861, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
+      propertyPath: playerBoxCollider
+      value: 
+      objectReference: {fileID: 2022368915}
+    - target: {fileID: 2469525419819737861, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
+      propertyPath: oneWayLayer.m_Bits
+      value: 8192
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469525419819737861, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
+      propertyPath: platformDisableDuration
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2469525419819737862, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
       propertyPath: m_RootOrder
@@ -8411,6 +8444,10 @@ PrefabInstance:
     - target: {fileID: 8507382020543156185, guid: e9f81bde3d0cf0c498c2590ccdea6a78, type: 3}
       propertyPath: m_Name
       value: OneWayPlatform1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507382020543156185, guid: e9f81bde3d0cf0c498c2590ccdea6a78, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8507382020543156191, guid: e9f81bde3d0cf0c498c2590ccdea6a78, type: 3}
       propertyPath: m_RootOrder
