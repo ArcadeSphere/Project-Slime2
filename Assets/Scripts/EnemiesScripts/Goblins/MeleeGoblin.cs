@@ -19,7 +19,7 @@ public class MeleeGoblin :PlayerDetector
     [SerializeField] private Transform rightPoint;
     [SerializeField] private float patrolSpeed = 2f;
     private bool isPatrolling = true;
-
+    private bool isFacingRight = true;
     private void Awake()
     {
         anim = GetComponent<Animator>();
