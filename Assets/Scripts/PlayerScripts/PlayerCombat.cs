@@ -23,7 +23,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void Update()
     {
-        if (!pm.IsDashing() && Input.GetMouseButton(0) && cooldownTimer > attackCooldown)
+        if (!pm.IsDashing() && (Input.GetMouseButton(0) || Input.GetKey(KeyCode.J)) && cooldownTimer > attackCooldown)
             StartCoroutine(PerformAttack());
 
 
