@@ -46,11 +46,11 @@ public class MeleeGoblin :PlayerDetector
 
     private void MeleePatrol()
     {
-     
+
         transform.Translate(Vector2.right * patrolSpeed * Time.deltaTime);
         anim.SetFloat("moveSpeed", Mathf.Abs(patrolSpeed));
 
-      
+
         if ((patrolSpeed > 0 && transform.position.x >= rightPoint.position.x) ||
             (patrolSpeed < 0 && transform.position.x <= leftPoint.position.x))
         {
@@ -115,7 +115,6 @@ public class MeleeGoblin :PlayerDetector
     {
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
 
-        
         Gizmos.DrawLine(leftPoint.position, rightPoint.position);
     }
 }
