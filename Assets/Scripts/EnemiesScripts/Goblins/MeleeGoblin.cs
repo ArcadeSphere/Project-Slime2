@@ -20,6 +20,8 @@ public class MeleeGoblin : MonoBehaviour
     [SerializeField] private Transform rightPoint;
     [SerializeField] private float patrolSpeed = 2f;
     private bool isPatrolling = true;
+    [SerializeField] private float stopDuration = 2f; 
+    private Coroutine stopCoroutine;
     public bool IsPatrolling { get { return isPatrolling; } }
     private void Awake()
     {
@@ -68,11 +70,16 @@ public class MeleeGoblin : MonoBehaviour
         yield return new WaitForSeconds(attackCooldown);
         isAttacking = false;
         currentCooldown = attackCooldown;
-
-        // Resume patrolling after the attack cooldown is finished
         isAttackAnimationInProgress = false;
     }
 
+    private IEnumerator StopForDuration()
+    {
+        yield return new WaitForSeconds(stopDuration);
+        isPatrolling = true;
+        isAttacking = false;
+        stopCoroutine = null;
+    }
     public void AttackPlayer()
     {
         if (!isAttackAnimationInProgress)
@@ -81,6 +88,15 @@ public class MeleeGoblin : MonoBehaviour
             isAttacking = true;
             isAttackAnimationInProgress = true;
             StartCoroutine(AttackCooldown());
+
+           
+            isPatrolling = false;
+
+          
+            if (stopCoroutine != null)
+            {
+                StopCoroutine(stopCoroutine);
+            }
         }
     }
 
@@ -88,8 +104,12 @@ public class MeleeGoblin : MonoBehaviour
     {
         if (!isAttackAnimationInProgress)
         {
-            isPatrolling = true;
-            isAttacking = false;
+       
+            isPatrolling = false;
+            if (stopCoroutine == null)
+            {
+                stopCoroutine = StartCoroutine(StopForDuration());
+            }
         }
     }
     public void DamagePlayer()

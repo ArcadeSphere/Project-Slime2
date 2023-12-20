@@ -606,6 +606,7 @@ MonoBehaviour:
   leftPoint: {fileID: 108971174}
   rightPoint: {fileID: 1360868008}
   patrolSpeed: 2
+  stopDuration: 0.9
 --- !u!1 &365795231
 GameObject:
   m_ObjectHideFlags: 0
