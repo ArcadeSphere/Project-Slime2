@@ -5,7 +5,7 @@ using UnityEngine;
 public class MeleeGoblin : MonoBehaviour
 {
     [Header("Goblin Settings")]
-    private Animator anim;
+    public Animator animGoblinMelee;
     [SerializeField] private float attackRange;
     [SerializeField] private Transform attackPoint;
     private bool isAttacking = false;
@@ -25,15 +25,15 @@ public class MeleeGoblin : MonoBehaviour
     public bool IsPatrolling { get { return isPatrolling; } }
     private void Awake()
     {
-        anim = GetComponent<Animator>();
+        animGoblinMelee = GetComponent<Animator>();
     }
 
-  
+
 
     public void MeleePatrol()
     {
         transform.Translate(Vector2.right * patrolSpeed * Time.deltaTime);
-        anim.SetFloat("moveSpeed", Mathf.Abs(patrolSpeed));
+        animGoblinMelee.SetBool("isMoving", true);
 
         if ((patrolSpeed > 0 && transform.position.x >= rightPoint.position.x) ||
             (patrolSpeed < 0 && transform.position.x <= leftPoint.position.x))
@@ -45,7 +45,7 @@ public class MeleeGoblin : MonoBehaviour
     public void StopPatrolAndAttack()
     {
         isPatrolling = false;
-        anim.SetFloat("moveSpeed", 0f);
+        animGoblinMelee.SetBool("isMoving", false);
 
         if (!isAttacking && currentCooldown <= 0)
         {
@@ -57,7 +57,7 @@ public class MeleeGoblin : MonoBehaviour
         }
     }
 
-    private void FlipGoblin()
+    public void FlipGoblin()
     {
         patrolSpeed *= -1;
         Vector3 scale = transform.localScale;
@@ -68,11 +68,13 @@ public class MeleeGoblin : MonoBehaviour
     private IEnumerator AttackCooldown()
     {
         yield return new WaitForSeconds(attackCooldown);
+
+        // Enable patrolling after the attack cooldown is complete
+        isPatrolling = true;
         isAttacking = false;
         currentCooldown = attackCooldown;
         isAttackAnimationInProgress = false;
     }
-
     private IEnumerator StopForDuration()
     {
         yield return new WaitForSeconds(stopDuration);
@@ -84,15 +86,14 @@ public class MeleeGoblin : MonoBehaviour
     {
         if (!isAttackAnimationInProgress)
         {
-            anim.SetTrigger("AttackPlayer");
+            animGoblinMelee.SetTrigger("AttackPlayer");
             isAttacking = true;
             isAttackAnimationInProgress = true;
             StartCoroutine(AttackCooldown());
 
-           
+            
             isPatrolling = false;
 
-          
             if (stopCoroutine != null)
             {
                 StopCoroutine(stopCoroutine);
