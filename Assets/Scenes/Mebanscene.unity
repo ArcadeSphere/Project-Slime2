@@ -7651,6 +7651,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Kupi '
       objectReference: {fileID: 0}
+    - target: {fileID: 9203180104031233429, guid: 9565ac4ec160a0d4d9d0f3a35ba4ede2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9565ac4ec160a0d4d9d0f3a35ba4ede2, type: 3}
 --- !u!1 &2071038902
