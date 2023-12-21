@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9203180103277914132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8, y: 0.036, z: 0}
+  m_LocalPosition: {x: 0.937, y: 0.036, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9203180104031233427}
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 9203180104031233132}
   - component: {fileID: 8547765622240814593}
   m_Layer: 11
-  m_Name: 'Kupi '
+  m_Name: Kupi Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ Transform:
   m_GameObject: {fileID: 9203180104031233428}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.67, y: -1.83, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 9203180103277914133}
   m_Father: {fileID: 0}
@@ -110,7 +110,7 @@ SpriteRenderer:
   m_SortingOrder: 3
   m_Sprite: {fileID: -7525545415551052116, guid: 5f085b65e104ac64b98454d4deaafc6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2, y: 2}
@@ -210,13 +210,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectorOrigin: {fileID: 9203180104031233427}
-  detectorSize: {x: 11.2, y: 7}
-  detectorOriginOffset: {x: -5.84, y: 1}
+  detectorSize: {x: 11.16, y: 6.26}
+  detectorOriginOffset: {x: -5.84, y: 2.05}
   detectionDelay: 0.3
   detectorLayerMask:
     serializedVersion: 2
     m_Bits: 1024
-  detectorOriginAnim: {fileID: 0}
   gizmoIdleColor: {r: 0, g: 1, b: 0, a: 0.4}
   gizmoDetectedColor: {r: 1, g: 0, b: 0, a: 0.4}
   showGizmo: 1
