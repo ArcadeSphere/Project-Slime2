@@ -2504,7 +2504,6 @@ MonoBehaviour:
   detectorLayerMask:
     serializedVersion: 2
     m_Bits: 1024
-  detectorOriginAnim: {fileID: 0}
   gizmoIdleColor: {r: 0, g: 1, b: 0, a: 0.4}
   gizmoDetectedColor: {r: 1, g: 0, b: 0, a: 0.4}
   showGizmo: 1
@@ -2903,6 +2902,9 @@ GameObject:
   - component: {fileID: 1113444807}
   - component: {fileID: 1113444811}
   - component: {fileID: 1113444810}
+  - component: {fileID: 1113444813}
+  - component: {fileID: 1113444812}
+  - component: {fileID: 1113444814}
   m_Layer: 11
   m_Name: Golemite
   m_TagString: Untagged
@@ -2966,7 +2968,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1998535547de30b40b2eb469f014dd94, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -3035,9 +3037,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.03821373}
   serializedVersion: 2
-  m_Radius: 1.7777778
+  m_Radius: 1.026247
 --- !u!114 &1113444810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3070,6 +3072,68 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashmat: {fileID: 2100000, guid: cf3bfe283e9a3974fb638db04c791129, type: 2}
   flashduration: 0.1
+--- !u!114 &1113444812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113444804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 118fd7dcbfb27954a95e47aa25a9c4c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectorOrigin: {fileID: 1113444805}
+  detectorSize: {x: 6, y: 3}
+  detectorOriginOffset: {x: -3.36, y: 0}
+  detectionDelay: 0.3
+  detectorLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  gizmoIdleColor: {r: 0, g: 1, b: 0, a: 0.4}
+  gizmoDetectedColor: {r: 1, g: 0, b: 0, a: 0.4}
+  showGizmo: 1
+--- !u!114 &1113444813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113444804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dc7591ba91976b409a98faa5793edc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolPoints:
+  - {fileID: 176598070}
+  - {fileID: 393744042}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  moveSpeed: 3
+  flightless: 1
+  playerDetectorScript: {fileID: 1113444812}
+--- !u!95 &1113444814
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113444804}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f49d5c7a38caa9246b7805141c3b6677, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1117920543
 GameObject:
   m_ObjectHideFlags: 0
@@ -3253,7 +3317,6 @@ MonoBehaviour:
   detectorLayerMask:
     serializedVersion: 2
     m_Bits: 1024
-  detectorOriginAnim: {fileID: 0}
   gizmoIdleColor: {r: 0, g: 1, b: 0, a: 0.4}
   gizmoDetectedColor: {r: 1, g: 0, b: 0, a: 0.4}
   showGizmo: 1
@@ -3930,7 +3993,6 @@ MonoBehaviour:
   detectorLayerMask:
     serializedVersion: 2
     m_Bits: 1024
-  detectorOriginAnim: {fileID: 0}
   gizmoIdleColor: {r: 0, g: 1, b: 0, a: 0.4}
   gizmoDetectedColor: {r: 1, g: 0, b: 0, a: 0.4}
   showGizmo: 1

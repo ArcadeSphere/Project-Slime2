@@ -12,10 +12,9 @@ public class PlayerDetector : MonoBehaviour
    [Header("OverlapBox parameters")]
    [SerializeField] private Transform detectorOrigin;
    [SerializeField] private Vector2 detectorSize = Vector2.one;
-   [SerializeField] private Vector2 detectorOriginOffset = Vector2.zero;
+   public Vector2 detectorOriginOffset = Vector2.zero;
    [SerializeField] private float detectionDelay = 0.3f;
    [SerializeField] private LayerMask detectorLayerMask;
-   public Animator detectorOriginAnim;
 
    [Header("Gizmo parameters")]
    [SerializeField] private Color gizmoIdleColor = new Color(0f, 1f, 0f, 0.4f);
@@ -37,7 +36,6 @@ public class PlayerDetector : MonoBehaviour
 
    private void Start() 
     {
-        detectorOriginAnim = GetComponent<Animator>();
         StartCoroutine(DetectionCoroutine());
     }
 
