@@ -6,11 +6,15 @@ public class RangeGoblin : MonoBehaviour
 {
     [Header("Goblin Settings")]
     private Animator anim;
-    [SerializeField] private Transform firePoint;
     private bool isShooting = false;
     [SerializeField] private float shootingCooldown = 2f;
     private bool isShootAnimationInProgress = false;
     private float currentCooldown = 0f;
+
+    [Header("Arrow Settings")]
+    public GameObject arrowPrefab;
+    [SerializeField] private Transform firePoint;
+    public float arrowSpeed = 5f;
 
     [Header("Patrol Settings")]
     [SerializeField] private Transform leftPoint;
@@ -109,5 +113,17 @@ public class RangeGoblin : MonoBehaviour
     {
     
         Gizmos.DrawLine(leftPoint.position, rightPoint.position);
+    }
+    public void ShootArrows()
+    {
+        GameObject projectile = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
+
+       ArrowProjectiles projectileComponent = projectile.GetComponent<ArrowProjectiles>();
+        if (projectileComponent != null)
+        {
+            Vector2 shootDirection = (transform.localScale.x > 0) ? Vector2.right : Vector2.left;
+            projectileComponent.SetSpeed(arrowSpeed);
+            projectileComponent.SetProjectileDirection(shootDirection);
+        }
     }
 }
