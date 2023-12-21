@@ -3315,7 +3315,7 @@ MonoBehaviour:
   leftPoint: {fileID: 152877061}
   rightPoint: {fileID: 650935900}
   patrolSpeed: 2
-  stopDuration: 0.9
+  stopDuration: 0.1
 --- !u!1001 &1269191296
 PrefabInstance:
   m_ObjectHideFlags: 0
