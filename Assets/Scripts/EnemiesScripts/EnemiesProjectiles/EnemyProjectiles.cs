@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyProjectiles : MonoBehaviour
 {
+
     public float destroyDelay = 2f;
     public GameObject explodeanimation;
 
@@ -17,13 +18,30 @@ public class EnemyProjectiles : MonoBehaviour
 
     private void Update()
     {
-      
-        transform.Translate(Vector2.left * speed * Time.deltaTime);
+       
+        transform.Translate(direction * speed * Time.deltaTime);
     }
 
     public void SetSpeed(float projectileSpeed)
     {
         speed = projectileSpeed;
+    }
+
+    public void SetDirection(Vector2 newDirection)
+    {
+        direction = newDirection;
+
+    
+        if (direction.x > 0)
+        {
+            
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+         
+            transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -37,6 +55,4 @@ public class EnemyProjectiles : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-   
 }

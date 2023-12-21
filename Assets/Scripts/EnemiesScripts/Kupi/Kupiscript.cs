@@ -9,8 +9,7 @@ public class Kupiscript : PlayerDetector
     public GameObject projectilePrefab;
     private Animator anim;
     public float projectileSpeed = 5f;
- 
-   
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -22,32 +21,34 @@ public class Kupiscript : PlayerDetector
         {
             OnPlayerIsIn();
         }
+        else
+        {
+            OnPlayerIsOut();
+        }
     }
 
     public void OnPlayerIsIn()
     {
-
         anim.SetBool("IsShooting", true);
-
+       
     }
 
     public void OnPlayerIsOut()
     {
-
         anim.SetBool("IsShooting", false);
     }
 
-
     public void ShootPlayer()
     {
-        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+        
+        Vector2 shootDirection = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
 
-       
+        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
         EnemyProjectiles projectileComponent = projectile.GetComponent<EnemyProjectiles>();
+
         if (projectileComponent != null)
         {
-           
-            Vector2 shootDirection = Vector2.left;
+            projectileComponent.SetDirection(shootDirection);
             projectileComponent.SetSpeed(projectileSpeed);
         }
     }
