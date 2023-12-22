@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyArrowDelay: 2
   explodeArrowanimation: {fileID: 6043239981226233226, guid: fe378f201d544844eb57f61f754a84f8, type: 3}
+  damage: 1
 --- !u!114 &7366983893185716171
 MonoBehaviour:
   m_ObjectHideFlags: 0

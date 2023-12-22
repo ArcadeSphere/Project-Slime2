@@ -6,7 +6,7 @@ public class ArrowProjectiles : MonoBehaviour
 {
     public float destroyArrowDelay = 2f;
     public GameObject explodeArrowanimation;
-
+    [SerializeField] protected float damage;
     private float speed;
     private Vector2 direction;
 
@@ -31,6 +31,13 @@ public class ArrowProjectiles : MonoBehaviour
         Instantiate(explodeArrowanimation, transform.position, Quaternion.identity);
         Destroy(gameObject);
 
+        if (other.CompareTag("Enemy"))
+        {
+            other.GetComponent<Health>().TakeDamage(damage);
+            Instantiate(explodeArrowanimation, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+
+        }
         if (other.CompareTag("Player"))
         {
             Instantiate(explodeArrowanimation, transform.position, Quaternion.identity);
