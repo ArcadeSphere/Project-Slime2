@@ -21,11 +21,9 @@ public class Golemite : PlayerDetector
             if (golemiteAnimator.GetBool("roll") && !enemyPatrol.onEdge)
             {
                 golemiteAnimator.SetBool("roll", true);
+                return;
             }
-            else
-            {
-                golemiteAnimator.SetBool("roll", false);
-            }
+            golemiteAnimator.SetBool("roll", false);
         }
     }
     
