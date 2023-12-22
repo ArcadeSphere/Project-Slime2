@@ -9,5 +9,9 @@ public class Golemite : PlayerDetector
         {
             this.GetComponent<Animator>().SetBool("roll", true);
         }
+        else
+        {
+            this.GetComponent<Animator>().SetBool("roll", false);
+        }
     }
 }
