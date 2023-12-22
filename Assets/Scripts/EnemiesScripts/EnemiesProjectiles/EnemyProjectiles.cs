@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Serialization;
 public class EnemyProjectiles : MonoBehaviour
 {
 
@@ -48,6 +48,7 @@ public class EnemyProjectiles : MonoBehaviour
     {
         Instantiate(explodeanimation, transform.position, Quaternion.identity);
         Destroy(gameObject);
+
         if (other.CompareTag("Enemy"))
         {
             other.GetComponent<Health>().TakeDamage(enemyDamage);
