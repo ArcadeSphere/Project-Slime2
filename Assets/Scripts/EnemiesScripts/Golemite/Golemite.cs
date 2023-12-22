@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Golemite : PlayerDetector
 {
+    [Header("Golemite Parameters")]
     [SerializeField] private EnemyPatrol enemyPatrol;
     private Animator golemiteAnimator;
 
