@@ -15,7 +15,7 @@ public class EnemyPatrol : MonoBehaviour
     private BoxCollider2D enemyCollider;
     private SpriteRenderer enemySprite;
     private int currentPoint = 0;
-    private bool onEdge = false; 
+    [HideInInspector] public bool onEdge = false; 
 
     private void Start() {
         enemySprite = this.GetComponent<SpriteRenderer>();

@@ -4,14 +4,28 @@ using UnityEngine;
 
 public class Golemite : PlayerDetector
 {
-    private void Update() {
+    [Header("Golemite Parameters")]
+    [SerializeField] private EnemyPatrol enemyPatrol;
+    private Animator golemiteAnimator;
+
+    private void Awake() {
+        golemiteAnimator = this.GetComponent<Animator>();
+    }
+    private void Update() 
+    {
         if (PlayerDetected)
         {
-            this.GetComponent<Animator>().SetBool("roll", true);
+            golemiteAnimator.SetBool("roll", true);
         }
         else
         {
-            this.GetComponent<Animator>().SetBool("roll", false);
+            if (golemiteAnimator.GetBool("roll") && !enemyPatrol.onEdge)
+            {
+                golemiteAnimator.SetBool("roll", true);
+                return;
+            }
+            golemiteAnimator.SetBool("roll", false);
         }
     }
+    
 }
