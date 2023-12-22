@@ -20,8 +20,9 @@ public class Spider : PlayerDetector
     {
         if (PlayerDetected)
         {
-
-        }
+            JumpAttack();
+                
+         }
         else
         {
 
@@ -29,7 +30,7 @@ public class Spider : PlayerDetector
     }
     private void JumpAttack()
     {
-
+        anim.SetTrigger("JumpAttack");
     }
     private void StopJumpAttack()
     {
