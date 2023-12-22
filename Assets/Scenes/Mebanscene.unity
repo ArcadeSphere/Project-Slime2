@@ -3572,6 +3572,7 @@ MonoBehaviour:
   gizmoIdleColor: {r: 0, g: 1, b: 0, a: 0.4}
   gizmoDetectedColor: {r: 1, g: 0, b: 0, a: 0.4}
   showGizmo: 1
+  enemyPatrol: {fileID: 1113444813}
 --- !u!114 &1113444813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3594,6 +3595,7 @@ MonoBehaviour:
   flightless: 1
   playerDetectorScript: {fileID: 1113444812}
   turnBackDelay: 2
+  onEdge: 0
 --- !u!95 &1113444814
 Animator:
   serializedVersion: 3
