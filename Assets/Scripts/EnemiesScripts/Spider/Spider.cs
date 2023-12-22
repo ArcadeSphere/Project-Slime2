@@ -10,16 +10,17 @@ public class Spider : PlayerDetector
     private bool isGround;
     private Rigidbody2D spiderRb;
     [SerializeField] private Transform playerTransform;
-   [SerializeField] private float jumpForce = 10f;
-    [SerializeField] private float spiderJumpMoveSpeed = 5f; 
+    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private float horizontalMoveSpeed = 5f; 
     [SerializeField] private float jumpCooldown = 2f;
+    [SerializeField] private float SpiderJumpDelay = 1.5f; 
     private float nextJumpTime;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         spiderRb = GetComponent<Rigidbody2D>();
-        nextJumpTime = Time.time;
+        nextJumpTime = Time.time + SpiderJumpDelay; 
     }
 
     private void Update()
@@ -46,11 +47,11 @@ public class Spider : PlayerDetector
         spiderRb.velocity = new Vector2(spiderRb.velocity.x, 0);
         spiderRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         Vector2 direction = (playerTransform.position - transform.position).normalized;
-        spiderRb.AddForce(direction * spiderJumpMoveSpeed, ForceMode2D.Impulse);
+        spiderRb.AddForce(direction * horizontalMoveSpeed, ForceMode2D.Impulse);
     }
 
     private void StopJumpAttack()
     {
-       
+      
     }
 }

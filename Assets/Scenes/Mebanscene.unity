@@ -2705,7 +2705,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 701117553}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.95, y: 0.007705927, z: 1.9264299}
+  m_LocalPosition: {x: -3.46, y: 0.007705927, z: 1.9264299}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 546865664}
@@ -2752,8 +2752,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectorOrigin: {fileID: 701117556}
-  detectorSize: {x: 10.44, y: 2.86}
-  detectorOriginOffset: {x: 5.72, y: 0}
+  detectorSize: {x: 16.89, y: 2.86}
+  detectorOriginOffset: {x: 1.4, y: 0}
   detectionDelay: 0.3
   detectorLayerMask:
     serializedVersion: 2
@@ -2767,8 +2767,9 @@ MonoBehaviour:
     m_Bits: 64
   playerTransform: {fileID: 955241589}
   jumpForce: 10
-  spiderJumpMoveSpeed: 7
+  horizontalMoveSpeed: 5
   jumpCooldown: 2
+  SpiderJumpDelay: 1.5
 --- !u!114 &701117560
 MonoBehaviour:
   m_ObjectHideFlags: 0
