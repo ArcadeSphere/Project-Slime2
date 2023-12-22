@@ -878,7 +878,6 @@ GameObject:
   - component: {fileID: 339383617}
   - component: {fileID: 339383616}
   - component: {fileID: 339383620}
-  - component: {fileID: 339383621}
   m_Layer: 11
   m_Name: TestMelee
   m_TagString: Untagged
@@ -1051,7 +1050,7 @@ MonoBehaviour:
   numberOfFlashes: 0
   behviourcomponents:
   - {fileID: 339383620}
-  - {fileID: 339383621}
+  - {fileID: 0}
   - {fileID: 339383613}
   flashing: {fileID: 339383618}
   rb: {fileID: 339383617}
@@ -1078,19 +1077,6 @@ MonoBehaviour:
   rightPoint: {fileID: 1360868008}
   patrolSpeed: 2
   stopDuration: 0.9
---- !u!114 &339383621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339383612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d918b1d8c87db04e846f1bedf8f364a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
 --- !u!1 &365795231
 GameObject:
   m_ObjectHideFlags: 0
@@ -3956,7 +3942,6 @@ GameObject:
   - component: {fileID: 1260957697}
   - component: {fileID: 1260957696}
   - component: {fileID: 1260957703}
-  - component: {fileID: 1260957704}
   m_Layer: 11
   m_Name: TestRange
   m_TagString: Untagged
@@ -4150,19 +4135,6 @@ MonoBehaviour:
   rightPoint: {fileID: 650935900}
   patrolSpeed: 3
   stopDuration: 0.1
---- !u!114 &1260957704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1260957695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d918b1d8c87db04e846f1bedf8f364a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
 --- !u!1 &1360868007
 GameObject:
   m_ObjectHideFlags: 0

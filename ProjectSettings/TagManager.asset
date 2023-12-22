@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - OneWayPlatform
+  - Enemy
   layers:
   - Default
   - TransparentFX
