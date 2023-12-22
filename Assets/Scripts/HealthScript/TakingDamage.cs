@@ -14,5 +14,14 @@ public class TakingDamage : MonoBehaviour
             CameraShake.Instance.ShakeCamera(2f, 0.2f);
         }
     }
+
+    protected void OnCollisionEnter2D(Collision2D collision) 
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Health>().TakeDamage(damage);
+            CameraShake.Instance.ShakeCamera(2f, 0.2f);
+        }
+    }
 }
 
