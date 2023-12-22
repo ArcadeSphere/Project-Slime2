@@ -29,6 +29,7 @@ public class RangeGoblin : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+    //patrol 
     public void RangePatrol()
     {
         transform.Translate(Vector2.right * patrolSpeed * Time.deltaTime);
@@ -54,7 +55,7 @@ public class RangeGoblin : MonoBehaviour
             currentCooldown -= Time.deltaTime;
         }
     }
-
+    //flip when reaching end
     private void FlipGoblin()
     {
         patrolSpeed *= -1;
@@ -62,6 +63,7 @@ public class RangeGoblin : MonoBehaviour
         scale.x *= -1;
         transform.localScale = scale;
     }
+    //cooldown for enemy shooting
     private IEnumerator ShootingCooldown()
     {
         yield return new WaitForSeconds(shootingCooldown);
@@ -69,6 +71,7 @@ public class RangeGoblin : MonoBehaviour
         currentCooldown = shootingCooldown;
         isShootAnimationInProgress = false;
     }
+
 
     private IEnumerator StopForDuration()
     {
@@ -90,13 +93,14 @@ public class RangeGoblin : MonoBehaviour
 
     private IEnumerator StopRangeForDuration()
     {
-        yield return new WaitForSeconds(stopDuration / 2f); // Wait for half of the stopDuration
-        FlipGoblin(); // Flip the goblin after the delay
+        yield return new WaitForSeconds(stopDuration / 2f);
+        FlipGoblin(); 
 
-        yield return new WaitForSeconds(stopDuration / 2f); // Wait for the remaining half of the stopDuration
+        yield return new WaitForSeconds(stopDuration / 2f); 
         isPatrolling = true;
         stopCoroutine = null;
     }
+    //use in animator to shoot
     public void ShootPlayer()
     {
         if (!isShootAnimationInProgress)

@@ -23,6 +23,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void Update()
     {
+        //player combat
         if (!pm.IsDashing() && (Input.GetMouseButton(0) || Input.GetKey(KeyCode.J)) && cooldownTimer > attackCooldown)
             StartCoroutine(PerformAttack());
 
@@ -43,7 +44,7 @@ public class PlayerCombat : MonoBehaviour
       
         pm.EnablePlayerMovement(true);
     }
-    public void DamageTarget()
+    public void DamageTarget() //damage target in range
     {
         
         
