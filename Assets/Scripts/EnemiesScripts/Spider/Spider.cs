@@ -31,14 +31,12 @@ public class Spider : PlayerDetector
         {
             if (isGround && Time.time >= nextJumpTime)
             {
+                FlipTowardsPlayer(); 
                 JumpAttack();
                 nextJumpTime = Time.time + jumpCooldown;
             }
         }
-        else
-        {
-            StopJumpAttack();
-        }
+       
     }
 
     private void JumpAttack()
@@ -50,8 +48,36 @@ public class Spider : PlayerDetector
         spiderRb.AddForce(direction * horizontalMoveSpeed, ForceMode2D.Impulse);
     }
 
-    private void StopJumpAttack()
+ 
+    private void FlipTowardsPlayer()
     {
-      
+        if (transform.position.x < playerTransform.position.x)
+        {
+         
+            if (!IsFacingRight())
+            {
+                SpiderFlip();
+            }
+        }
+        else
+        {
+          
+            if (IsFacingRight())
+            {
+                SpiderFlip();
+            }
+        }
+    }
+
+    private bool IsFacingRight()
+    {
+        return transform.localScale.x > 0;
+    }
+
+    private void SpiderFlip()
+    {
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 }

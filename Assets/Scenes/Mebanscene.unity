@@ -2769,7 +2769,7 @@ MonoBehaviour:
   jumpForce: 10
   horizontalMoveSpeed: 5
   jumpCooldown: 2
-  SpiderJumpDelay: 1.5
+  SpiderJumpDelay: 1.8
 --- !u!114 &701117560
 MonoBehaviour:
   m_ObjectHideFlags: 0
