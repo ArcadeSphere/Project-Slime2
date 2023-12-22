@@ -38,7 +38,8 @@ public class MeleeGoblin : MonoBehaviour
         if ((patrolSpeed > 0 && transform.position.x >= rightPoint.position.x) ||
             (patrolSpeed < 0 && transform.position.x <= leftPoint.position.x))
         {
-            FlipGoblin();
+            StopPatrolForDuration();
+          
         }
     }
 
@@ -56,7 +57,24 @@ public class MeleeGoblin : MonoBehaviour
             currentCooldown -= Time.deltaTime;
         }
     }
+    private IEnumerator StopAndFlipForDuration()
+    {
+        yield return new WaitForSeconds(stopDuration / 2f); 
+        FlipGoblin(); // 
 
+        yield return new WaitForSeconds(stopDuration / 2f); 
+        isPatrolling = true;
+        stopCoroutine = null;
+    }
+    private void StopPatrolForDuration()
+    {
+        isPatrolling = false;
+        anim.SetFloat("moveSpeed", 0f);
+        if (stopCoroutine == null)
+        {
+            stopCoroutine = StartCoroutine(StopAndFlipForDuration());
+        }
+    }
     private void FlipGoblin()
     {
         patrolSpeed *= -1;

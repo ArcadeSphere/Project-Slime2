@@ -37,7 +37,7 @@ public class RangeGoblin : MonoBehaviour
         if ((patrolSpeed > 0 && transform.position.x >= rightPoint.position.x) ||
             (patrolSpeed < 0 && transform.position.x <= leftPoint.position.x))
         {
-            FlipGoblin();
+            StopRangePatrolForDuration();
         }
     }
     public void StopPatrolAndRangeAttack()
@@ -75,6 +75,26 @@ public class RangeGoblin : MonoBehaviour
         yield return new WaitForSeconds(stopDuration);
         isPatrolling = true;
         isShooting = false;
+        stopCoroutine = null;
+    }
+    private void StopRangePatrolForDuration()
+    {
+        isPatrolling = false;
+        anim.SetFloat("moveSpeed", 0f);
+
+        if (stopCoroutine == null)
+        {
+            stopCoroutine = StartCoroutine(StopRangeForDuration());
+        }
+    }
+
+    private IEnumerator StopRangeForDuration()
+    {
+        yield return new WaitForSeconds(stopDuration / 2f); // Wait for half of the stopDuration
+        FlipGoblin(); // Flip the goblin after the delay
+
+        yield return new WaitForSeconds(stopDuration / 2f); // Wait for the remaining half of the stopDuration
+        isPatrolling = true;
         stopCoroutine = null;
     }
     public void ShootPlayer()
