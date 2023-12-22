@@ -3584,7 +3584,7 @@ MonoBehaviour:
   moveSpeed: 3
   flightless: 1
   playerDetectorScript: {fileID: 1113444812}
-  edgeDelay: 2
+  turnBackDelay: 2
 --- !u!95 &1113444814
 Animator:
   serializedVersion: 3
