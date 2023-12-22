@@ -5,6 +5,7 @@ using UnityEngine;
 public class ExplodingFruit : PlayerDetector
 {
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] protected float enemyDamage;
     public float fruitgravity;
     public GameObject fruitimpact;
     private void Awake()
@@ -31,6 +32,13 @@ public class ExplodingFruit : PlayerDetector
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Enemy"))
+        {
+            collision.GetComponent<Health>().TakeDamage(enemyDamage);
+            Instantiate(fruitimpact, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+
+        }
         Instantiate(fruitimpact, transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }

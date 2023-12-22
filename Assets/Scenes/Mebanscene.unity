@@ -2759,7 +2759,7 @@ GameObject:
   - component: {fileID: 767279870}
   - component: {fileID: 767279869}
   - component: {fileID: 767279871}
-  m_Layer: 13
+  m_Layer: 11
   m_Name: ExplodingFruit
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -2914,6 +2914,7 @@ MonoBehaviour:
   gizmoDetectedColor: {r: 1, g: 0, b: 0, a: 0.4}
   showGizmo: 1
   rb: {fileID: 767279866}
+  enemyDamage: 0
   fruitgravity: 3
   fruitimpact: {fileID: 8191496383761327364, guid: c1dd46db0326a0841b90df1875f16916, type: 3}
 --- !u!1001 &780930019
@@ -3645,7 +3646,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167841920}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.12, y: -9.245169, z: -79.51531}
+  m_LocalPosition: {x: 72.08, y: -9.245169, z: -79.51531}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1260957702}
@@ -4668,6 +4669,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestDummy
       objectReference: {fileID: 0}
+    - target: {fileID: 5505411758264803074, guid: d20b8043e26daf144ae2b85a5112f5c7, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5505411758264803077, guid: d20b8043e26daf144ae2b85a5112f5c7, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -4678,7 +4683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5505411758264803079, guid: d20b8043e26daf144ae2b85a5112f5c7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.111369
+      value: -7.13
       objectReference: {fileID: 0}
     - target: {fileID: 5505411758264803079, guid: d20b8043e26daf144ae2b85a5112f5c7, type: 3}
       propertyPath: m_LocalPosition.y

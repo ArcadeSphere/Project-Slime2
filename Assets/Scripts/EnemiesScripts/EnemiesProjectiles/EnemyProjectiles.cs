@@ -7,7 +7,7 @@ public class EnemyProjectiles : MonoBehaviour
 
     public float destroyDelay = 2f;
     public GameObject explodeanimation;
-    [SerializeField] protected float damage;
+    [SerializeField] protected float enemyDamage;
     private float speed;
     private Vector2 direction;
 
@@ -50,7 +50,7 @@ public class EnemyProjectiles : MonoBehaviour
         Destroy(gameObject);
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<Health>().TakeDamage(damage);
+            other.GetComponent<Health>().TakeDamage(enemyDamage);
             Instantiate(explodeanimation, transform.position, Quaternion.identity);
             Destroy(gameObject);
 
