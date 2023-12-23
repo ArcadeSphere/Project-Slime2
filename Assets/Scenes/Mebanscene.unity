@@ -13944,8 +13944,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectorOrigin: {fileID: 2110147273}
-  detectorSize: {x: 5.95, y: 11.83}
-  detectorOriginOffset: {x: -3.12, y: 0}
+  detectorSize: {x: 9.13, y: 11.83}
+  detectorOriginOffset: {x: 0, y: 0}
   detectionDelay: 0.5
   detectorLayerMask:
     serializedVersion: 2
