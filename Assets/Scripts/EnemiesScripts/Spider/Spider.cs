@@ -47,10 +47,9 @@ public class Spider : PlayerDetector
     private void JumpAttack()
     {
         anim.SetTrigger("JumpAttack");
-        spiderRb.velocity = new Vector2(spiderRb.velocity.x, 0);
-        Vector2 direction = (playerTransform.position - transform.position).normalized;
-        spiderRb.AddForce(direction * horizontalMoveSpeed, ForceMode2D.Impulse);
-        spiderRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+        float distancefromplayer = playerTransform.position.x - transform.position.x;
+        spiderRb.AddForce(new Vector2(distancefromplayer , jumpForce), ForceMode2D.Impulse);
         
     }
 

@@ -2868,7 +2868,7 @@ MonoBehaviour:
     m_Bits: 1024
   playerTransform: {fileID: 955241589}
   damageAmount: 1
-  jumpForce: 10
+  jumpForce: 12
   horizontalMoveSpeed: 5
   jumpCooldown: 2
   SpiderJumpDelay: 1.8
