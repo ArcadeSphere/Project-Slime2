@@ -16,6 +16,7 @@ public class EnemyPatrol : MonoBehaviour
     [HideInInspector] public bool patrol = true;
     private BoxCollider2D enemyCollider;
     private SpriteRenderer enemySprite;
+    private Rigidbody2D enemyRb;
     private int currentPoint = 0;
 
     private void OnValidate() {
@@ -28,6 +29,7 @@ public class EnemyPatrol : MonoBehaviour
     private void Start() {
         enemySprite = this.GetComponent<SpriteRenderer>();
         enemyCollider = this.GetComponent<BoxCollider2D>();
+        enemyRb = this.GetComponent<Rigidbody2D>();
     }
 
     private void Update() {
@@ -42,24 +44,27 @@ public class EnemyPatrol : MonoBehaviour
                     FlyEnemyPatrol();
             }
         }
+        
     }
 
     private void GroundEnemyPatrol()
     {
         StartCoroutine(UpdatePatrolPoints(new Vector2(patrolPoints[currentPoint].transform.position.x, transform.position.y), transform.position));
-        Vector2 targetPosition = new Vector2(patrolPoints[currentPoint].transform.position.x, transform.position.y);
-        transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+        Vector3 targetPosition = new Vector3(patrolPoints[currentPoint].transform.position.x, transform.position.y, transform.position.z);
+        // transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+        enemyRb.velocity = (targetPosition - transform.position).normalized * moveSpeed;
     }
 
     private void FlyEnemyPatrol()
     {
         StartCoroutine(UpdatePatrolPoints(patrolPoints[currentPoint].transform.position, transform.position));
-        transform.position = Vector2.MoveTowards(transform.position, patrolPoints[currentPoint].transform.position, moveSpeed * Time.deltaTime);
+        // transform.position = Vector2.MoveTowards(transform.position, patrolPoints[currentPoint].transform.position, moveSpeed * Time.deltaTime);
+        Vector2 direction =  patrolPoints[currentPoint].transform.position - transform.position;
+        enemyRb.velocity = direction.normalized * moveSpeed;
     }
 
     private IEnumerator UpdatePatrolPoints(Vector2 pointA, Vector2 pointB)
     {
-
         if (Vector2.Distance(pointA, pointB) < 0.1f)
         {
             onEdge = true;
@@ -84,7 +89,6 @@ public class EnemyPatrol : MonoBehaviour
             playerDetectorScript.detectorOriginOffset *= -1;
         }
         enemySprite.flipX = !enemySprite.flipX;
-        
     }
 
     private IEnumerator PatrolEdgeDelay()
