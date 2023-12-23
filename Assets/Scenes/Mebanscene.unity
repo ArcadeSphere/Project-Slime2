@@ -670,7 +670,6 @@ PrefabInstance:
     - target: {fileID: 7088911034303719770, guid: 06edd93b2cdfa2e499dd6f90912285ab, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 7088911034303719770, guid: 06edd93b2cdfa2e499dd6f90912285ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2398,7 +2397,6 @@ PrefabInstance:
     - target: {fileID: 7088911034303719770, guid: 06edd93b2cdfa2e499dd6f90912285ab, type: 3}
       propertyPath: m_RootOrder
       value: 2
-      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 7088911034303719770, guid: 06edd93b2cdfa2e499dd6f90912285ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2809,8 +2807,7 @@ Transform:
   - {fileID: 923942857}
   - {fileID: 1633153295}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
-  m_RootOrder: 26
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &701117558
 BoxCollider2D:
@@ -2851,7 +2848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectorOrigin: {fileID: 701117556}
-  detectorSize: {x: 16.89, y: 2.86}
+  detectorSize: {x: 17.17, y: 2.86}
   detectorOriginOffset: {x: 1.4, y: 0}
   detectionDelay: 0.3
   detectorLayerMask:
@@ -3681,7 +3678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7088911034303719770, guid: 06edd93b2cdfa2e499dd6f90912285ab, type: 3}
       propertyPath: m_RootOrder
-      value: 29
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 7088911034303719770, guid: 06edd93b2cdfa2e499dd6f90912285ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3763,8 +3760,7 @@ Transform:
   m_Children:
   - {fileID: 1682552130}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
-  m_RootOrder: 27
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1024093892 stripped
 Transform:
@@ -4026,8 +4022,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
-  m_RootOrder: 25
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1215292672
 GameObject:
@@ -4480,8 +4475,7 @@ Transform:
   - {fileID: 204297057}
   - {fileID: 1851666831}
   m_Father: {fileID: 0}
-  m_RootOrder: 26
-  m_RootOrder: 28
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1390313307
 GameObject:
@@ -4909,7 +4903,6 @@ PrefabInstance:
     - target: {fileID: 7088911034303719770, guid: 06edd93b2cdfa2e499dd6f90912285ab, type: 3}
       propertyPath: m_RootOrder
       value: 1
-      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 7088911034303719770, guid: 06edd93b2cdfa2e499dd6f90912285ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13623,7 +13616,7 @@ Transform:
   - {fileID: 638321891}
   - {fileID: 1888662979}
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1954112918
 GameObject:
