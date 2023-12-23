@@ -47,9 +47,8 @@ public class Spider : PlayerDetector
     private void JumpAttack()
     {
         anim.SetTrigger("JumpAttack");
-
-        float distancefromplayer = playerTransform.position.x - transform.position.x;
-        spiderRb.AddForce(new Vector2(distancefromplayer , jumpForce), ForceMode2D.Impulse);
+        float distanceFromPlayer = playerTransform.position.x - transform.position.x;
+        spiderRb.AddForce(new Vector2(distanceFromPlayer , jumpForce), ForceMode2D.Impulse);
         
     }
 
@@ -98,6 +97,5 @@ public class Spider : PlayerDetector
     void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-
     }
 }

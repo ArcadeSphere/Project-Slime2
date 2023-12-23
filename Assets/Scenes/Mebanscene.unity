@@ -2862,7 +2862,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackPoint: {fileID: 1633153295}
-  attackRange: 0.57
+  attackRange: 0.8
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -13378,7 +13378,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 62.799927, y: 12.900024}
+  m_AnchoredPosition: {x: 62.799927, y: 12.900055}
   m_SizeDelta: {x: 234.829, y: 257.02}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1884461479
