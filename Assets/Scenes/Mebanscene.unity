@@ -13783,6 +13783,7 @@ GameObject:
   - component: {fileID: 2110147273}
   - component: {fileID: 2110147275}
   - component: {fileID: 2110147274}
+  - component: {fileID: 2110147276}
   m_Layer: 0
   m_Name: Butterfly
   m_TagString: Untagged
@@ -13827,8 +13828,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
-  playerDetectorScript: {fileID: 0}
+  playerDetectorScript: {fileID: 2110147276}
   onEdge: 0
+  patrol: 1
 --- !u!212 &2110147275
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13880,6 +13882,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2110147276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110147272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5baf3ed0a3928047ad4906a167b0d7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectorOrigin: {fileID: 2110147273}
+  detectorSize: {x: 5.95, y: 11.83}
+  detectorOriginOffset: {x: -3.12, y: 0}
+  detectionDelay: 0.5
+  detectorLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  gizmoIdleColor: {r: 0, g: 1, b: 0, a: 0.4}
+  gizmoDetectedColor: {r: 1, g: 0, b: 0, a: 0.4}
+  showGizmo: 1
+  enemyPatrol: {fileID: 2110147274}
 --- !u!1 &2127705857
 GameObject:
   m_ObjectHideFlags: 0

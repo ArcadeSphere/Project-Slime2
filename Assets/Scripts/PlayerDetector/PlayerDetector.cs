@@ -8,7 +8,7 @@ public class PlayerDetector : MonoBehaviour
 {
    public bool PlayerDetected {get; set;}
    public Vector2 DirectionToTarget => target.transform.position - detectorOrigin.position;
-
+   
    [Header("OverlapBox parameters")]
    [SerializeField] private Transform detectorOrigin;
    [SerializeField] private Vector2 detectorSize = Vector2.one;

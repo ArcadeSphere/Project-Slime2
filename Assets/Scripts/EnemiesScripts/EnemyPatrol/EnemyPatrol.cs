@@ -7,13 +7,13 @@ using UnityEngine.UIElements;
 public class EnemyPatrol : MonoBehaviour
 {
     [SerializeField] private GameObject[] patrolPoints;
-    [SerializeField] private float moveSpeed = 3f;
+    public float moveSpeed = 3f;
     [SerializeField] private float turnBackDelay; 
     [SerializeField] private bool flightless = true;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private PlayerDetector playerDetectorScript; // set if needed for specific animations
     [HideInInspector] public bool onEdge = false; // used by PlayerDetector script to handle animations
-    
+    [HideInInspector] public bool patrol = true;
     private BoxCollider2D enemyCollider;
     private SpriteRenderer enemySprite;
     private int currentPoint = 0;
@@ -32,12 +32,15 @@ public class EnemyPatrol : MonoBehaviour
 
     private void Update() {
         StartCoroutine(PatrolEdgeDelay());
-        if (!onEdge)
+        if (patrol)
         {
-            if (flightless)
-                GroundEnemyPatrol();
-            else
-                FlyEnemyPatrol();
+            if (!onEdge)
+            {
+                if (flightless)
+                    GroundEnemyPatrol();
+                else
+                    FlyEnemyPatrol();
+            }
         }
     }
 
