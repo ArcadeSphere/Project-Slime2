@@ -6,7 +6,11 @@ public class Butterfly : PlayerDetector
 {
     [Header("Butterfly Parameters")]
     [SerializeField] private EnemyPatrol enemyPatrol;
+    private Rigidbody2D rb;
 
+    private void Awake() {
+        rb = this.GetComponent<Rigidbody2D>();
+    }
 
     private void Update() {
         if (PlayerDetected)
@@ -15,7 +19,8 @@ public class Butterfly : PlayerDetector
             {
                 enemyPatrol.patrol = false;
             }
-            transform.Translate(DirectionToTarget.normalized * (enemyPatrol.moveSpeed * 1.3f) * Time.deltaTime);
+            Vector2 direction = DirectionToTarget.normalized; 
+            rb.velocity = direction * (enemyPatrol.moveSpeed * 1.3f);
         }
         else
         {
