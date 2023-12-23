@@ -7,15 +7,23 @@ using UnityEngine.UIElements;
 public class EnemyPatrol : MonoBehaviour
 {
     [SerializeField] private GameObject[] patrolPoints;
-    [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private bool flightless = true;
-    [SerializeField] private PlayerDetector playerDetectorScript; 
     [SerializeField] private float turnBackDelay; 
+    [SerializeField] private bool flightless = true;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private PlayerDetector playerDetectorScript; // set if needed for specific animations
+    [HideInInspector] public bool onEdge = false; // used by PlayerDetector script to handle animations
+    
     private BoxCollider2D enemyCollider;
     private SpriteRenderer enemySprite;
     private int currentPoint = 0;
-    [HideInInspector] public bool onEdge = false; 
+
+    private void OnValidate() {
+        if (flightless) 
+        {
+            groundLayer = 0;
+        }
+    }
 
     private void Start() {
         enemySprite = this.GetComponent<SpriteRenderer>();

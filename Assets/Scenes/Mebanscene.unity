@@ -13821,13 +13821,13 @@ MonoBehaviour:
   - {fileID: 1344834165}
   - {fileID: 204297056}
   - {fileID: 1851666830}
+  moveSpeed: 3
+  turnBackDelay: 0.1
+  flightless: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
-  moveSpeed: 3
-  flightless: 0
   playerDetectorScript: {fileID: 0}
-  turnBackDelay: 0.2
   onEdge: 0
 --- !u!212 &2110147275
 SpriteRenderer:
