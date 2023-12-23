@@ -29,7 +29,7 @@ public class EnemyPatrol : MonoBehaviour
             if (flightless)
                 StartCoroutine(GroundEnemyPatrol());
             else
-                FlyEnemyPatrol();
+                StartCoroutine(FlyEnemyPatrol());
         }
     }
 
@@ -50,16 +50,18 @@ public class EnemyPatrol : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
     }
 
-    private void FlyEnemyPatrol()
+    private IEnumerator FlyEnemyPatrol()
     {
-        if (Vector2.Distance(patrolPoints[currentPoint].transform.position, transform.position) < 1f)
+        if (Vector2.Distance(patrolPoints[currentPoint].transform.position, transform.position) < 0.1f)
         {
-            FlipEnemy();
+            onEdge = true;
             currentPoint++;
             if (currentPoint >= patrolPoints.Length)
             {
                 currentPoint = 0;
             }
+            yield return new WaitForSeconds(turnBackDelay);
+            FlipEnemy();
         }
         transform.position = Vector2.MoveTowards(transform.position, patrolPoints[currentPoint].transform.position, moveSpeed * Time.deltaTime);
     }
