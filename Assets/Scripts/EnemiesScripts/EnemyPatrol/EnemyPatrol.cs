@@ -65,6 +65,7 @@ public class EnemyPatrol : MonoBehaviour
             {
                 currentPoint = 0;
             }
+            // flip sprite if its the first and last point
             if (currentPoint <= 1 || currentPoint >= patrolPoints.Length)
             {
                 yield return new WaitForSeconds(turnBackDelay);
