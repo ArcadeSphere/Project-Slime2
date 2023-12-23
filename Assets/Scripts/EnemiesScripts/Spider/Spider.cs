@@ -16,7 +16,6 @@ public class Spider : PlayerDetector
     [SerializeField] private Transform playerTransform;
     [SerializeField] private float damageAmount;
     [SerializeField] private float jumpForce = 10f;
-    [SerializeField] private float horizontalMoveSpeed = 5f; 
     [SerializeField] private float jumpCooldown = 2f;
     [SerializeField] private float SpiderJumpDelay = 1.5f; 
     private float nextJumpTime;
