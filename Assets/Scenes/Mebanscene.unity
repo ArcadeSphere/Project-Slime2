@@ -2863,13 +2863,13 @@ MonoBehaviour:
     m_Bits: 64
   attackPoint: {fileID: 1633153295}
   attackRange: 0.8
+  damage: 20
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
   playerTransform: {fileID: 955241589}
   damageAmount: 1
   jumpForce: 12
-  horizontalMoveSpeed: 5
   jumpCooldown: 2
   SpiderJumpDelay: 1.8
 --- !u!114 &701117560
@@ -3443,7 +3443,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.25135803, y: -0.49953723}
+  m_Offset: {x: -0.25135803, y: -0.043644547}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3454,7 +3454,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.93818665, y: 0.16776085}
+  m_Size: {x: 0.93818665, y: 1.0795462}
   m_EdgeRadius: 0
 --- !u!1 &924978781
 GameObject:
@@ -13378,7 +13378,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 62.799927, y: 12.900055}
+  m_AnchoredPosition: {x: 62.799927, y: 12.900024}
   m_SizeDelta: {x: 234.829, y: 257.02}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1884461479

@@ -12,6 +12,7 @@ public class Spider : PlayerDetector
     private Rigidbody2D spiderRb;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange;
+    [SerializeField] private float damage;
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private Transform playerTransform;
     [SerializeField] private float damageAmount;
@@ -96,5 +97,13 @@ public class Spider : PlayerDetector
     void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Obstacle"))
+        {
+            anim.SetTrigger("dying");
+        }
+       
     }
 }
