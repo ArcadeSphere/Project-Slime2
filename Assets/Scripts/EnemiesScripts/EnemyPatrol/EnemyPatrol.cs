@@ -35,32 +35,29 @@ public class EnemyPatrol : MonoBehaviour
         if (!onEdge)
         {
             if (flightless)
-                StartCoroutine(GroundEnemyPatrol());
+                GroundEnemyPatrol();
             else
-                StartCoroutine(FlyEnemyPatrol());
+                FlyEnemyPatrol();
         }
     }
 
-    private IEnumerator GroundEnemyPatrol()
+    private void GroundEnemyPatrol()
     {
-        if (Vector2.Distance(new Vector2(patrolPoints[currentPoint].transform.position.x, transform.position.y), transform.position) < 0.1f)
-        {
-            onEdge = true;
-            currentPoint++;
-            if (currentPoint >= patrolPoints.Length)
-            {
-                currentPoint = 0;
-            }
-            yield return new WaitForSeconds(turnBackDelay);
-            FlipEnemy();
-        }
+        StartCoroutine(UpdatePatrolPoints(new Vector2(patrolPoints[currentPoint].transform.position.x, transform.position.y), transform.position));
         Vector2 targetPosition = new Vector2(patrolPoints[currentPoint].transform.position.x, transform.position.y);
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
     }
 
-    private IEnumerator FlyEnemyPatrol()
+    private void FlyEnemyPatrol()
     {
-        if (Vector2.Distance(patrolPoints[currentPoint].transform.position, transform.position) < 0.1f)
+        StartCoroutine(UpdatePatrolPoints(patrolPoints[currentPoint].transform.position, transform.position));
+        transform.position = Vector2.MoveTowards(transform.position, patrolPoints[currentPoint].transform.position, moveSpeed * Time.deltaTime);
+    }
+
+    private IEnumerator UpdatePatrolPoints(Vector2 pointA, Vector2 pointB)
+    {
+
+        if (Vector2.Distance(pointA, pointB) < 0.1f)
         {
             onEdge = true;
             currentPoint++;
@@ -68,10 +65,12 @@ public class EnemyPatrol : MonoBehaviour
             {
                 currentPoint = 0;
             }
-            yield return new WaitForSeconds(turnBackDelay);
-            FlipEnemy();
+            if (currentPoint <= 1 || currentPoint >= patrolPoints.Length)
+            {
+                yield return new WaitForSeconds(turnBackDelay);
+                FlipEnemy();
+            }
         }
-        transform.position = Vector2.MoveTowards(transform.position, patrolPoints[currentPoint].transform.position, moveSpeed * Time.deltaTime);
     }
 
     private void FlipEnemy() 
