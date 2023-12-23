@@ -2804,7 +2804,10 @@ Transform:
   - {fileID: 923942857}
   - {fileID: 1633153295}
   m_Father: {fileID: 0}
+ HEAD
   m_RootOrder: 24
+
+ f118a12 (added idle animation for spider)
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &701117558
@@ -3753,7 +3756,10 @@ Transform:
   m_Children:
   - {fileID: 1682552130}
   m_Father: {fileID: 0}
+ HEAD
   m_RootOrder: 25
+
+ f118a12 (added idle animation for spider)
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1024093892 stripped
@@ -4016,7 +4022,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+ HEAD
   m_RootOrder: 23
+
+ f118a12 (added idle animation for spider)
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1215292672
@@ -4470,7 +4479,10 @@ Transform:
   - {fileID: 204297057}
   - {fileID: 1851666831}
   m_Father: {fileID: 0}
+ HEAD
   m_RootOrder: 26
+
+ f118a12 (added idle animation for spider)
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1390313307
@@ -4898,7 +4910,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7088911034303719770, guid: 06edd93b2cdfa2e499dd6f90912285ab, type: 3}
       propertyPath: m_RootOrder
+ HEAD
       value: 1
+
+ f118a12 (added idle animation for spider)
       value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 7088911034303719770, guid: 06edd93b2cdfa2e499dd6f90912285ab, type: 3}
