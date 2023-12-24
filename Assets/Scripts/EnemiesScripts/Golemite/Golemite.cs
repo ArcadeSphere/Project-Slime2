@@ -15,11 +15,6 @@ public class Golemite : PlayerDetector
     {
         if (PlayerDetected)
         {
-            if (enemyPatrol.onEdge) 
-            {
-                golemiteAnimator.SetBool("roll", false);
-                return;
-            }
             golemiteAnimator.SetBool("roll", true);
         }
         else
