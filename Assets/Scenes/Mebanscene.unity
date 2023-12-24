@@ -13605,12 +13605,13 @@ MonoBehaviour:
   - {fileID: 204297056}
   - {fileID: 1851666830}
   moveSpeed: 3
-  turnBackDelay: 0
+  turnBackDelay: 2
   flightless: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
   playerDetectorScript: {fileID: 2110147276}
+  isChasingEnemy: 1
   onEdge: 0
   patrol: 1
 --- !u!212 &2110147275
