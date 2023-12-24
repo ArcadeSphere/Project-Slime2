@@ -86,7 +86,7 @@ public class EnemyPatrol : MonoBehaviour
 
      void HandleFlipOnChase()
     {
-        if (isFacingRight())
+        if (IsFacingRight())
         {
             enemySprite.flipX = true;
         }
@@ -96,7 +96,7 @@ public class EnemyPatrol : MonoBehaviour
         }
     }
 
-    bool isFacingRight()
+    bool IsFacingRight()
     {
         if (enemyRb.velocity.x < 0f)
         {
