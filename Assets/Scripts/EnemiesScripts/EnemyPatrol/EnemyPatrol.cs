@@ -12,6 +12,7 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] private bool flightless = true;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private PlayerDetector playerDetectorScript; // set if needed for specific animations
+    [SerializeField] private bool isChasingEnemy;
     [HideInInspector] public bool onEdge = false; // used by PlayerDetector script to handle animations
     [HideInInspector] public bool patrol = true;
     private BoxCollider2D enemyCollider;
@@ -44,7 +45,8 @@ public class EnemyPatrol : MonoBehaviour
                     FlyEnemyPatrol();
             }
         }
-        
+        if (isChasingEnemy)
+            HandleFlipOnChase();
     }
 
     private void GroundEnemyPatrol()
@@ -79,6 +81,30 @@ public class EnemyPatrol : MonoBehaviour
                 yield return new WaitForSeconds(turnBackDelay);
                 FlipEnemy();
             }
+        }
+    }
+
+     void HandleFlipOnChase()
+    {
+        if (isFacingRight())
+        {
+            enemySprite.flipX = true;
+        }
+        else
+        {
+            enemySprite.flipX = false;
+        }
+    }
+
+    bool isFacingRight()
+    {
+        if (enemyRb.velocity.x < 0f)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
 
