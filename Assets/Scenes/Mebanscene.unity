@@ -13605,7 +13605,7 @@ MonoBehaviour:
   - {fileID: 204297056}
   - {fileID: 1851666830}
   moveSpeed: 3
-  turnBackDelay: 2
+  turnBackDelay: 3
   flightless: 0
   groundLayer:
     serializedVersion: 2
