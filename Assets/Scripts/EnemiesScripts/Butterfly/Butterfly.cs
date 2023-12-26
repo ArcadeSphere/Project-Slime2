@@ -63,7 +63,6 @@ public class Butterfly : PlayerDetector
 
     void DestroyEnemy()
     {
-        Debug.Log("deleted");
         Destroy(this.gameObject);
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.Serialization;
 public class TakingDamage : MonoBehaviour
 {
     [SerializeField] protected float damage;
+    [Header("Required if not using is trigger")]
     [SerializeField] private PlayerDetector playerDetector;
 
 
