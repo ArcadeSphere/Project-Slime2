@@ -60,4 +60,10 @@ public class Butterfly : PlayerDetector
             beeAnim.SetInteger("state", 1);
         caughtPlayer = false;
     }
+
+    void DestroyEnemy()
+    {
+        Debug.Log("deleted");
+        Destroy(this.gameObject);
+    }
 }
