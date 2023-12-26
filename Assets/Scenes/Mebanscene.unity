@@ -13688,6 +13688,7 @@ MonoBehaviour:
   gizmoDetectedColor: {r: 1, g: 0, b: 0, a: 0.4}
   showGizmo: 1
   enemyPatrol: {fileID: 2110147274}
+  playerGameObject: {fileID: 2022368911}
 --- !u!50 &2110147277
 Rigidbody2D:
   serializedVersion: 4

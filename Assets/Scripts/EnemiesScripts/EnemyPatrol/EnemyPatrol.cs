@@ -98,14 +98,12 @@ public class EnemyPatrol : MonoBehaviour
 
     bool IsFacingRight()
     {
+        if (enemyRb.velocity.x == 0f)
+            return  enemySprite.flipX;
         if (enemyRb.velocity.x < 0f)
-        {
             return false;
-        }
         else
-        {
             return true;
-        }
     }
 
     private void FlipEnemy() 
