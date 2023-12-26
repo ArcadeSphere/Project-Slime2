@@ -11,7 +11,7 @@ public class Butterfly : PlayerDetector
     private SpriteRenderer sprite;
     private Animator beeAnim;
     private Rigidbody2D rb;
-    private bool playerCaught = false;
+    private bool caughtPlayer;
 
     private void Awake() {
         sprite = this.GetComponent<SpriteRenderer>();
@@ -27,7 +27,11 @@ public class Butterfly : PlayerDetector
                 enemyPatrol.patrol = false;
             }
             ChasePlayer();
-            LaunchAttack();
+            if (caughtPlayer)
+                LaunchAttack();
+            else
+                beeAnim.SetInteger("state", 0);
+
         }
         else
         {
@@ -43,30 +47,17 @@ public class Butterfly : PlayerDetector
         if (Vector2.Distance(playerGameObject.transform.position, transform.position) < chaseDistance)
         {
             rb.velocity = Vector2.zero;
-            playerCaught = true;
+            caughtPlayer = true;
             return;
         }
     }
 
     void LaunchAttack()
     {
-        if (playerCaught)
-        {
-            if (enemyPatrol.IsFacingRight())
-                beeAnim.SetBool("attack", true);
-            else
-                beeAnim.SetBool("attack", true);
-        }
-    }
-
-    void EndAttack()
-    {
-        if (playerCaught)
-        {
-            // play attack anim
-            // hurt player
-            beeAnim.SetBool("attack", false);
-            playerCaught = false;
-        }
+        if (enemyPatrol.IsFacingRight())
+            beeAnim.SetInteger("state", 2);
+        else
+            beeAnim.SetInteger("state", 1);
+        caughtPlayer = false;
     }
 }
