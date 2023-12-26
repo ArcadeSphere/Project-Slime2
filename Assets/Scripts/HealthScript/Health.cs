@@ -16,6 +16,9 @@ public class Health : MonoBehaviour
     private bool invulnerable;
     [SerializeField] private Flash flashing;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip deadSound;
+    [SerializeField] private float delaySoundInSeconds = 2.0f;
     private void Awake()
     {
         currenthealth = startinglives;
@@ -31,7 +34,7 @@ public class Health : MonoBehaviour
         if (currenthealth > 0)
         {
             flashing.flash_time();
-
+            AudioManager.instance.PlaySoundEffects(hurtSound);
             StartCoroutine(BeInvincible());
         }
         else
@@ -45,6 +48,7 @@ public class Health : MonoBehaviour
                 if (this.gameObject.CompareTag("Player"))
                     anim.SetBool("grounded", true);
                 anim.SetTrigger("dying");
+                Invoke("PlayDeadSoundWithDelay", delaySoundInSeconds);
                 isdead = true;
                 rb.sharedMaterial = null;
 
@@ -76,8 +80,11 @@ public class Health : MonoBehaviour
     {
 
         Destroy(gameObject);
-  
 
+    }
+    private void PlayDeadSoundWithDelay()
+    {
+        AudioManager.instance.PlaySoundEffects(deadSound);
     }
 
 }

@@ -198,6 +198,7 @@ MonoBehaviour:
   attackRange: 0.76
   attackPoint: {fileID: 1618201319565819746}
   damageAmount: 1
+  attackSound: {fileID: 8300000, guid: 892e1a136cbdf864baaa96881a6af31b, type: 3}
   enemiesLayer:
     serializedVersion: 2
     m_Bits: 2048
@@ -221,6 +222,8 @@ MonoBehaviour:
   - {fileID: 7747913105208640600}
   flashing: {fileID: 2469525419819737860}
   rb: {fileID: 2469525419819737858}
+  hurtSound: {fileID: 8300000, guid: edb85e4874809284e9a64410978bd08a, type: 3}
+  deadSound: {fileID: 8300000, guid: 5dd3d36542528db4aa2f537823bf9291, type: 3}
 --- !u!114 &2469525419819737860
 MonoBehaviour:
   m_ObjectHideFlags: 0

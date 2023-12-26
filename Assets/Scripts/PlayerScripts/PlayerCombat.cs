@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.Serialization;
 public class PlayerCombat : MonoBehaviour
 {
-
+    [Header("Player Combat")]
     [SerializeField] private float attackCooldown;
     [SerializeField] private float attackRange;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float damageAmount;
+    [SerializeField] private AudioClip attackSound;
+   
     public LayerMask enemiesLayer;
     private Animator anim;
     private float cooldownTimer = Mathf.Infinity;
@@ -34,7 +36,7 @@ public class PlayerCombat : MonoBehaviour
     {
         pm.EnablePlayerMovement(false);
 
-        
+        AudioManager.instance.PlaySoundEffects(attackSound);
         anim.SetTrigger("attack");
         cooldownTimer = 0;
 
