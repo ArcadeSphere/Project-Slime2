@@ -58,7 +58,7 @@ public class Spider : PlayerDetector
         if (transform.position.x < playerTransform.position.x)
         {
          
-            if (!IsFacingRight())
+            if (IsFacingRight())
             {
                 SpiderFlip();
             }
@@ -66,7 +66,7 @@ public class Spider : PlayerDetector
         else
         {
           
-            if (IsFacingRight())
+            if (!IsFacingRight())
             {
                 SpiderFlip();
             }
