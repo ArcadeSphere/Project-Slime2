@@ -6,6 +6,7 @@ public class Butterfly : PlayerDetector
 {
     [Header("Butterfly Parameters")]
     [SerializeField] private EnemyPatrol enemyPatrol;
+    [SerializeField] private GameObject playerGameObject;
     private SpriteRenderer sprite;
     private Rigidbody2D rb;
 
@@ -22,7 +23,6 @@ public class Butterfly : PlayerDetector
                 enemyPatrol.patrol = false;
             }
             ChasePlayer();
-            HandleFlip();
         }
         else
         {
@@ -34,19 +34,11 @@ public class Butterfly : PlayerDetector
     {
         Vector2 direction = DirectionToTarget.normalized; 
         rb.velocity = direction * (enemyPatrol.moveSpeed * 1.3f);
-    }
 
-    void HandleFlip()
-    {
-        if (rb.velocity.x < 0)
+        if (Vector2.Distance(playerGameObject.transform.position, transform.position) < 0.5f)
         {
-            sprite.flipX = false;
-        }
-        else
-        {
-            sprite.flipX = true;
+            rb.velocity = Vector2.zero;
+            return;
         }
     }
-
-
 }
