@@ -5,13 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class RestoreCheckpoint : MonoBehaviour
 {
+    private Transform currentCheckpoint;
     public GameObject gameOverScreen;
+
+
+    void Start()
+    {
+        if (PlayerData.Instance.currentCheckpoint != null)
+            transform.position = PlayerData.Instance.currentCheckpoint.position + new Vector3(0, 2, 0);
+    }
 
     public void CallGameOverScreen()
     {
         gameOverScreen.SetActive(true);
     }
-    // not yet implemented, right now it just restarts the game
+    
     void RestartFromCheckpoint()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
