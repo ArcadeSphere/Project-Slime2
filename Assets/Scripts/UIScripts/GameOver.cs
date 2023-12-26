@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
-public class RestoreCheckpoint : MonoBehaviour
+public class GameOver : MonoBehaviour
 {
     public GameObject gameOverScreen;
 
@@ -11,9 +11,10 @@ public class RestoreCheckpoint : MonoBehaviour
     {
         gameOverScreen.SetActive(true);
     }
-    // not yet implemented, right now it just restarts the game
-    void RestartFromCheckpoint()
+    public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+  
 }
