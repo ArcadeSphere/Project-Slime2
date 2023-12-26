@@ -14356,12 +14356,15 @@ GameObject:
   - component: {fileID: 2110147273}
   - component: {fileID: 2110147275}
   - component: {fileID: 2110147277}
+  - component: {fileID: 2110147281}
   - component: {fileID: 2110147274}
   - component: {fileID: 2110147276}
   - component: {fileID: 2110147278}
-  m_Layer: 0
+  - component: {fileID: 2110147280}
+  - component: {fileID: 2110147279}
+  m_Layer: 11
   m_Name: Bee
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14523,6 +14526,64 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2110147279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110147272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b9d9732d53df364294b91ab45daca5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashmat: {fileID: 2100000, guid: cf3bfe283e9a3974fb638db04c791129, type: 2}
+  flashduration: 0.1
+--- !u!114 &2110147280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110147272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f0cd728379b7549bb530c7f11fbea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startinglives: 1
+  Framesduration: 0
+  numberOfFlashes: 0
+  behviourcomponents: []
+  flashing: {fileID: 2110147279}
+  rb: {fileID: 2110147277}
+--- !u!61 &2110147281
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110147272}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.038497925, y: -0.005500078}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.1428572, y: 1.1428572}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.6918335, y: 0.80184317}
+  m_EdgeRadius: 0
 --- !u!1 &2127705857
 GameObject:
   m_ObjectHideFlags: 0
