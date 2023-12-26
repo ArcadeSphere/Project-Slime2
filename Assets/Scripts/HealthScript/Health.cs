@@ -82,6 +82,7 @@ public class Health : MonoBehaviour
         Destroy(gameObject);
 
     }
+    //for deadsound so its play on the right timing
     private void PlayDeadSoundWithDelay()
     {
         AudioManager.instance.PlaySoundEffects(deadSound);

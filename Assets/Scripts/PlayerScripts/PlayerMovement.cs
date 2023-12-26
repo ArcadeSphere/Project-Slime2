@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing;
     private bool isAttacking;
     private bool isFacingRight = true;
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip dashSound;
 
     [Header("Player Dependencies")]
     [SerializeField] private Rigidbody2D rb;
@@ -46,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (IsGrounded())
             {
+                AudioManager.instance.PlaySoundEffects(jumpSound);//use this to activate sound
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             }
         }
@@ -58,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
         // dash
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
+
             StartCoroutine(Dash());
         }
 
@@ -125,6 +129,7 @@ public class PlayerMovement : MonoBehaviour
         isDashing = true;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
+        AudioManager.instance.PlaySoundEffects(dashSound);
         animator.SetTrigger("dash");
         rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         yield return new WaitForSeconds(dashingTime);
