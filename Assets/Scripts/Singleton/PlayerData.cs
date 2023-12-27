@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-   public static PlayerData Instance;
+    public static PlayerData Instance;
 
-    public Transform currentCheckpoint;
-    public bool isActivated;
+    [HideInInspector] public Transform currentCheckpoint;
 
     void Awake()
     {
