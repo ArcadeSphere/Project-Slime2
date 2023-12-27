@@ -164,6 +164,9 @@ MonoBehaviour:
   - {fileID: 9203180104031233429}
   flashing: {fileID: 9203180104031233424}
   rb: {fileID: 8547765622240814593}
+  hurtSound: {fileID: 0}
+  deadSound: {fileID: 0}
+  delaySoundInSeconds: 2
 --- !u!114 &9203180104031233424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +225,7 @@ MonoBehaviour:
   firePoint: {fileID: 9203180103277914133}
   projectilePrefab: {fileID: 79972667933630219, guid: 28183e64a58b7f24a9b320c8837174f0, type: 3}
   projectileSpeed: 9
+  spitSound: {fileID: 8300000, guid: b4102c8a8f36a6c43bc461faccf6046b, type: 3}
 --- !u!50 &8547765622240814593
 Rigidbody2D:
   serializedVersion: 4

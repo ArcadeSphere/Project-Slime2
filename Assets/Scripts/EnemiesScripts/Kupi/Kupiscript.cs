@@ -9,7 +9,7 @@ public class Kupiscript : PlayerDetector
     public GameObject projectilePrefab;
     private Animator anim;
     public float projectileSpeed = 5f;
-
+   [SerializeField] private AudioClip spitSound;
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -40,7 +40,7 @@ public class Kupiscript : PlayerDetector
 
     public void ShootPlayer()
     {
-        
+        AudioManager.instance.PlaySoundEffects(spitSound);
         Vector2 shootDirection = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
 
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);

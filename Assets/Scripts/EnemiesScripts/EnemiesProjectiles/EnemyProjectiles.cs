@@ -10,7 +10,7 @@ public class EnemyProjectiles : MonoBehaviour
     [SerializeField] protected float enemyDamage;
     private float speed;
     private Vector2 direction;
-
+    [SerializeField] private AudioClip explodeSound;
     private void Start()
     {
         Destroy(gameObject, destroyDelay);
@@ -46,12 +46,14 @@ public class EnemyProjectiles : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        AudioManager.instance.PlaySoundEffects(explodeSound);
         Instantiate(explodeanimation, transform.position, Quaternion.identity);
         Destroy(gameObject);
 
         if (other.CompareTag("Enemy"))
         {
             other.GetComponent<Health>().TakeDamage(enemyDamage);
+            AudioManager.instance.PlaySoundEffects(explodeSound);
             Instantiate(explodeanimation, transform.position, Quaternion.identity);
             Destroy(gameObject);
 
@@ -59,6 +61,7 @@ public class EnemyProjectiles : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
+            AudioManager.instance.PlaySoundEffects(explodeSound);
             Instantiate(explodeanimation, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

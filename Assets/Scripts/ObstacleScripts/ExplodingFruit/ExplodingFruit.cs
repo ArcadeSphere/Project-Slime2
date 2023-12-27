@@ -8,6 +8,7 @@ public class ExplodingFruit : PlayerDetector
     [SerializeField] protected float enemyDamage;
     public float fruitgravity;
     public GameObject fruitimpact;
+    [SerializeField] private AudioClip explodeSound;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -34,11 +35,13 @@ public class ExplodingFruit : PlayerDetector
     {
         if (collision.CompareTag("Enemy"))
         {
+            AudioManager.instance.PlaySoundEffects(explodeSound);
             collision.GetComponent<Health>().TakeDamage(enemyDamage);
             Instantiate(fruitimpact, transform.position, Quaternion.identity);
             Destroy(gameObject);
 
         }
+        AudioManager.instance.PlaySoundEffects(explodeSound);
         Instantiate(fruitimpact, transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }

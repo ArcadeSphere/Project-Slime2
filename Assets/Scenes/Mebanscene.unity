@@ -2684,6 +2684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceForce: 21
+  bounceSound: {fileID: 8300000, guid: 1bded8726fa8b67489b447cc835db97c, type: 3}
 --- !u!61 &657144998
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3482,6 +3483,7 @@ MonoBehaviour:
   enemyDamage: 5
   fruitgravity: 3
   fruitimpact: {fileID: 8191496383761327364, guid: c1dd46db0326a0841b90df1875f16916, type: 3}
+  explodeSound: {fileID: 8300000, guid: a222ec9ed4a9c434aa95471b1ffefb80, type: 3}
 --- !u!1001 &780930019
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5416,6 +5418,10 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 1614086259}
+    - target: {fileID: 5505411758264803129, guid: d20b8043e26daf144ae2b85a5112f5c7, type: 3}
+      propertyPath: deadSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5e04b67a7ce55db4aa7086a0d40fe47c, type: 3}
     - target: {fileID: 5505411758264803129, guid: d20b8043e26daf144ae2b85a5112f5c7, type: 3}
       propertyPath: hurtSound
       value: 

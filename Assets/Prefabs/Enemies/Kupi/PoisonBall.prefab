@@ -146,6 +146,7 @@ MonoBehaviour:
   destroyDelay: 2
   explodeanimation: {fileID: 6043239981226233226, guid: fe378f201d544844eb57f61f754a84f8, type: 3}
   enemyDamage: 2
+  explodeSound: {fileID: 8300000, guid: a222ec9ed4a9c434aa95471b1ffefb80, type: 3}
 --- !u!114 &3777764678429059815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,3 +160,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  playerDetector: {fileID: 0}

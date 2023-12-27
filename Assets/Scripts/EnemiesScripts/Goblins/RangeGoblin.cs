@@ -15,6 +15,8 @@ public class RangeGoblin : MonoBehaviour
     public GameObject arrowPrefab;
     [SerializeField] private Transform firePoint;
     public float arrowSpeed = 5f;
+    [SerializeField] private AudioClip arrowSound;
+    [SerializeField] private float delaySoundInSeconds = 2.0f;
 
     [Header("Patrol Settings")]
     [SerializeField] private Transform leftPoint;
@@ -106,6 +108,7 @@ public class RangeGoblin : MonoBehaviour
         if (!isShootAnimationInProgress)
         {
             anim.SetTrigger("Shooting");
+            Invoke("PlaySoundWithDelay", delaySoundInSeconds);
             isShooting = true;
             isShootAnimationInProgress = true;
             StartCoroutine(ShootingCooldown());
@@ -149,5 +152,9 @@ public class RangeGoblin : MonoBehaviour
             projectileComponent.SetSpeed(arrowSpeed);
             projectileComponent.SetProjectileDirection(shootDirection);
         }
+    }
+    private void PlaySoundWithDelay()
+    {
+        AudioManager.instance.PlaySoundEffects(arrowSound);
     }
 }

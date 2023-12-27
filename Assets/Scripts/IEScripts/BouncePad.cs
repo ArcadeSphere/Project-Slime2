@@ -5,11 +5,12 @@ using UnityEngine;
 public class BouncePad : MonoBehaviour
 {
     [SerializeField] private float bounceForce = 20f;
-
+    [SerializeField] private AudioClip bounceSound;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            AudioManager.instance.PlaySoundEffects(bounceSound);
             PlayerMovement playerMovement = collision.gameObject.GetComponent<PlayerMovement>();
 
             // Check if the player is not currently dashing or jumping
