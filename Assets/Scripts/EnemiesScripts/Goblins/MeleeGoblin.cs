@@ -14,6 +14,8 @@ public class MeleeGoblin : MonoBehaviour
     public LayerMask playerLayer;
     [SerializeField] private float damageAmount;
     private bool isAttackAnimationInProgress = false;
+    [SerializeField] private AudioClip attackSound;
+    //[SerializeField] private float delaySoundInSeconds = 2.0f;
 
     [Header("Patrol Settings")]
     [SerializeField] private Transform leftPoint;
@@ -103,6 +105,7 @@ public class MeleeGoblin : MonoBehaviour
         if (!isAttackAnimationInProgress)
         {
             anim.SetTrigger("AttackPlayer");
+            AudioManager.instance.PlaySoundEffects(attackSound);
             isAttacking = true;
             isAttackAnimationInProgress = true;
             StartCoroutine(AttackCooldown());

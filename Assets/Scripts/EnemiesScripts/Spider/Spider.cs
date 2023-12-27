@@ -10,6 +10,7 @@ public class Spider : PlayerDetector
     [SerializeField] private LayerMask groundLayer;
     private bool isGround;
     private Rigidbody2D spiderRb;
+    [SerializeField] private AudioClip attackSound;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange;
     [SerializeField] private LayerMask playerLayer;
@@ -46,6 +47,7 @@ public class Spider : PlayerDetector
     private void JumpAttack()
     {
         anim.SetTrigger("JumpAttack");
+        AudioManager.instance.PlaySoundEffects(attackSound);
         float distanceFromPlayer = playerTransform.position.x - transform.position.x;
         spiderRb.AddForce(new Vector2(distanceFromPlayer , jumpForce), ForceMode2D.Impulse);
         

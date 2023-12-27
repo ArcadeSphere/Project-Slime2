@@ -1460,6 +1460,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   damageAmount: 1
+  attackSound: {fileID: 8300000, guid: dc1fe11ad16134c4aa4718b6fe89a350, type: 3}
   leftPoint: {fileID: 108971174}
   rightPoint: {fileID: 1360868008}
   patrolSpeed: 2
@@ -3020,6 +3021,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  attackSound: {fileID: 8300000, guid: a4b3e9714614554409c9b9e1b16c4733, type: 3}
   attackPoint: {fileID: 1633153295}
   attackRange: 0.8
   playerLayer:
@@ -4619,6 +4621,8 @@ MonoBehaviour:
   arrowPrefab: {fileID: 7413421738497666849, guid: 4d96c34d7da0f5f4f862c9f968201ac4, type: 3}
   firePoint: {fileID: 808400495}
   arrowSpeed: 9
+  arrowSound: {fileID: 8300000, guid: 116879beea3b98d44906864748f3bc03, type: 3}
+  delaySoundInSeconds: 1
   leftPoint: {fileID: 152877061}
   rightPoint: {fileID: 650935900}
   patrolSpeed: 3
