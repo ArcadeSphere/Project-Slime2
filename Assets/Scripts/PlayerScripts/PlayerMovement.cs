@@ -21,8 +21,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Player Dependencies")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private LayerMask obstacleLayer;
+    [SerializeField] private LayerMask jumpableLayer;
     [SerializeField] private Animator animator;
 
     [Header("Platform Disabler Parameters")]
@@ -98,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer) || Physics2D.OverlapCircle(groundCheck.position, 0.2f, obstacleLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, jumpableLayer);
     }
 
     private void Flip()
