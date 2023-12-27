@@ -4251,6 +4251,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8507382020543156189, guid: e9f81bde3d0cf0c498c2590ccdea6a78, type: 3}
+      propertyPath: m_SideArc
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8507382020543156191, guid: e9f81bde3d0cf0c498c2590ccdea6a78, type: 3}
       propertyPath: m_RootOrder
       value: 0
