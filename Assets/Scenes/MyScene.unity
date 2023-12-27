@@ -320,7 +320,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   damageAmount: 1
-  attackSound: {fileID: 0}
   leftPoint: {fileID: 1710277244}
   rightPoint: {fileID: 791348169}
   patrolSpeed: 2
@@ -1883,6 +1882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCheckpoint: {fileID: 0}
+  isActivated: 0
 --- !u!4 &483753224
 Transform:
   m_ObjectHideFlags: 0
@@ -2657,8 +2657,6 @@ MonoBehaviour:
   arrowPrefab: {fileID: 7413421738497666849, guid: 4d96c34d7da0f5f4f862c9f968201ac4, type: 3}
   firePoint: {fileID: 1280255283}
   arrowSpeed: 9
-  arrowSound: {fileID: 0}
-  delaySoundInSeconds: 2
   leftPoint: {fileID: 1768562602}
   rightPoint: {fileID: 879684114}
   patrolSpeed: 3
@@ -4942,7 +4940,6 @@ MonoBehaviour:
   enemyDamage: 5
   fruitgravity: 3
   fruitimpact: {fileID: 8191496383761327364, guid: c1dd46db0326a0841b90df1875f16916, type: 3}
-  explodeSound: {fileID: 0}
 --- !u!114 &1284550358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5254,7 +5251,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceForce: 21
-  bounceSound: {fileID: 0}
 --- !u!61 &1443222577
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14710,6 +14706,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Checkpoint (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8415026417197682055, guid: 104813d0ae7e9cc41bc6f82f1cbcdebe, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 104813d0ae7e9cc41bc6f82f1cbcdebe, type: 3}
 --- !u!1 &1926561207
@@ -14881,6 +14881,10 @@ PrefabInstance:
     - target: {fileID: 8415026417197682055, guid: 104813d0ae7e9cc41bc6f82f1cbcdebe, type: 3}
       propertyPath: m_Name
       value: Checkpoint (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415026417197682055, guid: 104813d0ae7e9cc41bc6f82f1cbcdebe, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 104813d0ae7e9cc41bc6f82f1cbcdebe, type: 3}
@@ -15213,7 +15217,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  attackSound: {fileID: 0}
   attackPoint: {fileID: 1154339292}
   attackRange: 0.8
   playerLayer:

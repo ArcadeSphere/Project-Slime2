@@ -7,10 +7,10 @@ public class PlayerData : MonoBehaviour
    public static PlayerData Instance;
 
     public Transform currentCheckpoint;
+    public bool isActivated;
 
     void Awake()
     {
-        Debug.Log(currentCheckpoint);
         if (Instance == null)
         {
             Instance = this;
