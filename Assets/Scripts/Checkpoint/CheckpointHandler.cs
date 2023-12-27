@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class CheckpointHandler : MonoBehaviour
 {
-    private bool isActivated = false;
+    private bool isActivated;
     [SerializeField] private GameObject explode;
     [SerializeField] private GameObject text;
     [SerializeField] private String displayText;
