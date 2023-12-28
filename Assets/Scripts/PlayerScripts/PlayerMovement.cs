@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashingCooldown = 1f;
     private bool canDash = true;
     private bool isDashing;
+    private bool isJumping;
+    private bool wasGrounded;
     private bool isAttacking;
     private bool isFacingRight = true;
     [SerializeField] private AudioClip jumpSound;
@@ -50,14 +52,11 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("grounded", IsGrounded());
 
         // jump
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            if (IsGrounded())
-            {
-                particle.Play(particle.jumpParticle);
-                AudioManager.instance.PlaySoundEffects(jumpSound);//use this to activate sound
-                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-            }
+            particle.Play(particle.dustParticle);
+            AudioManager.instance.PlaySoundEffects(jumpSound);//use this to activate sound
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
@@ -82,7 +81,14 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        if (Landed())
+        {
+            particle.Play(particle.dustParticle);
+        }
+
+
         Flip();
+        wasGrounded = IsGrounded();
     }
 
     private void FixedUpdate()
@@ -105,6 +111,11 @@ public class PlayerMovement : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, jumpableLayer);
+    }
+
+    private bool Landed()
+    {
+        return !wasGrounded && IsGrounded();
     }
 
     private void Flip()

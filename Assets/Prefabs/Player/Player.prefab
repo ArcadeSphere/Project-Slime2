@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0400a0bcb834441bfd53b5029c813d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpParticle: {fileID: 411595376653141624}
+  dustParticle: {fileID: 411595376653141624}
   dashParticle: {fileID: 1150448676631502657}
 --- !u!1 &2469525419860157417
 GameObject:
@@ -402,8 +402,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 3
-      minScalar: 5
+      scalar: 2
+      minScalar: 4
       maxCurve:
         serializedVersion: 2
         m_Curve:

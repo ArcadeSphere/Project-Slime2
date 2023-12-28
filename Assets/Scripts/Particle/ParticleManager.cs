@@ -8,7 +8,7 @@ public class ParticleManager : MonoBehaviour
 
     public static ParticleManager Instance { get; private set; }
     [Header("Particle")]
-    public ParticleSystem jumpParticle;
+    public ParticleSystem dustParticle;
     public ParticleSystem dashParticle;
     
     private void Awake() {
