@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1158757804351639842}
   - component: {fileID: 1158757804351639843}
   - component: {fileID: 1158757804351639840}
-  m_Layer: 13
+  m_Layer: 16
   m_Name: Rafflesia
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -174,6 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  playerDetector: {fileID: 0}
 --- !u!114 &1158757804351639840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,6 +194,9 @@ MonoBehaviour:
   - {fileID: 1158757804351639865}
   flashing: {fileID: 1158757804351639842}
   rb: {fileID: 0}
+  hurtSound: {fileID: 0}
+  deadSound: {fileID: 0}
+  delaySoundInSeconds: 2
 --- !u!114 &1158757803216281492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  playerDetector: {fileID: 0}
 --- !u!1001 &1158757803481374935
 PrefabInstance:
   m_ObjectHideFlags: 0
