@@ -6837,7 +6837,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectsSlider: {fileID: 230365972}
   backgroundMusicSlider: {fileID: 141550867}
-  audioManager: {fileID: 181253635441449615, guid: 21787aa3d706ef84a922cdfa1da5e754, type: 3}
 --- !u!4 &1572216519 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8543598026118306108, guid: 9924ca6fb0940564388c21a9ee255e98, type: 3}

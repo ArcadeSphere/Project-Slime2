@@ -10,7 +10,8 @@ public class BackgroundMusic : MonoBehaviour
     {
         if (AudioManager.instance != null)
         {
-            AudioManager.instance.PlayBackgroundMusic(backgroundMusic);
+          
+            AudioManager.instance.PlayBackgroundMusicExclusive(backgroundMusic);
         }
     }
 }
