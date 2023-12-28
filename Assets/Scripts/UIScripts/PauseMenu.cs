@@ -4,55 +4,78 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenuUI;
+    private enum GameState
+    {
+        Playing,
+        Paused,
+        Options
+    }
+
+    private GameState currentState = GameState.Playing;
+
     [SerializeField] private PlayerCombat playerCombat;
-    private bool isPaused = false;
+    public GameObject pauseMenuUI;
+    public GameObject optionsMenuUI;
 
     void Update()
     {
-      
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            
-            if (isPaused)
+            if (currentState == GameState.Playing)
+            {
+                PauseGame();
+            }
+            else if (currentState == GameState.Paused)
             {
                 ResumeGame();
             }
-            else
+            else if (currentState == GameState.Options)
             {
-                TogglePause();
+                BackToPauseMenu();
             }
         }
     }
 
-    public void TogglePause()
+    void PauseGame()
     {
-        isPaused = !isPaused;
-
+        currentState = GameState.Paused;
+        Time.timeScale = 0f;
         pauseMenuUI.SetActive(true);
-       playerCombat.enabled = !isPaused;
-
-        Time.timeScale = isPaused ? 0f : 1f;
+        playerCombat.enabled = false;
     }
 
     public void ResumeGame()
     {
-        playerCombat.enabled = true;
+        currentState = GameState.Playing;
         Time.timeScale = 1f;
         pauseMenuUI.SetActive(false);
-        isPaused = false;
+        optionsMenuUI.SetActive(false);
+        playerCombat.enabled = true;
     }
+
+    public void OpenOptions()
+    {
+        currentState = GameState.Options;
+        optionsMenuUI.SetActive(true);
+        pauseMenuUI.SetActive(false);
+    }
+
+    public void BackToPauseMenu()
+    {
+        currentState = GameState.Paused;
+        optionsMenuUI.SetActive(false);
+        pauseMenuUI.SetActive(true);
+    }
+
     public void RestartGame()
     {
-        playerCombat.enabled = true;
+        currentState = GameState.Playing;
         Time.timeScale = 1f;
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }
-    public void ToMainMenu()
+    public void QuitGame()
     {
-        playerCombat.enabled = true;
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(0);
+        Application.Quit();
     }
 }
