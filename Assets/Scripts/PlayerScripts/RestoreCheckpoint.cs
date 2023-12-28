@@ -5,9 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class RestoreCheckpoint : MonoBehaviour
 {
-    private Transform currentCheckpoint;
     public GameObject gameOverScreen;
-
 
     void Start()
     {
