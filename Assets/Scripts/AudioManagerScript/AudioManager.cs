@@ -42,7 +42,17 @@ public class AudioManager : MonoBehaviour
     {
         soundSource.PlayOneShot(sound);
     }
+    public void PlayBackground(AudioClip backSound)
+    {
+      
+        musicSource.clip = backSound;
 
+        
+        musicSource.loop = true;
+
+       
+        musicSource.Play();
+    }
     public void ChangeSoundVolume(float value)
     {
         soundSource.volume = value;

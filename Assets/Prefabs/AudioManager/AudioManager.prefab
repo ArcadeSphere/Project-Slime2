@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d6e0de92a37654fa75486113552e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundSlider: {fileID: 0}
-  musicSlider: {fileID: 0}
+  soundSource: {fileID: 0}
+  musicSource: {fileID: 0}
 --- !u!82 &700150505649950634
 AudioSource:
   m_ObjectHideFlags: 0
@@ -184,11 +184,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 34bdfa103ab59b14098e02d5823ceb79, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
