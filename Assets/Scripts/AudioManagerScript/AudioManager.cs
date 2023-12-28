@@ -1,15 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.Serialization;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance { get; private set; }
-    public AudioSource soundEffectSource;
+    public  AudioSource soundSource;
     public AudioSource musicSource;
-
-    private float backgroundMusicVolume = 1f;  // New variable to store background music volume
 
     private void Awake()
     {
@@ -18,71 +16,43 @@ public class AudioManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else if (instance != this)
+        else
         {
+            // Destroy duplicate AudioManager
             Destroy(gameObject);
             return;
         }
 
-        soundEffectSource = gameObject.AddComponent<AudioSource>();
-        musicSource = gameObject.AddComponent<AudioSource>();
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        soundSource = GetComponent<AudioSource>();
+        musicSource = transform.Find("Music").GetComponent<AudioSource>(); // Update the child object name accordingly
+
+        LoadVolumesFromPlayerPrefs();
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void Start()
     {
-        if (scene.buildIndex != 0) // Skip playing background music in the main menu scene
-        {
-            StopBackgroundMusic();
-            PlayBackgroundMusicExclusive(musicSource.clip);  // Use the stored volume
-        }
+        // No sliders, so no need for listeners here
     }
 
-    public void PlaySoundEffects(AudioClip soundEffect)
+    private void LoadVolumesFromPlayerPrefs()
     {
-        if (soundEffect != null)
-        {
-            soundEffectSource.PlayOneShot(soundEffect);
-        }
-        else
-        {
-            Debug.LogWarning("No sound");
-        }
+        // Load initial volumes from PlayerPrefs
+        soundSource.volume = PlayerPrefs.GetFloat("soundVolume", 1);
+        musicSource.volume = PlayerPrefs.GetFloat("musicVolume", 0.3f);
     }
 
-    public void PlayBackgroundMusic(AudioClip music, float volume = 1f)
+    public void PlaySoundEffects(AudioClip sound)
     {
-        if (music != null)
-        {
-            musicSource.clip = music;
-            musicSource.volume = volume;
-            backgroundMusicVolume = volume;  // Store the volume
-            musicSource.loop = true;
-            musicSource.Play();
-        }
-        else
-        {
-            Debug.LogWarning("Trying to play null background music.");
-        }
+        soundSource.PlayOneShot(sound);
     }
 
-    public void PlayBackgroundMusicExclusive(AudioClip music)
+    public void ChangeSoundVolume(float value)
     {
-        if (music != null)
-        {
-            musicSource.clip = music;
-            musicSource.volume = backgroundMusicVolume;  // Use the stored volume
-            musicSource.loop = true;
-            musicSource.Play();
-        }
-        else
-        {
-            Debug.LogWarning("Trying to play null background music.");
-        }
+        soundSource.volume = value;
     }
 
-    public void StopBackgroundMusic()
+    public void ChangeMusicVolume(float value)
     {
-        musicSource.Stop();
+        musicSource.volume = value;
     }
 }

@@ -8,6 +8,8 @@ TagManager:
   - OneWayPlatform
   - Enemy
   - Checkpoint
+  - MusicSlider
+  - SoundSlider
   layers:
   - Default
   - TransparentFX
