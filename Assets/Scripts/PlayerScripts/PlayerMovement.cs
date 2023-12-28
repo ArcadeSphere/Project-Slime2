@@ -24,11 +24,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask jumpableLayer;
     [SerializeField] private Animator animator;
 
-    [Header("Platform Disabler Parameters")]
+    [Header("Platform Disabler")]
     [SerializeField] private BoxCollider2D playerBoxCollider;
     [SerializeField] private float platformDisableDuration = 0.2f;
     private GameObject currentOneWayPlatform;
-    
+    private Particle particle;
+
+
+    private void Start() {
+        particle = Particle.Instance;    
+    }
+
     void Update()
     {
         if (isDashing)
@@ -48,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (IsGrounded())
             {
+                particle.Play(particle.jumpParticle);
                 AudioManager.instance.PlaySoundEffects(jumpSound);//use this to activate sound
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             }
