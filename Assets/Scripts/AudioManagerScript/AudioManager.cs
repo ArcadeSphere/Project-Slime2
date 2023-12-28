@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.Serialization;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance { get; private set; }
-    private AudioSource soundEffectSource;
-    private AudioSource musicSource;
+    public  AudioSource soundSource;
+    public AudioSource musicSource;
+
     private void Awake()
     {
         if (instance == null)
@@ -16,50 +18,41 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
+            // Destroy duplicate AudioManager
             Destroy(gameObject);
             return;
         }
 
-        soundEffectSource = gameObject.AddComponent<AudioSource>();
-        musicSource = gameObject.AddComponent<AudioSource>();
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-       
-        StopBackgroundMusic();
+        soundSource = GetComponent<AudioSource>();
+        musicSource = transform.Find("Music").GetComponent<AudioSource>(); // Update the child object name accordingly
 
-       
-        PlayBackgroundMusic(musicSource.clip, musicSource.volume);
-    }
-    public void PlaySoundEffects(AudioClip soundEffect)
-    {
-        if (soundEffect != null)
-        {
-            soundEffectSource.PlayOneShot(soundEffect);
-        }
-        else
-        {
-            Debug.LogWarning("No sound");
-        }
-    }
-    public void PlayBackgroundMusic(AudioClip music, float volume = 1f)
-    {
-        if (music != null)
-        {
-            musicSource.clip = music;
-            musicSource.volume = volume;
-            musicSource.loop = true;
-            musicSource.Play();
-        }
-        else
-        {
-            Debug.LogWarning("Trying to play null background music.");
-        }
+        LoadVolumesFromPlayerPrefs();
     }
 
-    public void StopBackgroundMusic()
+    private void Start()
     {
-        musicSource.Stop();
+        // No sliders, so no need for listeners here
+    }
+
+    private void LoadVolumesFromPlayerPrefs()
+    {
+        // Load initial volumes from PlayerPrefs
+        soundSource.volume = PlayerPrefs.GetFloat("soundVolume", 1);
+        musicSource.volume = PlayerPrefs.GetFloat("musicVolume", 0.3f);
+    }
+
+    public void PlaySoundEffects(AudioClip sound)
+    {
+        soundSource.PlayOneShot(sound);
+    }
+
+    public void ChangeSoundVolume(float value)
+    {
+        soundSource.volume = value;
+    }
+
+    public void ChangeMusicVolume(float value)
+    {
+        musicSource.volume = value;
     }
 }
