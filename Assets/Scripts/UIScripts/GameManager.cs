@@ -21,15 +21,15 @@ public class GameManager : MonoBehaviour
 
     private void InitializeAudioManager()
     {
-        // Check if AudioManager.instance is null
+      
         if (AudioManager.instance == null)
         {
-            // Instantiate AudioManager prefab dynamically
+         
             if (audioManagerPrefab != null)
             {
                 GameObject audioManagerInstance = Instantiate(audioManagerPrefab);
 
-                // Optional: Parent the AudioManager instance to the GameManager or another suitable object
+              
                 audioManagerInstance.transform.SetParent(transform);
                 audioManager = audioManagerInstance.GetComponent<AudioManager>();
             }
@@ -46,16 +46,15 @@ public class GameManager : MonoBehaviour
 
     private void InitializeSliders()
     {
-        // Optionally set initial slider values
+       
         soundSlider.value = audioManager.soundSource.volume;
         musicSlider.value = audioManager.musicSource.volume;
 
-        // Add listeners for slider value changes
+        
         soundSlider.onValueChanged.AddListener(ChangeSoundVolume);
         musicSlider.onValueChanged.AddListener(ChangeMusicVolume);
     }
 
-    // Add methods for getting/setting sound and music volumes
     public float GetSoundVolume()
     {
         return soundVolume;

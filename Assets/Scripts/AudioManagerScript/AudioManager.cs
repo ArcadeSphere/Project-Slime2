@@ -18,25 +18,22 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            // Destroy duplicate AudioManager
+            
             Destroy(gameObject);
             return;
         }
 
         soundSource = GetComponent<AudioSource>();
-        musicSource = transform.Find("Music").GetComponent<AudioSource>(); // Update the child object name accordingly
+        musicSource = transform.Find("Music").GetComponent<AudioSource>(); 
 
         LoadVolumesFromPlayerPrefs();
     }
 
-    private void Start()
-    {
-        // No sliders, so no need for listeners here
-    }
+
 
     private void LoadVolumesFromPlayerPrefs()
     {
-        // Load initial volumes from PlayerPrefs
+      
         soundSource.volume = PlayerPrefs.GetFloat("soundVolume", 1);
         musicSource.volume = PlayerPrefs.GetFloat("musicVolume", 0.3f);
     }
