@@ -19,22 +19,16 @@ public class Health : MonoBehaviour
     [SerializeField] private AudioClip hurtSound;
     [SerializeField] private AudioClip deadSound;
     [SerializeField] private float delaySoundInSeconds = 2.0f;
-    private ParticleManager particle;
+    
     private void Awake()
     {
         currenthealth = startinglives;
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-        particle = ParticleManager.Instance;
     }
     public void TakeDamage(float _damage)
     {
-        if (particle != null)
-        {
-            if (this.tag != "Player")
-                particle.Play(particle.hitParticle);
-        }
         if (invulnerable) return;
         currenthealth = Mathf.Clamp(currenthealth - _damage, 0, startinglives);
 
