@@ -10,6 +10,7 @@ public class ParticleManager : MonoBehaviour
     [Header("Particle")]
     public ParticleSystem dustParticle;
     public ParticleSystem dashParticle;
+    public ParticleSystem hitParticle;
     
     private void Awake() {
         Instance = this;
