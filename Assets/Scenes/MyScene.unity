@@ -809,7 +809,7 @@ PrefabInstance:
     - target: {fileID: 5510114839910921894, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
       propertyPath: dashParticle
       value: 
-      objectReference: {fileID: 1070056570}
+      objectReference: {fileID: 1492026763}
     - target: {fileID: 5510114839910921894, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
       propertyPath: jumpParticle
       value: 
@@ -3831,11 +3831,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067565682}
   m_CullTransparentMesh: 1
---- !u!198 &1070056570 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 1073324534826200555, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
-  m_PrefabInstance: {fileID: 77349058}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1105605374 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8543598026118306108, guid: 9924ca6fb0940564388c21a9ee255e98, type: 3}
@@ -4868,6 +4863,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8543598026118306108, guid: 9924ca6fb0940564388c21a9ee255e98, type: 3}
   m_PrefabInstance: {fileID: 548044107}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1492026763 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1150448676631502657, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
+  m_PrefabInstance: {fileID: 77349058}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1515785464 stripped
 Transform:
