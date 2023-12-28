@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance { get; private set; }
-    private AudioSource soundEffectSource;
-    private AudioSource musicSource;
+    public AudioSource soundEffectSource;
+    public AudioSource musicSource;
     private void Awake()
     {
         if (instance == null)
