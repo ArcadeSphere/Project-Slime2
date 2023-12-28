@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class CheckpointHandler : MonoBehaviour
 {
-    private String playerPrefKey = "IsActive";
+    private readonly String playerPrefKey = "IsActive";
     private bool isActivated;
     [SerializeField] private GameObject explode;
     [SerializeField] private GameObject text;
