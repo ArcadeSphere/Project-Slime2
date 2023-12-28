@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Particle : MonoBehaviour
+public class ParticleManager : MonoBehaviour
 {
 
-    public static Particle Instance { get; private set; }
+    public static ParticleManager Instance { get; private set; }
     [Header("Particle")]
     public ParticleSystem jumpParticle;
+    public ParticleSystem dashParticle;
     
     private void Awake() {
         Instance = this;

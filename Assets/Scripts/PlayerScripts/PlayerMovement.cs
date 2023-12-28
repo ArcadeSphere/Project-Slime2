@@ -28,11 +28,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private BoxCollider2D playerBoxCollider;
     [SerializeField] private float platformDisableDuration = 0.2f;
     private GameObject currentOneWayPlatform;
-    private Particle particle;
+    private ParticleManager particle;
 
 
     private void Start() {
-        particle = Particle.Instance;    
+        particle = ParticleManager.Instance;    
     }
 
     void Update()
@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         // dash
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
-
+            particle.Play(particle.dashParticle);
             StartCoroutine(Dash());
         }
 
