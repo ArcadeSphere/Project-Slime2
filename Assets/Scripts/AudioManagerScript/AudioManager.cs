@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance { get; private set; }
     public AudioSource soundEffectSource;
     public AudioSource musicSource;
+
     private void Awake()
     {
         if (instance == null)
@@ -15,7 +16,7 @@ public class AudioManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else
+        else if (instance != this)
         {
             Destroy(gameObject);
             return;
@@ -25,14 +26,16 @@ public class AudioManager : MonoBehaviour
         musicSource = gameObject.AddComponent<AudioSource>();
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-       
-        StopBackgroundMusic();
-
-       
-        PlayBackgroundMusic(musicSource.clip, musicSource.volume);
+        if (scene.buildIndex != 0) // Skip playing background music in the main menu scene
+        {
+            StopBackgroundMusic();
+            // Optionally, you can play a default background music here.
+        }
     }
+
     public void PlaySoundEffects(AudioClip soundEffect)
     {
         if (soundEffect != null)
@@ -44,6 +47,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("No sound");
         }
     }
+
     public void PlayBackgroundMusic(AudioClip music, float volume = 1f)
     {
         if (music != null)

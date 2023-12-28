@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d6e0de92a37654fa75486113552e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundEffectSource: {fileID: 181253635441449608}
+  musicSource: {fileID: 181253635441449608}
 --- !u!82 &181253635441449608
 AudioSource:
   m_ObjectHideFlags: 0
@@ -56,7 +58,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.591
+  m_Volume: 0.8184244
   m_Pitch: 0.35
   Loop: 1
   Mute: 0

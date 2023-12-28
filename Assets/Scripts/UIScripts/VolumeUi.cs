@@ -7,34 +7,31 @@ public class VolumeUi : MonoBehaviour
     public Slider soundEffectsSlider;
     public Slider backgroundMusicSlider;
 
-    [SerializeField] private AudioManager audioManager; 
-
     void Start()
     {
-        // Initialize sliders with current volume levels
-        if (audioManager != null)
+        if (AudioManager.instance != null)
         {
             if (soundEffectsSlider != null)
             {
-                soundEffectsSlider.value = audioManager.soundEffectSource.volume;
+                soundEffectsSlider.value = AudioManager.instance.soundEffectSource.volume;
                 soundEffectsSlider.onValueChanged.AddListener(ChangeSoundEffectsVolume);
             }
 
             if (backgroundMusicSlider != null)
             {
-                backgroundMusicSlider.value = audioManager.musicSource.volume;
+                backgroundMusicSlider.value = AudioManager.instance.musicSource.volume;
                 backgroundMusicSlider.onValueChanged.AddListener(ChangeBackgroundMusicVolume);
             }
         }
     }
 
-   public void ChangeSoundEffectsVolume(float volume)
+    public void ChangeSoundEffectsVolume(float volume)
     {
-        audioManager.soundEffectSource.volume = volume;
+        AudioManager.instance.soundEffectSource.volume = volume;
     }
 
     public void ChangeBackgroundMusicVolume(float volume)
     {
-        audioManager.musicSource.volume = volume;
+        AudioManager.instance.musicSource.volume = volume;
     }
 }
