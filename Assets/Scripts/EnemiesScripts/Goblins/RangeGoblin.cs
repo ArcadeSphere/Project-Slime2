@@ -37,10 +37,12 @@ public class RangeGoblin : MonoBehaviour
         transform.Translate(Vector2.right * patrolSpeed * Time.deltaTime);
         anim.SetFloat("moveSpeed", Mathf.Abs(patrolSpeed));
 
+        // Check if the goblin is beyond the patrol range
         if ((patrolSpeed > 0 && transform.position.x >= rightPoint.position.x) ||
             (patrolSpeed < 0 && transform.position.x <= leftPoint.position.x))
         {
-            StopRangePatrolForDuration();
+            // Flip the goblin to change direction
+            FlipGoblin();
         }
     }
     public void StopPatrolAndRangeAttack()
@@ -57,6 +59,7 @@ public class RangeGoblin : MonoBehaviour
             currentCooldown -= Time.deltaTime;
         }
     }
+ 
     //flip when reaching end
     private void FlipGoblin()
     {
@@ -111,16 +114,18 @@ public class RangeGoblin : MonoBehaviour
             Invoke("PlaySoundWithDelay", delaySoundInSeconds);
             isShooting = true;
             isShootAnimationInProgress = true;
-            StartCoroutine(ShootingCooldown());
 
-
+            // Stop patrolling immediately
             isPatrolling = false;
-
+            anim.SetFloat("moveSpeed", 0f);
 
             if (stopCoroutine != null)
             {
                 StopCoroutine(stopCoroutine);
             }
+
+            // Start the shooting cooldown and wait for the animation to finish
+            StartCoroutine(ShootingCooldown());
         }
     }
 
@@ -151,6 +156,20 @@ public class RangeGoblin : MonoBehaviour
             Vector2 shootDirection = (transform.localScale.x > 0) ? Vector2.right : Vector2.left;
             projectileComponent.SetSpeed(arrowSpeed);
             projectileComponent.SetProjectileDirection(shootDirection);
+        }
+    }
+    public void ResumePatrol()
+    {
+        if (!isPatrolling)
+        {
+            isPatrolling = true;
+            anim.SetFloat("moveSpeed", Mathf.Abs(patrolSpeed));
+
+            if (stopCoroutine != null)
+            {
+                StopCoroutine(stopCoroutine);
+                stopCoroutine = null;
+            }
         }
     }
     private void PlaySoundWithDelay()

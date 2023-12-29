@@ -22,6 +22,9 @@ public class GoblinDetectionRange : PlayerDetector
             {
                 rangeGoblin.DontShootPlayer();
             }
+
+            // If the player is not detected, resume patrolling
+            rangeGoblin.ResumePatrol();
         }
     }
 }
