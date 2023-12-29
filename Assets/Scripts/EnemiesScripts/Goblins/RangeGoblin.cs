@@ -17,6 +17,8 @@ public class RangeGoblin : MonoBehaviour
     public float arrowSpeed = 5f;
     [SerializeField] private AudioClip arrowSound;
     [SerializeField] private float delaySoundInSeconds = 2.0f;
+    [SerializeField] private float delayBeforeShooting = 0.5f; 
+    [SerializeField] private float shootingAnimationDuration = 1.5f;
 
     [Header("Patrol Settings")]
     [SerializeField] private Transform leftPoint;
@@ -99,22 +101,19 @@ public class RangeGoblin : MonoBehaviour
     private IEnumerator StopRangeForDuration()
     {
         yield return new WaitForSeconds(stopDuration / 2f);
-        FlipGoblin(); 
 
-        yield return new WaitForSeconds(stopDuration / 2f); 
+        // Comment out or remove the FlipGoblin call to prevent turning around
+        // FlipGoblin(); 
+
+        yield return new WaitForSeconds(stopDuration / 2f);
         isPatrolling = true;
         stopCoroutine = null;
     }
     //use in animator to shoot
     public void ShootPlayer()
     {
-        if (!isShootAnimationInProgress)
+        if (!isShootAnimationInProgress && isPatrolling)
         {
-            anim.SetTrigger("Shooting");
-            Invoke("PlaySoundWithDelay", delaySoundInSeconds);
-            isShooting = true;
-            isShootAnimationInProgress = true;
-
             // Stop patrolling immediately
             isPatrolling = false;
             anim.SetFloat("moveSpeed", 0f);
@@ -124,11 +123,31 @@ public class RangeGoblin : MonoBehaviour
                 StopCoroutine(stopCoroutine);
             }
 
-            // Start the shooting cooldown and wait for the animation to finish
-            StartCoroutine(ShootingCooldown());
+            // Start the shooting sequence
+            StartCoroutine(StartShootingSequence());
         }
     }
+    private IEnumerator StartShootingSequence()
+    {
+        // Wait for a short delay if needed
+        yield return new WaitForSeconds(delayBeforeShooting);
 
+        // Start shooting animation
+        anim.SetTrigger("Shooting");
+        Invoke("PlaySoundWithDelay", delaySoundInSeconds);
+
+        // Wait for the shooting animation to finish
+        yield return new WaitForSeconds(shootingAnimationDuration);
+
+        // Start shooting cooldown
+        isShootAnimationInProgress = true;
+        isShooting = true;
+        StartCoroutine(ShootingCooldown());
+
+        // Resume patrolling after shooting
+        isPatrolling = true;
+        stopCoroutine = StartCoroutine(StopRangeForDuration());
+    }
     public void DontShootPlayer()
     {
         if (!isShootAnimationInProgress)

@@ -10,7 +10,7 @@ public class GoblinDetectionRange : PlayerDetector
     {
         if (PlayerDetected)
         {
-            rangeGoblin.StopPatrolAndRangeAttack();
+            rangeGoblin.ShootPlayer();
         }
         else
         {
@@ -22,9 +22,6 @@ public class GoblinDetectionRange : PlayerDetector
             {
                 rangeGoblin.DontShootPlayer();
             }
-
-            // If the player is not detected, resume patrolling
-            rangeGoblin.ResumePatrol();
         }
     }
 }
