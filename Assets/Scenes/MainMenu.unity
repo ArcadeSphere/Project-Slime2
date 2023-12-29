@@ -1044,7 +1044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83aedc6182407464e81a0d6e439d404d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backGround: {fileID: 8300000, guid: 3a2a86645c9d91741b6d75f77e512856, type: 3}
+  backGround: {fileID: 8300000, guid: 6b015cc5bfa02b84ba1c33f079ca4da5, type: 3}
 --- !u!4 &1798320941
 Transform:
   m_ObjectHideFlags: 0
