@@ -8,7 +8,9 @@ public class PauseMenu : MonoBehaviour
     {
         Playing,
         Paused,
-        Options
+        Options,
+        Volume,
+        Keybindings
     }
 
     private GameState currentState = GameState.Playing;
@@ -16,6 +18,8 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private PlayerCombat playerCombat;
     public GameObject pauseMenuUI;
     public GameObject optionsMenuUI;
+    public GameObject volumeMenuUI;
+    public GameObject keybindingsMenuUI;
 
     void Update()
     {
@@ -29,7 +33,7 @@ public class PauseMenu : MonoBehaviour
             {
                 ResumeGame();
             }
-            else if (currentState == GameState.Options)
+            else if (currentState == GameState.Options || currentState == GameState.Volume || currentState == GameState.Keybindings)
             {
                 BackToPauseMenu();
             }
@@ -50,6 +54,8 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         pauseMenuUI.SetActive(false);
         optionsMenuUI.SetActive(false);
+        volumeMenuUI.SetActive(false);
+        keybindingsMenuUI.SetActive(false);
         playerCombat.enabled = true;
     }
 
@@ -60,10 +66,26 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
     }
 
+    public void OpenVolume()
+    {
+        currentState = GameState.Volume;
+        volumeMenuUI.SetActive(true);
+        optionsMenuUI.SetActive(false);
+    }
+
+    public void OpenKeybindings()
+    {
+        currentState = GameState.Keybindings;
+        keybindingsMenuUI.SetActive(true);
+        optionsMenuUI.SetActive(false);
+    }
+
     public void BackToPauseMenu()
     {
         currentState = GameState.Paused;
         optionsMenuUI.SetActive(false);
+        volumeMenuUI.SetActive(false);
+        keybindingsMenuUI.SetActive(false);
         pauseMenuUI.SetActive(true);
     }
 
@@ -74,6 +96,7 @@ public class PauseMenu : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }
+
     public void QuitGame()
     {
         Application.Quit();
