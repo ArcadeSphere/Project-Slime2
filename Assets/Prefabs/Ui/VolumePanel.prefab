@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 468444532795940760}
   - component: {fileID: 468444532795940761}
   m_Layer: 5
-  m_Name: OptionPanel
+  m_Name: VolumePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -510,8 +510,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 219, y: -135}
-  m_SizeDelta: {x: 889.7828, y: 130.95}
+  m_AnchoredPosition: {x: 52, y: -122}
+  m_SizeDelta: {x: 942.7014, y: 130.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &468444532956272094
 CanvasRenderer:
@@ -554,7 +554,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: OPTIONS
+  m_Text: VOLUME SETTINGS
 --- !u!1 &468444533027355760
 GameObject:
   m_ObjectHideFlags: 0
