@@ -7,12 +7,12 @@ public class InputManager : MonoBehaviour
     public static InputManager instance;
 
     // Define your input here as strings
-    private string jumpKey = "Jump";
-    private string moveLeftKey = "a";
-    private string moveRightKey = "d";
-    private string dashKey = "LeftShift";
-    private string platformDisableKey = "s";
-    private string playerAttackKey = "j"; 
+    public string jumpKey = "Jump";
+    public string moveLeftKey = "a";
+    public string moveRightKey = "d";
+    public string dashKey = "LeftShift";
+    public string platformDisableKey = "s";
+    public string playerAttackKey = "j"; 
 
     private void Awake()
     {
@@ -26,7 +26,7 @@ public class InputManager : MonoBehaviour
         }
 
         LoadKeybindings();
-    }
+       }
 
     public bool GetJumpInput()
     {
@@ -82,7 +82,7 @@ public class InputManager : MonoBehaviour
     }
 
     // Load keybindings
-    private void LoadKeybindings()
+    public void LoadKeybindings()
     {
         jumpKey = PlayerPrefs.GetString("JumpKey", "space");
         moveLeftKey = PlayerPrefs.GetString("MoveLeftKey", "a");
@@ -91,9 +91,20 @@ public class InputManager : MonoBehaviour
         platformDisableKey = PlayerPrefs.GetString("PlatformDisableKey", "s");
         playerAttackKey = PlayerPrefs.GetString("PlayerAttackKey", "j");
     }
+    // Load the defualt keybindings
+    public void LoadDefaultKeybindings()
+    {
+        jumpKey = "space";
+        moveLeftKey = "a";
+        moveRightKey = "d";
+        dashKey = "LeftShift";
+        platformDisableKey = "s";
+        playerAttackKey = "Fire1";
+    }
 
-    // Method to convert string to KeyCode
-    private KeyCode GetKeyCode(string keyName)
+
+// Method to convert string to KeyCode
+public KeyCode GetKeyCode(string keyName)
     {
         return (KeyCode)System.Enum.Parse(typeof(KeyCode), keyName, true);
     }

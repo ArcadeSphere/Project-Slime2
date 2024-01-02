@@ -362,7 +362,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8272356722429862149
 RectTransform:
   m_ObjectHideFlags: 0
@@ -581,9 +581,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'KEYBINDINGS
-
-'
+  m_Text: CONTROLS
 --- !u!1 &8272356723360088491
 GameObject:
   m_ObjectHideFlags: 0
