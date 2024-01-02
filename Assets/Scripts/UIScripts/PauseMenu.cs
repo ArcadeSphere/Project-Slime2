@@ -16,6 +16,7 @@ public class PauseMenu : MonoBehaviour
     private GameState currentState = GameState.Playing;
 
     [SerializeField] private PlayerCombat playerCombat;
+    [SerializeField] private PlayerMovement playerMove;
     public GameObject pauseMenuUI;
     public GameObject optionsMenuUI;
     public GameObject volumeMenuUI;
@@ -46,6 +47,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         pauseMenuUI.SetActive(true);
         playerCombat.enabled = false;
+        playerMove.enabled = false;
     }
 
     public void ResumeGame()
@@ -57,6 +59,7 @@ public class PauseMenu : MonoBehaviour
         volumeMenuUI.SetActive(false);
         keybindingsMenuUI.SetActive(false);
         playerCombat.enabled = true;
+        playerMove.enabled = true;
     }
 
     public void OpenOptions()
@@ -64,6 +67,7 @@ public class PauseMenu : MonoBehaviour
         currentState = GameState.Options;
         optionsMenuUI.SetActive(true);
         pauseMenuUI.SetActive(false);
+
     }
 
     public void OpenVolume()

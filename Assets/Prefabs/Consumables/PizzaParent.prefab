@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069ea4ca648bc7847a2970e1dd34ba3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healingValue: 0
+  healingValue: 1
   healSound: {fileID: 8300000, guid: 39d99953d8bdfc243a3df8b26d0be091, type: 3}
 --- !u!95 &9099841658893800278
 Animator:

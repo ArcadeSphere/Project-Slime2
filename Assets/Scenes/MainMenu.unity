@@ -584,6 +584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCombat: {fileID: 7747913105208640600, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
+  playerMove: {fileID: 2469525419819737861, guid: 84d23ad09710da14cbcb306a9f179d81, type: 3}
 --- !u!1 &932001333
 GameObject:
   m_ObjectHideFlags: 0

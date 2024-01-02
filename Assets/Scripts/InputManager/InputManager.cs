@@ -6,8 +6,8 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager instance;
 
-    // Define your input here as strings
-    public string jumpKey = "Jump";
+    //Define your input here as strings
+    public string jumpKey = "Space";
     public string moveLeftKey = "A";
     public string moveRightKey = "D";
     public string dashKey = "LeftShift";
@@ -26,7 +26,7 @@ public class InputManager : MonoBehaviour
         }
 
         LoadKeybindings();
-       }
+    }
 
     public bool GetJumpInput()
     {
@@ -74,6 +74,10 @@ public class InputManager : MonoBehaviour
     {
         return Input.GetKeyDown(GetKeyCode(playerInteractKey));
     }
+    public bool GetArrowInput(string arrowKeyName)
+    {
+        return Input.GetKey(GetKeyCode(arrowKeyName));
+    }
 
     // Save keybindings to PlayerPrefs
     public void SaveKeybindings()
@@ -96,7 +100,7 @@ public class InputManager : MonoBehaviour
         dashKey = PlayerPrefs.GetString("DashKey", "LeftShift");
         platformDisableKey = PlayerPrefs.GetString("PlatformDisableKey", "S");
         playerAttackKey = PlayerPrefs.GetString("PlayerAttackKey", "J");
-        playerInteractKey = PlayerPrefs.GetString("PlayerInteractKey","E");
+        playerInteractKey = PlayerPrefs.GetString("PlayerInteractKey", "E");
     }
     // Load the defualt keybindings
     public void LoadDefaultKeybindings()
@@ -111,9 +115,22 @@ public class InputManager : MonoBehaviour
     }
 
 
-// Method to convert string to KeyCode
-   public KeyCode GetKeyCode(string keyName)
+    // Method to convert string to KeyCode
+    public KeyCode GetKeyCode(string keyName)
     {
-        return (KeyCode)System.Enum.Parse(typeof(KeyCode), keyName, true);
+        if (keyName.StartsWith("Arrow") || keyName.StartsWith("Alpha"))
+        {
+            return (KeyCode)System.Enum.Parse(typeof(KeyCode), keyName);
+        }
+
+        try
+        {
+            return (KeyCode)System.Enum.Parse(typeof(KeyCode), keyName, true);
+        }
+        catch (ArgumentException)
+        {
+            Debug.LogError($"Invalid key name: {keyName}");
+            return KeyCode.None;
+        }
     }
 }

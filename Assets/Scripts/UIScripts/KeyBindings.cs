@@ -3,81 +3,103 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Serialization;
+using System;
 public class KeyBindings : MonoBehaviour
 {
     public InputManager inputManager;
 
-    public InputField jumpInputField;
-    public InputField moveLeftInputField;
-    public InputField moveRightInputField;
-    public InputField dashInputField;
-    public InputField platformDisableInputField;
-    public InputField playerAttackInputField;
-    public InputField playerInteractInputField;
+    public Button jumpButton;
+    public Button moveLeftButton;
+    public Button moveRightButton;
+    public Button dashButton;
+    public Button platformDisableButton;
+    public Button playerAttackButton;
+    public Button playerInteractButton;
 
     public Button saveButton;
     public Button restoreDefaultsButton;
 
+    private Button currentButton; // To track the currently selected button
+
     void Start()
     {
-        LoadKeyBindingsToUI();
+        // Add listeners to buttons
+        AddButtonListener(jumpButton);
+        AddButtonListener(moveLeftButton);
+        AddButtonListener(moveRightButton);
+        AddButtonListener(dashButton);
+        AddButtonListener(platformDisableButton);
+        AddButtonListener(playerAttackButton);
+        AddButtonListener(playerInteractButton);
 
-        // Add listeners to input fields to capitalize the first letter
-        jumpInputField.onValueChanged.AddListener(delegate { CapitalizeFirstLetter(jumpInputField); });
-        moveLeftInputField.onValueChanged.AddListener(delegate { CapitalizeFirstLetter(moveLeftInputField); });
-        moveRightInputField.onValueChanged.AddListener(delegate { CapitalizeFirstLetter(moveRightInputField); });
-        dashInputField.onValueChanged.AddListener(delegate { CapitalizeFirstLetter(dashInputField); });
-        platformDisableInputField.onValueChanged.AddListener(delegate { CapitalizeFirstLetter(platformDisableInputField); });
-        playerAttackInputField.onValueChanged.AddListener(delegate { CapitalizeFirstLetter(playerAttackInputField); });
-        playerInteractInputField.onValueChanged.AddListener(delegate { CapitalizeFirstLetter(playerInteractInputField); });
+    
+
+        LoadKeyBindingsToButtons();
     }
 
-    private void LoadKeyBindingsToUI()
+    void Update()
     {
-        // Load existing key bindings to UI
-        jumpInputField.text = inputManager.jumpKey;
-        moveLeftInputField.text = inputManager.moveLeftKey;
-        moveRightInputField.text = inputManager.moveRightKey;
-        dashInputField.text = inputManager.dashKey;
-        platformDisableInputField.text = inputManager.platformDisableKey;
-        playerAttackInputField.text = inputManager.playerAttackKey;
-        playerInteractInputField.text = inputManager.playerInteractKey;
+        if (currentButton != null)
+        {
+            // Check for any key press
+            foreach (KeyCode keyCode in Enum.GetValues(typeof(KeyCode)))
+            {
+                if (Input.GetKeyDown(keyCode) && keyCode != KeyCode.None)
+                {
+                    // Assign the key to the selected button's text
+                    currentButton.GetComponentInChildren<Text>().text = keyCode.ToString();
+
+                    // Reset the waiting state
+                    currentButton = null;
+                }
+            }
+        }
+    }
+
+    private void AddButtonListener(Button button)
+    {
+        button.onClick.AddListener(() => SetCurrentButton(button));
     }
 
     public void SaveKeyBindings()
     {
         // Save the updated key bindings to the InputManager
-        inputManager.jumpKey = jumpInputField.text;
-        inputManager.moveLeftKey = moveLeftInputField.text;
-        inputManager.moveRightKey = moveRightInputField.text;
-        inputManager.dashKey = dashInputField.text;
-        inputManager.platformDisableKey = platformDisableInputField.text;
-        inputManager.playerAttackKey = playerAttackInputField.text;
-        inputManager.playerInteractKey = playerInteractInputField.text;
+        inputManager.jumpKey = jumpButton.GetComponentInChildren<Text>().text;
+        inputManager.moveLeftKey = moveLeftButton.GetComponentInChildren<Text>().text;
+        inputManager.moveRightKey = moveRightButton.GetComponentInChildren<Text>().text;
+        inputManager.dashKey = dashButton.GetComponentInChildren<Text>().text;
+        inputManager.platformDisableKey = platformDisableButton.GetComponentInChildren<Text>().text;
+        inputManager.playerAttackKey = playerAttackButton.GetComponentInChildren<Text>().text;
+        inputManager.playerInteractKey = playerInteractButton.GetComponentInChildren<Text>().text;
 
-        // Capitalize first letter in case it was changed manually
-        CapitalizeFirstLetter(jumpInputField);
-        CapitalizeFirstLetter(moveLeftInputField);
-        CapitalizeFirstLetter(moveRightInputField);
-        CapitalizeFirstLetter(dashInputField);
-        CapitalizeFirstLetter(platformDisableInputField);
-        CapitalizeFirstLetter(playerAttackInputField);
-        CapitalizeFirstLetter(playerInteractInputField);
-
+        // Save to PlayerPrefs
         inputManager.SaveKeybindings();
     }
+
 
     public void RestoreDefaults()
     {
         inputManager.LoadDefaultKeybindings();
-        LoadKeyBindingsToUI(); // Update UI with default values
+        LoadKeyBindingsToButtons();
     }
 
-    private void CapitalizeFirstLetter(InputField inputField)
+    private void SetCurrentButton(Button button)
     {
-        if (!string.IsNullOrEmpty(inputField.text) && char.IsLower(inputField.text[0]))
-        {
-            inputField.text = char.ToUpper(inputField.text[0]) + inputField.text.Substring(1);
-        }
+        currentButton = button;
+
+        // Change the text to indicate that the button is waiting for input
+        currentButton.GetComponentInChildren<Text>().text = "Awaiting input...";
+    }
+
+    private void LoadKeyBindingsToButtons()
+    {
+        // Load existing key bindings to buttons
+        jumpButton.GetComponentInChildren<Text>().text = inputManager.jumpKey;
+        moveLeftButton.GetComponentInChildren<Text>().text = inputManager.moveLeftKey;
+        moveRightButton.GetComponentInChildren<Text>().text = inputManager.moveRightKey;
+        dashButton.GetComponentInChildren<Text>().text = inputManager.dashKey;
+        platformDisableButton.GetComponentInChildren<Text>().text = inputManager.platformDisableKey;
+        playerAttackButton.GetComponentInChildren<Text>().text = inputManager.playerAttackKey;
+        playerInteractButton.GetComponentInChildren<Text>().text = inputManager.playerInteractKey;
     }
 }
