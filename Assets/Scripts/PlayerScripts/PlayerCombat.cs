@@ -10,6 +10,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float damageAmount;
     [SerializeField] private AudioClip attackSound;
+    [SerializeField] private InputManager inputManager;
    
     public LayerMask enemiesLayer;
     private Animator anim;
@@ -26,7 +27,7 @@ public class PlayerCombat : MonoBehaviour
     private void Update()
     {
         //player combat
-        if (!pm.IsDashing() && (Input.GetMouseButton(0) || Input.GetKey(KeyCode.J)) && cooldownTimer > attackCooldown)
+        if (!pm.IsDashing() && inputManager.GetPlayerAttackInputDown() && cooldownTimer > attackCooldown)
             StartCoroutine(PerformAttack());
 
 

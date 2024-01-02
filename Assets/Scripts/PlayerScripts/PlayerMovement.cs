@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask jumpableLayer;
     [SerializeField] private Animator animator;
+    public InputManager inputManager;
 
     [Header("Platform Disabler")]
     [SerializeField] private BoxCollider2D playerBoxCollider;
@@ -44,36 +45,34 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        // horizontal movement
-        horizontal = Input.GetAxisRaw("Horizontal");
+        // horizontal movement using InputManager
+        horizontal = inputManager.GetHorizontalInput();
 
         // animations
         animator.SetFloat("run", Mathf.Abs(horizontal));
         animator.SetBool("grounded", IsGrounded());
 
-        // jump
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        // jump using InputManager
+        if (inputManager.GetJumpInput() && IsGrounded())
         {
             particle.Play(particle.dustParticle);
-            AudioManager.instance.PlaySoundEffects(jumpSound);//use this to activate sound
+            AudioManager.instance.PlaySoundEffects(jumpSound);
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        if (inputManager.GetJumpInputUp() && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
-        
 
-        // dash
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        // dash using InputManager
+        if (inputManager.GetDashInputDown() && canDash)
         {
             particle.Play(particle.dashParticle);
             StartCoroutine(Dash());
         }
 
-        // one-way platform
-        // onkeydown disable one-way platform collision if on it
-        if (Input.GetKeyDown(KeyCode.S))
+        // one-way platform using InputManager
+        if (inputManager.GetPlatformDisableInputDown())
         {
             if (currentOneWayPlatform != null)
             {
@@ -86,7 +85,6 @@ public class PlayerMovement : MonoBehaviour
             particle.Play(particle.dustParticle);
         }
 
-
         Flip();
         wasGrounded = IsGrounded();
     }
@@ -97,9 +95,10 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
+        // horizontal movement using InputManager
         rb.velocity = new Vector2(horizontal * playerSpeed, rb.velocity.y);
-    }
-    public bool IsJumping()
+}
+public bool IsJumping()
     {
         return !IsGrounded() && rb.velocity.y > 0f;
     }
