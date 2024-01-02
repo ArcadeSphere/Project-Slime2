@@ -16,7 +16,6 @@ public class KeyBindings : MonoBehaviour
     public Button playerAttackButton;
     public Button playerInteractButton;
 
-   
     public Button restoreDefaultsButton;
 
     private Button currentButton;
@@ -85,14 +84,15 @@ public class KeyBindings : MonoBehaviour
     {
         string buttonText = newKeyCode.ToString();
 
-       
         if (IsKeyAssignedToButton(buttonText))
         {
-            Debug.Log($"Key '{buttonText}' is already in use.");
+            
+            KeyCode newKey = FindUnusedKey();
+            button.GetComponentInChildren<Text>().text = newKey.ToString();
+            SaveKeyBindings();
         }
         else
         {
-            
             button.GetComponentInChildren<Text>().text = buttonText;
             SaveKeyBindings();
         }
@@ -108,10 +108,26 @@ public class KeyBindings : MonoBehaviour
                key == playerAttackButton.GetComponentInChildren<Text>().text ||
                key == playerInteractButton.GetComponentInChildren<Text>().text;
     }
+    // Find the unused key
+    private KeyCode FindUnusedKey()
+    {
+      
+        foreach (KeyCode keyCode in Enum.GetValues(typeof(KeyCode)))
+        {
+            if (!IsKeyAssignedToButton(keyCode.ToString()))
+            {
+                return keyCode;
+            }
+        }
 
+        
+        return KeyCode.Space;
+    }
+
+    // Load existing key bindings to buttons
     private void LoadKeyBindingsToButtons()
     {
-        // Load existing key bindings to buttons
+        
         jumpButton.GetComponentInChildren<Text>().text = inputManager.jumpKey;
         moveLeftButton.GetComponentInChildren<Text>().text = inputManager.moveLeftKey;
         moveRightButton.GetComponentInChildren<Text>().text = inputManager.moveRightKey;
