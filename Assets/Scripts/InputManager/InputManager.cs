@@ -1,19 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class InputManager : MonoBehaviour
 {
     public static InputManager instance;
 
     // Define your input here as strings
     public string jumpKey = "Jump";
-    public string moveLeftKey = "a";
-    public string moveRightKey = "d";
+    public string moveLeftKey = "A";
+    public string moveRightKey = "D";
     public string dashKey = "LeftShift";
-    public string platformDisableKey = "s";
-    public string playerAttackKey = "j"; 
-
+    public string platformDisableKey = "S";
+    public string playerAttackKey = "J";
+    public string playerInteractKey = "E";
     private void Awake()
     {
         if (instance == null)
@@ -60,6 +60,7 @@ public class InputManager : MonoBehaviour
         return Input.GetKeyDown(GetKeyCode(dashKey));
     }
 
+
     public bool GetPlatformDisableInputDown()
     {
         return Input.GetKeyDown(GetKeyCode(platformDisableKey));
@@ -68,6 +69,10 @@ public class InputManager : MonoBehaviour
     public bool GetPlayerAttackInputDown()
     {
         return Input.GetKeyDown(GetKeyCode(playerAttackKey));
+    }
+    public bool GetPlayerInteractInputDown()
+    {
+        return Input.GetKeyDown(GetKeyCode(playerInteractKey));
     }
 
     // Save keybindings to PlayerPrefs
@@ -79,32 +84,35 @@ public class InputManager : MonoBehaviour
         PlayerPrefs.SetString("DashKey", dashKey);
         PlayerPrefs.SetString("PlatformDisableKey", platformDisableKey);
         PlayerPrefs.SetString("PlayerAttackKey", playerAttackKey);
+        PlayerPrefs.SetString("PlayerInteractKey", playerInteractKey);
     }
 
     // Load keybindings
     public void LoadKeybindings()
     {
-        jumpKey = PlayerPrefs.GetString("JumpKey", "space");
-        moveLeftKey = PlayerPrefs.GetString("MoveLeftKey", "a");
-        moveRightKey = PlayerPrefs.GetString("MoveRightKey", "d");
+        jumpKey = PlayerPrefs.GetString("JumpKey", "Space");
+        moveLeftKey = PlayerPrefs.GetString("MoveLeftKey", "A");
+        moveRightKey = PlayerPrefs.GetString("MoveRightKey", "D");
         dashKey = PlayerPrefs.GetString("DashKey", "LeftShift");
-        platformDisableKey = PlayerPrefs.GetString("PlatformDisableKey", "s");
-        playerAttackKey = PlayerPrefs.GetString("PlayerAttackKey", "j");
+        platformDisableKey = PlayerPrefs.GetString("PlatformDisableKey", "S");
+        playerAttackKey = PlayerPrefs.GetString("PlayerAttackKey", "J");
+        playerInteractKey = PlayerPrefs.GetString("PlayerInteractKey","E");
     }
     // Load the defualt keybindings
     public void LoadDefaultKeybindings()
     {
-        jumpKey = "space";
-        moveLeftKey = "a";
-        moveRightKey = "d";
+        jumpKey = "Space";
+        moveLeftKey = "A";
+        moveRightKey = "D";
         dashKey = "LeftShift";
-        platformDisableKey = "s";
-        playerAttackKey = "Fire1";
+        platformDisableKey = "S";
+        playerAttackKey = "J";
+        playerInteractKey = "E";
     }
 
 
 // Method to convert string to KeyCode
-public KeyCode GetKeyCode(string keyName)
+   public KeyCode GetKeyCode(string keyName)
     {
         return (KeyCode)System.Enum.Parse(typeof(KeyCode), keyName, true);
     }
