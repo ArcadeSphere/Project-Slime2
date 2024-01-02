@@ -19,6 +19,7 @@ public class Health : MonoBehaviour
     [SerializeField] private AudioClip hurtSound;
     [SerializeField] private AudioClip deadSound;
     [SerializeField] private float delaySoundInSeconds = 2.0f;
+    private ParticleManager particle;
     
     private void Awake()
     {
@@ -26,6 +27,7 @@ public class Health : MonoBehaviour
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        particle = ParticleManager.Instance;
     }
     public void TakeDamage(float _damage)
     {
@@ -34,6 +36,9 @@ public class Health : MonoBehaviour
 
         if (currenthealth > 0)
         {
+            if (this.CompareTag("Enemy") && particle != null)
+                particle.Play(particle.hitParticle);
+
             flashing.flash_time();
             AudioManager.instance.PlaySoundEffects(hurtSound);
             StartCoroutine(BeInvincible());
