@@ -16,14 +16,14 @@ public class KeyBindings : MonoBehaviour
     public Button playerAttackButton;
     public Button playerInteractButton;
 
-    public Button saveButton;
+   
     public Button restoreDefaultsButton;
 
     private Button currentButton;
 
     void Start()
     {
-       //add listner here
+        // Add listener here
         AddButtonListener(jumpButton);
         AddButtonListener(moveLeftButton);
         AddButtonListener(moveRightButton);
@@ -31,8 +31,6 @@ public class KeyBindings : MonoBehaviour
         AddButtonListener(platformDisableButton);
         AddButtonListener(playerAttackButton);
         AddButtonListener(playerInteractButton);
-
-    
 
         LoadKeyBindingsToButtons();
     }
@@ -45,8 +43,8 @@ public class KeyBindings : MonoBehaviour
             foreach (KeyCode keyCode in Enum.GetValues(typeof(KeyCode)))
             {
                 if (Input.GetKeyDown(keyCode) && keyCode != KeyCode.None)
-                {  
-                    currentButton.GetComponentInChildren<Text>().text = keyCode.ToString();
+                {
+                    SetButtonKey(currentButton, keyCode);
                     currentButton = null;
                 }
             }
@@ -58,10 +56,8 @@ public class KeyBindings : MonoBehaviour
         button.onClick.AddListener(() => SetCurrentButton(button));
     }
 
-    // Save the updated key bindings to the InputManager
-    public void SaveKeyBindings()
+    private void SaveKeyBindings()
     {
-        
         inputManager.jumpKey = jumpButton.GetComponentInChildren<Text>().text;
         inputManager.moveLeftKey = moveLeftButton.GetComponentInChildren<Text>().text;
         inputManager.moveRightKey = moveRightButton.GetComponentInChildren<Text>().text;
@@ -72,7 +68,6 @@ public class KeyBindings : MonoBehaviour
         inputManager.SaveKeybindings();
     }
 
-
     public void RestoreDefaults()
     {
         inputManager.LoadDefaultKeybindings();
@@ -82,9 +77,36 @@ public class KeyBindings : MonoBehaviour
     private void SetCurrentButton(Button button)
     {
         currentButton = button;
-
-        
         currentButton.GetComponentInChildren<Text>().text = "Waiting";
+    }
+
+    // Check if the new key is already assigned to another button
+    private void SetButtonKey(Button button, KeyCode newKeyCode)
+    {
+        string buttonText = newKeyCode.ToString();
+
+       
+        if (IsKeyAssignedToButton(buttonText))
+        {
+            Debug.Log($"Key '{buttonText}' is already in use.");
+        }
+        else
+        {
+            
+            button.GetComponentInChildren<Text>().text = buttonText;
+            SaveKeyBindings();
+        }
+    }
+
+    private bool IsKeyAssignedToButton(string key)
+    {
+        return key == jumpButton.GetComponentInChildren<Text>().text ||
+               key == moveLeftButton.GetComponentInChildren<Text>().text ||
+               key == moveRightButton.GetComponentInChildren<Text>().text ||
+               key == dashButton.GetComponentInChildren<Text>().text ||
+               key == platformDisableButton.GetComponentInChildren<Text>().text ||
+               key == playerAttackButton.GetComponentInChildren<Text>().text ||
+               key == playerInteractButton.GetComponentInChildren<Text>().text;
     }
 
     private void LoadKeyBindingsToButtons()
