@@ -72,10 +72,7 @@ public class MeleeGoblin : MonoBehaviour
     {
         isPatrolling = false;
         anim.SetFloat("moveSpeed", 0f);
-        if (stopCoroutine == null)
-        {
-            stopCoroutine = StartCoroutine(StopAndFlipForDuration());
-        }
+        stopCoroutine ??= StartCoroutine(StopAndFlipForDuration());
     }
     private void FlipGoblin()
     {
