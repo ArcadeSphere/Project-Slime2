@@ -55,7 +55,8 @@ public class PlayerMovement : MonoBehaviour
         // jump using InputManager
         if (inputManager.GetJumpInput() && IsGrounded())
         {
-            particle.Play(particle.dustParticle);
+            if (particle)
+                particle.Play(particle.dustParticle);
             AudioManager.instance.PlaySoundEffects(jumpSound);
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
@@ -67,7 +68,8 @@ public class PlayerMovement : MonoBehaviour
         // dash using InputManager
         if (inputManager.GetDashInputDown() && canDash)
         {
-            particle.Play(particle.dashParticle);
+            if (particle)
+                particle.Play(particle.dashParticle);
             StartCoroutine(Dash());
         }
 
@@ -82,7 +84,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (Landed())
         {
-            particle.Play(particle.dustParticle);
+            if (particle)
+                particle.Play(particle.dustParticle);
         }
 
         Flip();
