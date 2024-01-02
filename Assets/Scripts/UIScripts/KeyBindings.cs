@@ -19,11 +19,11 @@ public class KeyBindings : MonoBehaviour
     public Button saveButton;
     public Button restoreDefaultsButton;
 
-    private Button currentButton; // To track the currently selected button
+    private Button currentButton;
 
     void Start()
     {
-        // Add listeners to buttons
+       //add listner here
         AddButtonListener(jumpButton);
         AddButtonListener(moveLeftButton);
         AddButtonListener(moveRightButton);
@@ -45,11 +45,8 @@ public class KeyBindings : MonoBehaviour
             foreach (KeyCode keyCode in Enum.GetValues(typeof(KeyCode)))
             {
                 if (Input.GetKeyDown(keyCode) && keyCode != KeyCode.None)
-                {
-                    // Assign the key to the selected button's text
+                {  
                     currentButton.GetComponentInChildren<Text>().text = keyCode.ToString();
-
-                    // Reset the waiting state
                     currentButton = null;
                 }
             }
@@ -61,9 +58,10 @@ public class KeyBindings : MonoBehaviour
         button.onClick.AddListener(() => SetCurrentButton(button));
     }
 
+    // Save the updated key bindings to the InputManager
     public void SaveKeyBindings()
     {
-        // Save the updated key bindings to the InputManager
+        
         inputManager.jumpKey = jumpButton.GetComponentInChildren<Text>().text;
         inputManager.moveLeftKey = moveLeftButton.GetComponentInChildren<Text>().text;
         inputManager.moveRightKey = moveRightButton.GetComponentInChildren<Text>().text;
@@ -71,8 +69,6 @@ public class KeyBindings : MonoBehaviour
         inputManager.platformDisableKey = platformDisableButton.GetComponentInChildren<Text>().text;
         inputManager.playerAttackKey = playerAttackButton.GetComponentInChildren<Text>().text;
         inputManager.playerInteractKey = playerInteractButton.GetComponentInChildren<Text>().text;
-
-        // Save to PlayerPrefs
         inputManager.SaveKeybindings();
     }
 
@@ -87,8 +83,8 @@ public class KeyBindings : MonoBehaviour
     {
         currentButton = button;
 
-        // Change the text to indicate that the button is waiting for input
-        currentButton.GetComponentInChildren<Text>().text = "Awaiting input...";
+        
+        currentButton.GetComponentInChildren<Text>().text = "Waiting";
     }
 
     private void LoadKeyBindingsToButtons()
