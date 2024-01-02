@@ -16732,7 +16732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1195691648050221752, guid: 3c1a2bd57ea9fce4e8be8247cd3203fb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1195691648050221755, guid: 3c1a2bd57ea9fce4e8be8247cd3203fb, type: 3}
       propertyPath: m_Pivot.x
@@ -16817,6 +16817,10 @@ PrefabInstance:
     - target: {fileID: 1195691648050221755, guid: 3c1a2bd57ea9fce4e8be8247cd3203fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195691648233994590, guid: 3c1a2bd57ea9fce4e8be8247cd3203fb, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 1195691648233994591, guid: 3c1a2bd57ea9fce4e8be8247cd3203fb, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -17155,7 +17159,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1489363107841865856
 MonoBehaviour:
   m_ObjectHideFlags: 0

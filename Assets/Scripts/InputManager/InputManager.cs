@@ -116,7 +116,7 @@ public class InputManager : MonoBehaviour
 
 
     // Method to convert string to KeyCode
-    public KeyCode GetKeyCode(string keyName)
+   public KeyCode GetKeyCode(string keyName)
     {
         if (keyName.StartsWith("Arrow") || keyName.StartsWith("Alpha"))
         {
