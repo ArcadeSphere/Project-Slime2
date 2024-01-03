@@ -71,6 +71,7 @@ public class KeyBindings : MonoBehaviour
     {
         inputManager.LoadDefaultKeybindings();
         LoadKeyBindingsToButtons();
+        SaveKeyBindings();
     }
 
     private void SetCurrentButton(Button button)
