@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
 public class PlayerMovement : MonoBehaviour
@@ -36,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private ParticleSystem dashParticle;
     [SerializeField] private ParticleSystem landParticle;
     private GameObject currentOneWayPlatform;
-
 
     void Update()
     {
