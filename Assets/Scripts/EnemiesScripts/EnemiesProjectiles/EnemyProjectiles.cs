@@ -61,6 +61,15 @@ public class EnemyProjectiles : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
+            Vector3 hitDirection = other.transform.position - transform.position;
+            if (hitDirection.x < 0)
+            {
+                other.GetComponent<Health>().Instance.PlayHitParticleRight();
+            }
+            else
+            {
+                other.GetComponent<Health>().Instance.PlayHitParticleLeft();
+            }
             AudioManager.instance.PlaySoundEffects(explodeSound);
             Instantiate(explodeanimation, transform.position, Quaternion.identity);
             Destroy(gameObject);

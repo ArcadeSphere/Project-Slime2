@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 public class Health : MonoBehaviour
 {
-  
+    public Health Instance { get; private set; }
     [SerializeField] private float startinglives;
     public float currenthealth { get; private set; }
     private Animator anim;
@@ -23,6 +23,7 @@ public class Health : MonoBehaviour
     
     private void Awake()
     {
+        Instance = this;
         currenthealth = startinglives;
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
@@ -35,7 +36,7 @@ public class Health : MonoBehaviour
 
         if (currenthealth > 0)
         {
-            if (hitParticle)
+            if (hitParticle && !this.CompareTag("Player"))
                 hitParticle.Play();
             flashing.flash_time();
             AudioManager.instance.PlaySoundEffects(hurtSound);
@@ -90,6 +91,17 @@ public class Health : MonoBehaviour
     private void PlayDeadSoundWithDelay()
     {
         AudioManager.instance.PlaySoundEffects(deadSound);
+    }
+
+    public void PlayHitParticleRight()
+    {
+        hitParticle.Play();
+    }
+
+    public void PlayHitParticleLeft()
+    {
+        hitParticle.transform.localScale = new Vector3(-1, 1, 1);
+        hitParticle.Play();
     }
 
 }
