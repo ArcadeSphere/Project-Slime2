@@ -37,7 +37,9 @@ public class Health : MonoBehaviour
         if (currenthealth > 0)
         {
             if (hitParticle && !this.CompareTag("Player"))
+            {
                 hitParticle.Play();
+            }
             flashing.flash_time();
             AudioManager.instance.PlaySoundEffects(hurtSound);
             StartCoroutine(BeInvincible());
