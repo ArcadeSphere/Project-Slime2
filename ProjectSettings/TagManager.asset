@@ -10,6 +10,7 @@ TagManager:
   - Checkpoint
   - MusicSlider
   - SoundSlider
+  - Projectiles
   layers:
   - Default
   - TransparentFX
