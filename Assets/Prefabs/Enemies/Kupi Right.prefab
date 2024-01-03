@@ -168,6 +168,7 @@ MonoBehaviour:
   hurtSound: {fileID: 0}
   deadSound: {fileID: 0}
   delaySoundInSeconds: 2
+  hitParticle: {fileID: 4291459341119245468}
 --- !u!114 &7125063384546372196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,7 +270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6706726140354032424, guid: 49b281e96ed4f8741912ccf97f730bdc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: -0.001
       objectReference: {fileID: 0}
     - target: {fileID: 6706726140354032424, guid: 49b281e96ed4f8741912ccf97f730bdc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -332,5 +333,10 @@ PrefabInstance:
 --- !u!4 &1852541045774333213 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6706726140354032424, guid: 49b281e96ed4f8741912ccf97f730bdc, type: 3}
+  m_PrefabInstance: {fileID: 4946816750333543989}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4291459341119245468 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9162797916738587305, guid: 49b281e96ed4f8741912ccf97f730bdc, type: 3}
   m_PrefabInstance: {fileID: 4946816750333543989}
   m_PrefabAsset: {fileID: 0}
