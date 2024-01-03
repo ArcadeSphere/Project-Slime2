@@ -35,7 +35,7 @@ public class Health : MonoBehaviour
 
         if (currenthealth > 0)
         {
-            if (this.CompareTag("Enemy") && hitParticle)
+            if (hitParticle)
                 hitParticle.Play();
             flashing.flash_time();
             AudioManager.instance.PlaySoundEffects(hurtSound);
