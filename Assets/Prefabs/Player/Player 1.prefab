@@ -47,7 +47,6 @@ GameObject:
   - component: {fileID: 6668556315200423104}
   - component: {fileID: 1533723069051085715}
   - component: {fileID: 1533723069051085724}
-  - component: {fileID: 8897627460364154430}
   - component: {fileID: 3966938208284672226}
   - component: {fileID: 3966938208284672227}
   m_Layer: 10
@@ -278,21 +277,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashmat: {fileID: 2100000, guid: cf3bfe283e9a3974fb638db04c791129, type: 2}
   flashduration: 0.2
---- !u!114 &8897627460364154430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1533723069051085723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f0400a0bcb834441bfd53b5029c813d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dustParticle: {fileID: 3655553559411361504}
-  dashParticle: {fileID: 4105686032128401369}
-  hitParticle: {fileID: 0}
 --- !u!114 &3966938208284672226
 MonoBehaviour:
   m_ObjectHideFlags: 0

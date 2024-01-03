@@ -46,7 +46,6 @@ GameObject:
   - component: {fileID: 7125063384546372506}
   - component: {fileID: 7125063384546372504}
   - component: {fileID: 7766122640385485301}
-  - component: {fileID: 2412590526820501838}
   m_Layer: 11
   m_Name: Kupi Right
   m_TagString: Enemy
@@ -249,21 +248,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2412590526820501838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7125063384546372192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f0400a0bcb834441bfd53b5029c813d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dustParticle: {fileID: 0}
-  dashParticle: {fileID: 0}
-  hitParticle: {fileID: 4291459341119245468}
 --- !u!1001 &4946816750333543989
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -348,10 +332,5 @@ PrefabInstance:
 --- !u!4 &1852541045774333213 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6706726140354032424, guid: 49b281e96ed4f8741912ccf97f730bdc, type: 3}
-  m_PrefabInstance: {fileID: 4946816750333543989}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &4291459341119245468 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 9162797916738587305, guid: 49b281e96ed4f8741912ccf97f730bdc, type: 3}
   m_PrefabInstance: {fileID: 4946816750333543989}
   m_PrefabAsset: {fileID: 0}

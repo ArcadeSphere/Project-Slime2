@@ -30,13 +30,13 @@ public class PlayerMovement : MonoBehaviour
     [Header("Platform Disabler")]
     [SerializeField] private BoxCollider2D playerBoxCollider;
     [SerializeField] private float platformDisableDuration = 0.2f;
+
+    [Header("Particle")]
+    [SerializeField] private ParticleSystem jumpParticle;
+    [SerializeField] private ParticleSystem dashParticle;
+    [SerializeField] private ParticleSystem landParticle;
     private GameObject currentOneWayPlatform;
-    private ParticleManager particle;
 
-
-    private void Start() {
-        particle = ParticleManager.Instance;    
-    }
 
     void Update()
     {
@@ -55,8 +55,7 @@ public class PlayerMovement : MonoBehaviour
         // jump using InputManager
         if (inputManager.GetJumpInput() && IsGrounded())
         {
-            if (particle)
-                particle.Play(particle.dustParticle);
+            jumpParticle.Play();
             AudioManager.instance.PlaySoundEffects(jumpSound);
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
@@ -68,8 +67,7 @@ public class PlayerMovement : MonoBehaviour
         // dash using InputManager
         if (inputManager.GetDashInputDown() && canDash)
         {
-            if (particle)
-                particle.Play(particle.dashParticle);
+            dashParticle.Play();
             StartCoroutine(Dash());
         }
 
@@ -84,8 +82,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Landed())
         {
-            if (particle)
-                particle.Play(particle.dustParticle);
+            landParticle.Play();
         }
 
         Flip();
