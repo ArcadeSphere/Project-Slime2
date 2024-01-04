@@ -135,7 +135,7 @@ public class GobbyAxe : MonoBehaviour
 
     private void ChasePlayer()
     {
-        // Activate the indicator immediately when the player is detected
+        
         ActivateDetectionIndicator(true);
 
         Vector2 directionToPlayer = playerTransform.position - transform.position;
@@ -166,6 +166,7 @@ public class GobbyAxe : MonoBehaviour
             ActivateDetectionIndicator(false);
         }
     }
+    // Activate the indicator immediately when the player is detected
     private void ActivateDetectionIndicator(bool activate)
     {
         if (detectionIndicator != null)
