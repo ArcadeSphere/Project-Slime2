@@ -3014,7 +3014,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 717122630}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -95.65, y: 17.83, z: 0}
+  m_LocalPosition: {x: -59.42, y: 17.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 958604557}
@@ -4457,9 +4457,11 @@ GameObject:
   - component: {fileID: 997107232}
   - component: {fileID: 997107238}
   - component: {fileID: 997107237}
-  m_Layer: 0
+  - component: {fileID: 997107239}
+  - component: {fileID: 997107236}
+  m_Layer: 11
   m_Name: AdvanceGobby
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4479,7 +4481,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 100
   m_Material: {fileID: 6200000, guid: 7612ef1708b70c74c9930c8fe0493b2a, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -4579,6 +4581,20 @@ Transform:
   m_Father: {fileID: 1088848448}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &997107236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997107231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b9d9732d53df364294b91ab45daca5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashmat: {fileID: 2100000, guid: cf3bfe283e9a3974fb638db04c791129, type: 2}
+  flashduration: 0.2
 --- !u!95 &997107237
 Animator:
   serializedVersion: 3
@@ -4610,18 +4626,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e600b261e2c2e94c8c27d4b58e62ceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolSpeed: 4
-  chaseSpeed: 3
-  stopDistance: 1
-  patrolStopDuration: 2
-  turnDelay: 2
-  chaseDetectorSize: {x: 9.62, y: 3.43}
-  chaseDetectorOriginOffset: {x: 2.1, y: 0.62}
+  chaseDetectorSize: {x: 8.26, y: 3.5}
+  chaseDetectorOriginOffset: {x: 2.66, y: -0.01}
   attackDetectionRange: 1.05
+  chaseDetectionZoneOrigin: {fileID: 1388348272}
+  chaseSpeed: 4
+  stopDistance: 0.6
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  damageAmount: 1
+  attackDetectionZoneOrigin: {fileID: 1724628117}
+  attackSound: {fileID: 8300000, guid: dc1fe11ad16134c4aa4718b6fe89a350, type: 3}
+  attackCooldown: 1.5
   patrolPoint1: {fileID: 1986566327}
   patrolPoint2: {fileID: 1380716714}
-  chaseDetectionZoneOrigin: {fileID: 1388348272}
-  attackDetectionZoneOrigin: {fileID: 1724628117}
+  patrolSpeed: 4
+  patrolStopDuration: 2
+  turnDelay: 1
+--- !u!114 &997107239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997107231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f0cd728379b7549bb530c7f11fbea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startinglives: 5
+  Framesduration: 0
+  numberOfFlashes: 0
+  behviourcomponents: []
+  flashing: {fileID: 997107236}
+  rb: {fileID: 997107232}
+  hurtSound: {fileID: 0}
+  deadSound: {fileID: 0}
+  delaySoundInSeconds: 2
+  hitParticle: {fileID: 1341439948}
 --- !u!1 &998668598
 GameObject:
   m_ObjectHideFlags: 0
@@ -7714,6 +7758,22 @@ CompositeCollider2D:
         Y: 119999900
       - X: -159999959
         Y: 119999900
+    - - X: 200000100
+        Y: 119999959
+      - X: 200000100
+        Y: 140000041
+      - X: 200000041
+        Y: 140000100
+      - X: 139999959
+        Y: 140000100
+      - X: 139999900
+        Y: 140000041
+      - X: 139999900
+        Y: 119999959
+      - X: 139999959
+        Y: 119999900
+      - X: 200000041
+        Y: 119999900
     - - X: 120000100
         Y: 79999959
       - X: 120000100
@@ -7848,6 +7908,10 @@ CompositeCollider2D:
       - {x: -16.000027, y: 14.00001}
       - {x: -22.00001, y: 13.999974}
       - {x: -21.999975, y: 11.99999}
+    - - {x: 19.999975, y: 11.99999}
+      - {x: 19.999975, y: 14.00001}
+      - {x: 13.99999, y: 13.999974}
+      - {x: 14.000026, y: 11.99999}
     - - {x: 11.999974, y: 7.9999905}
       - {x: 11.999974, y: 12.00001}
       - {x: -11.937513, y: 12.000001}
@@ -15396,6 +15460,36 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 7, y: 6, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 8
+      m_TileSpriteIndex: 8
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 8, y: 6, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 8
+      m_TileSpriteIndex: 8
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 9, y: 6, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 8
+      m_TileSpriteIndex: 8
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 4
@@ -15414,7 +15508,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 5c42a34564a3e8c4b8a91aa036afc741, type: 2}
   - m_RefCount: 10
     m_Data: {fileID: 11400000, guid: 17f3dcb7061e7fd458705ed19e2d75a9, type: 2}
-  - m_RefCount: 105
+  - m_RefCount: 108
     m_Data: {fileID: 11400000, guid: 16e537d689263fc44b7beba26c3ab360, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 4
@@ -15433,10 +15527,10 @@ Tilemap:
     m_Data: {fileID: -4859693459986566098, guid: c55f3403377268b4082b753955febbdc, type: 3}
   - m_RefCount: 10
     m_Data: {fileID: -8782850627054004481, guid: c55f3403377268b4082b753955febbdc, type: 3}
-  - m_RefCount: 105
+  - m_RefCount: 108
     m_Data: {fileID: 7750939087026037608, guid: c55f3403377268b4082b753955febbdc, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 741
+  - m_RefCount: 744
     m_Data:
       e00: 1
       e01: 0
@@ -15455,7 +15549,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 741
+  - m_RefCount: 744
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1

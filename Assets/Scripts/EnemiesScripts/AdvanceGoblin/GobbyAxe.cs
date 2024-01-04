@@ -1,26 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Serialization;
 public class GobbyAxe : MonoBehaviour
 {
+    [Header("Goblin Detection Settings")]
     private Animator anim;
     private Transform playerTransform;
-
-    [SerializeField] private float patrolSpeed = 3f;
-    [SerializeField] private float chaseSpeed = 5f;
-    [SerializeField] private float stopDistance = 1.5f;
-    [SerializeField] private float patrolStopDuration = 2f;
-    [SerializeField] private float turnDelay = 1f;
     [SerializeField] private Vector2 chaseDetectorSize = Vector2.one;
     public Vector2 chaseDetectorOriginOffset = Vector2.zero;
     public float attackDetectionRange = 1.5f;
+    public Transform chaseDetectionZoneOrigin;
+    
+    
+    [Header("Goblin ChaseAttack Settings")]
+    [SerializeField] private float chaseSpeed = 5f;
+    [SerializeField] private float stopDistance = 1.5f;
+    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private float damageAmount;
+    public Transform attackDetectionZoneOrigin;
+    [SerializeField] private AudioClip attackSound;
+    [SerializeField] private float delaySoundInSeconds = 2.0f;
+    [SerializeField] private float attackCooldown = 2f;
+    private bool isCooldown = false;
 
+
+    [Header("Goblin Patrol Settings")]
     public Transform patrolPoint1;
     public Transform patrolPoint2;
-    public Transform chaseDetectionZoneOrigin;
-    public Transform attackDetectionZoneOrigin;
+    [SerializeField] private float patrolSpeed = 3f;
+    [SerializeField] private float patrolStopDuration = 2f;
+    [SerializeField] private float turnDelay = 1f;
+    private bool isFacingRight = true;
+    private bool isTurning = false;
 
+    //Gobby different states
     private enum GobbyAxeState
     {
         Patrol,
@@ -30,11 +44,7 @@ public class GobbyAxe : MonoBehaviour
     }
 
     private GobbyAxeState currentState = GobbyAxeState.Patrol;
-    private float attackCooldown = 2f;
-    private bool isCooldown = false;
-    private bool isFacingRight = true;
-    private bool isTurning = false;
-
+    
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -69,15 +79,7 @@ public class GobbyAxe : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(chaseDetectionZoneOrigin.position + (Vector3)chaseDetectorOriginOffset, new Vector3(chaseDetectorSize.x, chaseDetectorSize.y, 1f));
-
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(attackDetectionZoneOrigin.position, attackDetectionRange);
-    }
-
+    //patrolling state
     private void Patrol()
     {
         if (isFacingRight && !isTurning)
@@ -122,7 +124,8 @@ public class GobbyAxe : MonoBehaviour
         isTurning = false;
         Flip();
     }
-
+    
+    //chasing state
     private void ChasePlayer()
     {
         Vector2 directionToPlayer = playerTransform.position - transform.position;
@@ -163,15 +166,17 @@ public class GobbyAxe : MonoBehaviour
         transform.Translate(Vector2.zero);
         currentState = GobbyAxeState.Attack;
     }
+    //checks whether player is in attacking range
     private bool IsPlayerInAttackRange(float distanceToPlayer)
     {
         return distanceToPlayer < attackDetectionRange;
     }
 
+    //attacking state
     private void Attack()
     {
         anim.SetTrigger("AttackPlayer");
-
+        AudioManager.instance.PlaySoundEffects(attackSound);
         currentState = GobbyAxeState.Cooldown;
         isCooldown = true;
         Invoke("EndCooldown", attackCooldown);
@@ -189,7 +194,18 @@ public class GobbyAxe : MonoBehaviour
     {
         isCooldown = false;
     }
+    public void GobbyDamagePlayer()
+    {
+        Collider2D[] hittarget = Physics2D.OverlapCircleAll(attackDetectionZoneOrigin.position, attackDetectionRange, playerLayer);
 
+        foreach (Collider2D target in hittarget)
+        {
+            target.GetComponent<Health>().TakeDamage(damageAmount);
+        }
+    }
+
+
+    //detection zone to chase player
     private bool IsPlayerInChaseDetectionZone()
     {
         float distanceToPlayerX = Mathf.Abs(transform.position.x - playerTransform.position.x);
@@ -222,5 +238,17 @@ public class GobbyAxe : MonoBehaviour
                 Flip();
             }
         }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(chaseDetectionZoneOrigin.position + (Vector3)chaseDetectorOriginOffset, new Vector3(chaseDetectorSize.x, chaseDetectorSize.y, 1f));
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(attackDetectionZoneOrigin.position, attackDetectionRange);
+    }
+    private void PlaySoundWithDelay()
+    {
+        AudioManager.instance.PlaySoundEffects(attackSound);
     }
 }
