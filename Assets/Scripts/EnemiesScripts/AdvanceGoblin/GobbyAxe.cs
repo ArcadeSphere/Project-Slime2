@@ -86,6 +86,7 @@ public class GobbyAxe : MonoBehaviour
             {
                 isTurning = true;
                 StartCoroutine(TurnDelay());
+           
             }
         }
         else if (!isFacingRight && !isTurning)
@@ -95,18 +96,26 @@ public class GobbyAxe : MonoBehaviour
             {
                 isTurning = true;
                 StartCoroutine(TurnDelay());
+             
             }
         }
 
         if (IsPlayerInChaseDetectionZone())
         {
             currentState = GobbyAxeState.Chase;
+            anim.SetFloat("moveSpeed", 1f);  // Set moveSpeed to chaseSpeed
+        }
+        else
+        {
+            anim.SetFloat("moveSpeed", 1f);  
         }
     }
 
     private IEnumerator TurnDelay()
     {
+  
         yield return new WaitForSeconds(turnDelay);
+        anim.SetFloat("moveSpeed", 0f);
         isTurning = false;
         Flip();
     }
@@ -118,31 +127,39 @@ public class GobbyAxe : MonoBehaviour
 
         FlipTowardsPlayer();
 
-        transform.Translate(directionToPlayer * chaseSpeed * Time.deltaTime);
-
         float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
 
         if (distanceToPlayer > stopDistance)
         {
-            // Continue chase logic
+            MoveTowardsPlayer(directionToPlayer);
+            anim.SetFloat("moveSpeed", 1f);
         }
         else
         {
-            transform.Translate(Vector2.zero);
-            currentState = GobbyAxeState.Attack;
-            return;
+            StopAndAttack();
         }
 
         if (IsPlayerInAttackRange(distanceToPlayer))
         {
-            currentState = GobbyAxeState.Attack;
+            StopAndAttack();
         }
         else if (!IsPlayerInChaseDetectionZone())
         {
             currentState = GobbyAxeState.Patrol;
+            anim.SetFloat("moveSpeed", 0f);  
         }
     }
+    private void MoveTowardsPlayer(Vector2 direction)
+    {
+        transform.Translate(direction * chaseSpeed * Time.deltaTime);
+    }
 
+    private void StopAndAttack()
+    {
+        anim.SetFloat("moveSpeed", 0f);
+        transform.Translate(Vector2.zero);
+        currentState = GobbyAxeState.Attack;
+    }
     private bool IsPlayerInAttackRange(float distanceToPlayer)
     {
         return distanceToPlayer < attackDetectionRange;
