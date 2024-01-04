@@ -4638,6 +4638,7 @@ MonoBehaviour:
   damageAmount: 1
   attackDetectionZoneOrigin: {fileID: 1724628117}
   attackSound: {fileID: 8300000, guid: dc1fe11ad16134c4aa4718b6fe89a350, type: 3}
+  delaySoundInSeconds: 2
   attackCooldown: 1.5
   patrolPoint1: {fileID: 1986566327}
   patrolPoint2: {fileID: 1380716714}
@@ -4664,7 +4665,7 @@ MonoBehaviour:
   rb: {fileID: 997107232}
   hurtSound: {fileID: 0}
   deadSound: {fileID: 0}
-  delaySoundInSeconds: 2
+  delaySoundInSeconds: 0.02
   hitParticle: {fileID: 1341439948}
 --- !u!1 &998668598
 GameObject:
