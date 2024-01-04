@@ -4613,7 +4613,8 @@ MonoBehaviour:
   patrolSpeed: 4
   chaseSpeed: 3
   stopDistance: 1
-  turnDelay: 1
+  patrolStopDuration: 2
+  turnDelay: 2
   chaseDetectorSize: {x: 9.62, y: 3.43}
   chaseDetectorOriginOffset: {x: 2.1, y: 0.62}
   attackDetectionRange: 1.05

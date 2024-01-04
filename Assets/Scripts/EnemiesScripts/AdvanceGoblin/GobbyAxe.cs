@@ -10,6 +10,7 @@ public class GobbyAxe : MonoBehaviour
     [SerializeField] private float patrolSpeed = 3f;
     [SerializeField] private float chaseSpeed = 5f;
     [SerializeField] private float stopDistance = 1.5f;
+    [SerializeField] private float patrolStopDuration = 2f;
     [SerializeField] private float turnDelay = 1f;
     [SerializeField] private Vector2 chaseDetectorSize = Vector2.one;
     public Vector2 chaseDetectorOriginOffset = Vector2.zero;
@@ -86,7 +87,6 @@ public class GobbyAxe : MonoBehaviour
             {
                 isTurning = true;
                 StartCoroutine(TurnDelay());
-           
             }
         }
         else if (!isFacingRight && !isTurning)
@@ -96,26 +96,29 @@ public class GobbyAxe : MonoBehaviour
             {
                 isTurning = true;
                 StartCoroutine(TurnDelay());
-             
             }
         }
 
-        if (IsPlayerInChaseDetectionZone())
+        if (isTurning)
+        {
+            anim.SetFloat("moveSpeed", 0f);
+        }
+        else if (IsPlayerInChaseDetectionZone())
         {
             currentState = GobbyAxeState.Chase;
-            anim.SetFloat("moveSpeed", 1f);  // Set moveSpeed to chaseSpeed
+            anim.SetFloat("moveSpeed", 1f);
         }
         else
         {
-            anim.SetFloat("moveSpeed", 1f);  
+            anim.SetFloat("moveSpeed", 1f);
         }
     }
-
     private IEnumerator TurnDelay()
     {
-  
-        yield return new WaitForSeconds(turnDelay);
-        anim.SetFloat("moveSpeed", 0f);
+        anim.SetFloat("moveSpeed", 1f);
+
+        yield return new WaitForSeconds(patrolStopDuration);
+
         isTurning = false;
         Flip();
     }
