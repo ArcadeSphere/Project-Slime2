@@ -1,34 +1,28 @@
 fileFormatVersion: 2
-guid: 8bf281ffb16829c4d83a51818fde2a6a
+guid: c9ecd05970739664e83cd2b51f758a22
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6844040475014123260
-    second: melee_goblin_movement_spritesheet22_0
+      213: 4874552369148479832
+    second: movement_spritesheet_0
   - first:
-      213: -5500742853132092631
-    second: melee_goblin_movement_spritesheet22_1
+      213: 3028967609108873444
+    second: movement_spritesheet_1
   - first:
-      213: 8060966779429467395
-    second: melee_goblin_movement_spritesheet22_2
+      213: 1312203334885692276
+    second: movement_spritesheet_2
   - first:
-      213: 4083635014159156252
-    second: melee_goblin_movement_spritesheet22_3
+      213: -887437393338895050
+    second: movement_spritesheet_3
   - first:
-      213: 7388209831089605848
-    second: melee_goblin_movement_spritesheet22_4
+      213: 7039412648510446271
+    second: movement_spritesheet_4
   - first:
-      213: 5586316233566987645
-    second: melee_goblin_movement_spritesheet22_5
+      213: -7145011634852170598
+    second: movement_spritesheet_5
   - first:
-      213: 7664695848755951472
-    second: melee_goblin_movement_spritesheet22_6
-  - first:
-      213: 6061359692785812935
-    second: melee_goblin_movement_spritesheet22_7
-  - first:
-      213: 7586857443956383178
-    second: melee_goblin_movement_spritesheet22_8
+      213: 8692609889806771009
+    second: movement_spritesheet_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -130,13 +124,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: melee_goblin_movement_spritesheet22_0
+      name: movement_spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 63.88889
-        height: 62
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,20 +138,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 401336203751501a0800000000000000
-      internalID: -6844040475014123260
+      spriteID: 8594222ad83e5a340800000000000000
+      internalID: 4874552369148479832
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: melee_goblin_movement_spritesheet22_1
+      name: movement_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 63
+        x: 64
         y: 0
-        width: 63.88889
-        height: 62
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,20 +159,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92bfa4ee48f69a3b0800000000000000
-      internalID: -5500742853132092631
+      spriteID: 4e049190efd090a20800000000000000
+      internalID: 3028967609108873444
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: melee_goblin_movement_spritesheet22_2
+      name: movement_spritesheet_2
       rect:
         serializedVersion: 2
-        x: 126
+        x: 128
         y: 0
-        width: 63.88889
-        height: 62
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -186,20 +180,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3053e1ab39e4edf60800000000000000
-      internalID: 8060966779429467395
+      spriteID: 473d1f01bf1e53210800000000000000
+      internalID: 1312203334885692276
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: melee_goblin_movement_spritesheet22_3
+      name: movement_spritesheet_3
       rect:
         serializedVersion: 2
-        x: 189
+        x: 192
         y: 0
-        width: 63.88889
-        height: 62
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -207,20 +201,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c14cd4bc86cfba830800000000000000
-      internalID: 4083635014159156252
+      spriteID: 635f2a184603fa3f0800000000000000
+      internalID: -887437393338895050
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: melee_goblin_movement_spritesheet22_4
+      name: movement_spritesheet_4
       rect:
         serializedVersion: 2
-        x: 252
+        x: 256
         y: 0
-        width: 63.88889
-        height: 62
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,20 +222,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8dc052c62b1388660800000000000000
-      internalID: 7388209831089605848
+      spriteID: fba5bd5e18401b160800000000000000
+      internalID: 7039412648510446271
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: melee_goblin_movement_spritesheet22_5
+      name: movement_spritesheet_5
       rect:
         serializedVersion: 2
-        x: 315
+        x: 320
         y: 0
-        width: 63.88889
-        height: 62
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -249,20 +243,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7522c05405968d40800000000000000
-      internalID: 5586316233566987645
+      spriteID: a947a9426c1d7dc90800000000000000
+      internalID: -7145011634852170598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: melee_goblin_movement_spritesheet22_6
+      name: movement_spritesheet_6
       rect:
         serializedVersion: 2
-        x: 378
+        x: 384
         y: 0
-        width: 63.88889
-        height: 62
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -270,50 +264,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0777280e3487e5a60800000000000000
-      internalID: 7664695848755951472
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: melee_goblin_movement_spritesheet22_7
-      rect:
-        serializedVersion: 2
-        x: 441
-        y: 0
-        width: 63.88889
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7c58e50b6864e1450800000000000000
-      internalID: 6061359692785812935
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: melee_goblin_movement_spritesheet22_8
-      rect:
-        serializedVersion: 2
-        x: 504
-        y: 0
-        width: 63.88889
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: acd5c8cf5aee94960800000000000000
-      internalID: 7586857443956383178
+      spriteID: 143eafca3aa52a870800000000000000
+      internalID: 8692609889806771009
       vertices: []
       indices: 
       edges: []
