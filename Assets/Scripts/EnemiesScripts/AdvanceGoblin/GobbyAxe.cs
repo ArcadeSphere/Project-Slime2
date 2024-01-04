@@ -174,6 +174,13 @@ public class GobbyAxe : MonoBehaviour
             detectionIndicator.SetActive(activate);
         }
     }
+    public void DeactivateDetectionIndicator()
+    {
+        if (detectionIndicator != null)
+        {
+            detectionIndicator.SetActive(false);
+        }
+    }
     private void MoveTowardsPlayer(Vector2 direction)
     {
         transform.Translate(direction * chaseSpeed * Time.deltaTime);
@@ -184,7 +191,7 @@ public class GobbyAxe : MonoBehaviour
         anim.SetFloat("moveSpeed", 0f);
         transform.Translate(Vector2.zero);
         currentState = GobbyAxeState.Attack;
-        ActivateDetectionIndicator(false);
+        //ActivateDetectionIndicator(false);
     }
 
     private bool IsPlayerInAttackRange(float distanceToPlayer)
