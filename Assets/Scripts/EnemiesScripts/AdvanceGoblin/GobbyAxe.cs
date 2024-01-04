@@ -7,10 +7,12 @@ public class GobbyAxe : MonoBehaviour
     private Animator anim;
     private Transform playerTransform;
 
-    public float moveSpeedTowardsPlayer = 5f;
-    public float stopDistance = 1.5f;
-    public float chaseDetectionRangeX = 5f;
-    public float chaseDetectionRangeY = 2f;
+    [SerializeField] private float patrolSpeed = 3f;
+    [SerializeField] private float chaseSpeed = 5f;
+    [SerializeField] private float stopDistance = 1.5f;
+    [SerializeField] private float turnDelay = 1f;
+    [SerializeField] private Vector2 chaseDetectorSize = Vector2.one;
+    public Vector2 chaseDetectorOriginOffset = Vector2.zero;
     public float attackDetectionRange = 1.5f;
 
     public Transform patrolPoint1;
@@ -30,19 +32,18 @@ public class GobbyAxe : MonoBehaviour
     private float attackCooldown = 2f;
     private bool isCooldown = false;
     private bool isFacingRight = true;
+    private bool isTurning = false;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
 
-        
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
 
         if (playerObject != null)
         {
             playerTransform = playerObject.transform;
         }
-     
     }
 
     private void Update()
@@ -54,7 +55,7 @@ public class GobbyAxe : MonoBehaviour
                 break;
 
             case GobbyAxeState.Chase:
-                Chase();
+                ChasePlayer();
                 break;
 
             case GobbyAxeState.Attack:
@@ -69,115 +70,88 @@ public class GobbyAxe : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(chaseDetectionZoneOrigin.position, new Vector3(chaseDetectionRangeX * 2, chaseDetectionRangeY * 2, 1f));
+        Gizmos.DrawWireCube(chaseDetectionZoneOrigin.position + (Vector3)chaseDetectorOriginOffset, new Vector3(chaseDetectorSize.x, chaseDetectorSize.y, 1f));
 
-     
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(attackDetectionZoneOrigin.position, attackDetectionRange);
     }
 
     private void Patrol()
     {
-        
-        if (isFacingRight)
+        if (isFacingRight && !isTurning)
         {
-            transform.Translate(Vector2.right * moveSpeedTowardsPlayer * Time.deltaTime);
+            transform.Translate(Vector2.right * patrolSpeed * Time.deltaTime);
             if (transform.position.x > patrolPoint2.position.x)
             {
-                Flip();
+                isTurning = true;
+                StartCoroutine(TurnDelay());
             }
         }
-        else
+        else if (!isFacingRight && !isTurning)
         {
-            transform.Translate(Vector2.left * moveSpeedTowardsPlayer * Time.deltaTime);
+            transform.Translate(Vector2.left * patrolSpeed * Time.deltaTime);
             if (transform.position.x < patrolPoint1.position.x)
             {
-                Flip();
+                isTurning = true;
+                StartCoroutine(TurnDelay());
             }
         }
 
-    
         if (IsPlayerInChaseDetectionZone())
         {
             currentState = GobbyAxeState.Chase;
         }
     }
 
-    // Move towards the player
-    private void Chase()
+    private IEnumerator TurnDelay()
     {
-      
+        yield return new WaitForSeconds(turnDelay);
+        isTurning = false;
+        Flip();
+    }
+
+    private void ChasePlayer()
+    {
         Vector2 directionToPlayer = playerTransform.position - transform.position;
         directionToPlayer.Normalize();
 
-       
         FlipTowardsPlayer();
 
-   
-        transform.Translate(directionToPlayer * moveSpeedTowardsPlayer * Time.deltaTime);
+        transform.Translate(directionToPlayer * chaseSpeed * Time.deltaTime);
 
-      
         float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
 
-      
         if (distanceToPlayer > stopDistance)
         {
-            // Continue chasing
+            // Continue chase logic
         }
         else
         {
-            // Stop moving when close to the player
             transform.Translate(Vector2.zero);
             currentState = GobbyAxeState.Attack;
             return;
         }
 
-       
         if (IsPlayerInAttackRange(distanceToPlayer))
         {
-            
             currentState = GobbyAxeState.Attack;
         }
         else if (!IsPlayerInChaseDetectionZone())
         {
-      
             currentState = GobbyAxeState.Patrol;
         }
     }
 
     private bool IsPlayerInAttackRange(float distanceToPlayer)
     {
-        
         return distanceToPlayer < attackDetectionRange;
-    }
-    private void FlipTowardsPlayer()
-    {
-        if (playerTransform.position.x < transform.position.x)
-        {
-            
-            if (isFacingRight)
-            {
-                Flip();
-            }
-        }
-        else
-        {
-          
-            if (!isFacingRight)
-            {
-                Flip();
-            }
-        }
     }
 
     private void Attack()
     {
-  
         anim.SetTrigger("AttackPlayer");
 
- 
         currentState = GobbyAxeState.Cooldown;
         isCooldown = true;
         Invoke("EndCooldown", attackCooldown);
@@ -198,20 +172,35 @@ public class GobbyAxe : MonoBehaviour
 
     private bool IsPlayerInChaseDetectionZone()
     {
-   
         float distanceToPlayerX = Mathf.Abs(transform.position.x - playerTransform.position.x);
         float distanceToPlayerY = Mathf.Abs(transform.position.y - playerTransform.position.y);
 
-        return distanceToPlayerX < chaseDetectionRangeX && distanceToPlayerY < chaseDetectionRangeY;
+        return distanceToPlayerX < chaseDetectorSize.x * 0.5f && distanceToPlayerY < chaseDetectorSize.y * 0.5f;
     }
-
 
     private void Flip()
     {
-       
         isFacingRight = !isFacingRight;
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
+    }
+
+    private void FlipTowardsPlayer()
+    {
+        if (playerTransform.position.x < transform.position.x)
+        {
+            if (isFacingRight)
+            {
+                Flip();
+            }
+        }
+        else
+        {
+            if (!isFacingRight)
+            {
+                Flip();
+            }
+        }
     }
 }

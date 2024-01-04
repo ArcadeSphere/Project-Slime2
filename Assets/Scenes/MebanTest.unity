@@ -4610,10 +4610,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e600b261e2c2e94c8c27d4b58e62ceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeedTowardsPlayer: 5
+  patrolSpeed: 4
+  chaseSpeed: 3
   stopDistance: 1
-  chaseDetectionRangeX: 7.37
-  chaseDetectionRangeY: 1.4
+  turnDelay: 2
+  chaseDetectorSize: {x: 9.62, y: 3.43}
+  chaseDetectorOriginOffset: {x: 2.1, y: 0.62}
   attackDetectionRange: 1.05
   patrolPoint1: {fileID: 1986566327}
   patrolPoint2: {fileID: 1380716714}
@@ -6254,7 +6256,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1388348271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.407, y: -0.335, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 997107235}
