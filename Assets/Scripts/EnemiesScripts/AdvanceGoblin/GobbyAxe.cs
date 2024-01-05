@@ -11,6 +11,9 @@ public class GobbyAxe : MonoBehaviour
     public Vector2 chaseDetectorOriginOffset = Vector2.zero;
     public float attackDetectionRange = 1.5f;
     public Transform chaseDetectionZoneOrigin;
+    public GameObject detectionIndicator;
+    [SerializeField] private float detectionDelayDuration = 1.0f;
+    private float detectionDelayTimer;
 
     [Header("Goblin ChaseAttack Settings")]
     [SerializeField] private float chaseSpeed = 5f;
@@ -19,7 +22,6 @@ public class GobbyAxe : MonoBehaviour
     [SerializeField] private float damageAmount;
     public Transform attackDetectionZoneOrigin;
     [SerializeField] private AudioClip attackSound;
-    [SerializeField] private float delaySoundInSeconds = 2.0f;
     [SerializeField] private float attackCooldown = 2f;
     private bool isCooldown = false;
 
@@ -28,17 +30,15 @@ public class GobbyAxe : MonoBehaviour
     public Transform patrolPoint2;
     [SerializeField] private float patrolSpeed = 3f;
     [SerializeField] private float patrolStopDuration = 2f;
-    [SerializeField] private float turnDelay = 1f;
     private bool isFacingRight = true;
     private bool isTurning = false;
 
-    [Header("Detection Indicator")]
-    public GameObject detectionIndicator;
-
+ 
     //Gobby different states
     private enum GobbyAxeState
     {
         Patrol,
+        DetectionDelay,
         Chase,
         Attack,
         Cooldown
@@ -71,6 +71,10 @@ public class GobbyAxe : MonoBehaviour
                 Patrol();
                 break;
 
+            case GobbyAxeState.DetectionDelay:
+                DetectionDelay();
+                break;
+
             case GobbyAxeState.Chase:
                 ChasePlayer();
                 break;
@@ -84,7 +88,6 @@ public class GobbyAxe : MonoBehaviour
                 break;
         }
     }
-
     private void Patrol()
     {
         if (isFacingRight && !isTurning)
@@ -112,8 +115,9 @@ public class GobbyAxe : MonoBehaviour
         }
         else if (IsPlayerInChaseDetectionZone())
         {
-            currentState = GobbyAxeState.Chase;
-            anim.SetFloat("moveSpeed", 1f);
+            currentState = GobbyAxeState.DetectionDelay;
+            anim.SetFloat("moveSpeed", 0f);
+            detectionDelayTimer = detectionDelayDuration;
             ActivateDetectionIndicator(true);
         }
         else
@@ -132,10 +136,21 @@ public class GobbyAxe : MonoBehaviour
         isTurning = false;
         Flip();
     }
+    //Adds a dely before chasing
+    private void DetectionDelay()
+    {
+        detectionDelayTimer -= Time.deltaTime;
 
+        if (detectionDelayTimer <= 0f)
+        {
+            currentState = GobbyAxeState.Chase;
+            ActivateDetectionIndicator(true);
+        }
+    }
+    //chase state
     private void ChasePlayer()
     {
-        
+
         ActivateDetectionIndicator(true);
 
         Vector2 directionToPlayer = playerTransform.position - transform.position;
@@ -166,14 +181,17 @@ public class GobbyAxe : MonoBehaviour
             ActivateDetectionIndicator(false);
         }
     }
-    // Activate the indicator immediately when the player is detected
-    private void ActivateDetectionIndicator(bool activate)
-    {
+
+        // Activate the indicator immediately when the player is detected
+        private void ActivateDetectionIndicator(bool activate)
+     {
         if (detectionIndicator != null)
         {
             detectionIndicator.SetActive(activate);
         }
-    }
+     }
+
+    // Deactivate the indicator immediately when the player is not detected
     public void DeactivateDetectionIndicator()
     {
         if (detectionIndicator != null)

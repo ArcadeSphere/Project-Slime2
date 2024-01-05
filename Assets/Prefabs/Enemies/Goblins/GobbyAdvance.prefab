@@ -208,10 +208,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e600b261e2c2e94c8c27d4b58e62ceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseDetectorSize: {x: 8.26, y: 3.5}
-  chaseDetectorOriginOffset: {x: 2.66, y: -0.01}
+  chaseDetectorSize: {x: 7.82, y: 3.47}
+  chaseDetectorOriginOffset: {x: 2.51, y: -0.01}
   attackDetectionRange: 1.05
   chaseDetectionZoneOrigin: {fileID: 6260551168976719412}
+  detectionIndicator: {fileID: 6328415089384915253}
+  detectionDelayDuration: 0.5
   chaseSpeed: 4
   stopDistance: 0.6
   playerLayer:
@@ -220,14 +222,11 @@ MonoBehaviour:
   damageAmount: 1
   attackDetectionZoneOrigin: {fileID: 6260551169715253713}
   attackSound: {fileID: 8300000, guid: dc1fe11ad16134c4aa4718b6fe89a350, type: 3}
-  delaySoundInSeconds: 2
   attackCooldown: 1.5
   patrolPoint1: {fileID: 6260551169457493491}
   patrolPoint2: {fileID: 6260551168985865710}
   patrolSpeed: 4
-  patrolStopDuration: 2
-  turnDelay: 1
-  detectionIndicator: {fileID: 6328415089384915253}
+  patrolStopDuration: 1
 --- !u!95 &6260551168300002145
 Animator:
   serializedVersion: 3
@@ -262,7 +261,8 @@ MonoBehaviour:
   startinglives: 5
   Framesduration: 0
   numberOfFlashes: 0
-  behviourcomponents: []
+  behviourcomponents:
+  - {fileID: 6260551168300002146}
   flashing: {fileID: 6260551168300002144}
   rb: {fileID: 6260551168300002148}
   hurtSound: {fileID: 0}
