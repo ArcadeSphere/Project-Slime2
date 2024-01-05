@@ -22,7 +22,7 @@ public class PlayerDetector : MonoBehaviour
    [SerializeField] private bool showGizmo = true;
 
 
-   public GameObject target;
+   private GameObject target;
 
    public GameObject Target 
     {
