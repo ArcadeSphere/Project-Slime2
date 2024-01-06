@@ -17427,10 +17427,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6260551168300002146, guid: 42b6c7b777ed8624988c2f88bab86d50, type: 3}
-      propertyPath: attackCooldown
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6260551168300002147, guid: 42b6c7b777ed8624988c2f88bab86d50, type: 3}
       propertyPath: hitParticle
       value: 

@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 6260551168300002145}
   - component: {fileID: 6260551168300002147}
   - component: {fileID: 6260551168300002144}
+  - component: {fileID: 1980756658}
   m_Layer: 11
   m_Name: AdvanceGobby
   m_TagString: Enemy
@@ -283,6 +284,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashmat: {fileID: 2100000, guid: cf3bfe283e9a3974fb638db04c791129, type: 2}
   flashduration: 0.2
+--- !u!114 &1980756658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6260551168300002139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a6e2301159bd9e40ab0eb021121b5f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alertObject: {fileID: 6328415089384915253}
+  alertSound: {fileID: 8300000, guid: 6528a794fc28cb641a67eeed937223ce, type: 3}
 --- !u!1 &6260551168976719403
 GameObject:
   m_ObjectHideFlags: 0
