@@ -214,7 +214,7 @@ MonoBehaviour:
   chaseDetectionZoneOrigin: {fileID: 6260551168976719412}
   detectionIndicator: {fileID: 6328415089384915253}
   detectionDelayDuration: 0.5
-  chaseSpeed: 4
+  chaseSpeed: 5
   stopDistance: 0.6
   playerLayer:
     serializedVersion: 2

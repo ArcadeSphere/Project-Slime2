@@ -6,20 +6,23 @@ public class Spider : PlayerDetector
 {
     [Header("Spider Settings")]
     private Animator anim;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private LayerMask groundLayer;
-    private bool isGround;
     private Rigidbody2D spiderRb;
     [SerializeField] private AudioClip attackSound;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange;
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private Transform playerTransform;
-    [SerializeField] private float damageAmount;
+
+    [Header("Spider Jump Settings")]
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private float jumpCooldown = 2f;
-    [SerializeField] private float SpiderJumpDelay = 1.5f; 
+    [SerializeField] private float SpiderJumpDelay = 1.5f;
     private float nextJumpTime;
+    [SerializeField] private float damageAmount;
+    private bool isGround;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
+
 
     private void Awake()
     {
@@ -36,23 +39,29 @@ public class Spider : PlayerDetector
         {
             if (isGround && Time.time >= nextJumpTime)
             {
-                FlipTowardsPlayer(); 
-                JumpAttack();
+                FlipTowardsPlayer();
+                StartCoroutine(DelayedSpiderJump());
                 nextJumpTime = Time.time + jumpCooldown;
             }
         }
-       
     }
 
+    //adds a delay for the first jump
+    private IEnumerator DelayedSpiderJump()
+    {
+        yield return new WaitForSeconds(SpiderJumpDelay);
+
+        JumpAttack();
+    }
+
+    //jump attack
     private void JumpAttack()
     {
         anim.SetTrigger("JumpAttack");
         AudioManager.instance.PlaySoundEffects(attackSound);
         float distanceFromPlayer = playerTransform.position.x - transform.position.x;
-        spiderRb.AddForce(new Vector2(distanceFromPlayer , jumpForce), ForceMode2D.Impulse);
-        
+        spiderRb.AddForce(new Vector2(distanceFromPlayer, jumpForce), ForceMode2D.Impulse);
     }
-
 
 
     private void FlipTowardsPlayer()

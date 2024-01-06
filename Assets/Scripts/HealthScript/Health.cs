@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 public class Health : MonoBehaviour
 {
+   
     public Health Instance { get; private set; }
     [SerializeField] private float startinglives;
     public float currenthealth { get; private set; }
