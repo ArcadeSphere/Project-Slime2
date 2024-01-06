@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpKey: Jump
-  moveLeftKey: a
-  moveRightKey: d
+  moveLeftKey: A
+  moveRightKey: D
   dashKey: LeftShift
-  platformDisableKey: s
-  playerAttackKey: j
+  platformDisableKey: S
+  playerAttackKey: J
   playerInteractKey: E
