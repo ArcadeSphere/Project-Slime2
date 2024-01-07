@@ -14,7 +14,7 @@ public class Spider : PlayerDetector
     [SerializeField] private Transform playerTransform;
 
     [Header("Spider Jump Settings")]
-    [SerializeField] private GameObject detectionIndicator;
+    [SerializeField] private DetectionIndicator detectionIndicator;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private float jumpCooldown = 2f;
     [SerializeField] private float SpiderJumpDelay = 1.5f;
@@ -24,12 +24,11 @@ public class Spider : PlayerDetector
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
-
     private void Awake()
     {
         anim = GetComponent<Animator>();
         spiderRb = GetComponent<Rigidbody2D>();
-        nextJumpTime = Time.time + SpiderJumpDelay; 
+        nextJumpTime = Time.time + SpiderJumpDelay;
     }
 
     private void Update()
@@ -41,14 +40,14 @@ public class Spider : PlayerDetector
             if (isGround && Time.time >= nextJumpTime)
             {
                 FlipTowardsPlayer();
-                ActivateDetectionIndicator(true);
+                detectionIndicator.ActivateAlert();
                 StartCoroutine(DelayedSpiderJump());
                 nextJumpTime = Time.time + jumpCooldown;
             }
         }
         else
-        { 
-            ActivateDetectionIndicator(false);
+        {
+            detectionIndicator.DeactivateAlert();
         }
     }
 
@@ -56,7 +55,6 @@ public class Spider : PlayerDetector
     private IEnumerator DelayedSpiderJump()
     {
         yield return new WaitForSeconds(SpiderJumpDelay);
-      
         JumpAttack();
     }
 
@@ -64,18 +62,15 @@ public class Spider : PlayerDetector
     private void JumpAttack()
     {
         anim.SetTrigger("JumpAttack");
-       
         AudioManager.instance.PlaySoundEffects(attackSound);
         float distanceFromPlayer = playerTransform.position.x - transform.position.x;
         spiderRb.AddForce(new Vector2(distanceFromPlayer, jumpForce), ForceMode2D.Impulse);
     }
 
-
     private void FlipTowardsPlayer()
     {
         if (transform.position.x < playerTransform.position.x)
         {
-         
             if (IsFacingRight())
             {
                 SpiderFlip();
@@ -83,7 +78,6 @@ public class Spider : PlayerDetector
         }
         else
         {
-          
             if (!IsFacingRight())
             {
                 SpiderFlip();
@@ -102,6 +96,7 @@ public class Spider : PlayerDetector
         scale.x *= -1;
         transform.localScale = scale;
     }
+
     public void SpiderDamagePlayer()
     {
         Collider2D[] hittarget = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
@@ -111,31 +106,17 @@ public class Spider : PlayerDetector
             target.GetComponent<Health>().TakeDamage(damageAmount);
         }
     }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Obstacle"))
         {
             anim.SetTrigger("dying");
         }
-       
     }
-    private void ActivateDetectionIndicator(bool activate)
-    {
-        if (detectionIndicator != null)
-        {
-            detectionIndicator.SetActive(activate);
-        }
-    }
-    public void DeactivateSpiderDetectionIndicator()
-    {
-        if (detectionIndicator != null)
-        {
-            detectionIndicator.SetActive(false);
-        }
-    }
-
 }
