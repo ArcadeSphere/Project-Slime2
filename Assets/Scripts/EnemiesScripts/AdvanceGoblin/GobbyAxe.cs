@@ -252,13 +252,14 @@ public class GobbyAxe : MonoBehaviour
             target.GetComponent<Health>().TakeDamage(damageAmount);
         }
     }
-
     private bool IsPlayerInChaseDetectionZone()
     {
-        float distanceToPlayerX = Mathf.Abs(transform.position.x - playerTransform.position.x);
-        float distanceToPlayerY = Mathf.Abs(transform.position.y - playerTransform.position.y);
+        Vector2 offset = isFacingRight ? chaseDetectorOriginOffset : new Vector2(-chaseDetectorOriginOffset.x, chaseDetectorOriginOffset.y);
+        Vector2 detectionZonePosition = (Vector2)chaseDetectionZoneOrigin.position + offset;
 
-        return distanceToPlayerX < chaseDetectorSize.x * 0.5f && distanceToPlayerY < chaseDetectorSize.y * 0.5f;
+        Collider2D collider = Physics2D.OverlapBox(detectionZonePosition, new Vector2(chaseDetectorSize.x, chaseDetectorSize.y), 0f, playerLayer);
+
+        return collider != null;
     }
 
     private void Flip()
