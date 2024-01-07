@@ -10431,7 +10431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasUi: {fileID: 1999575591}
   transition: {fileID: 1225718342}
-  transitionWaitTime: 0.5
+  transitionTime: 1
 --- !u!1001 &625057994
 PrefabInstance:
   m_ObjectHideFlags: 0
