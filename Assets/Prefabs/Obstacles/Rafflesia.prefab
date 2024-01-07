@@ -13,12 +13,7 @@ GameObject:
   - component: {fileID: 1158757804351639869}
   - component: {fileID: 1158757804351639865}
   - component: {fileID: 1158757804351639870}
-  - component: {fileID: 1158757804351639842}
-  - component: {fileID: 1158757804351639843}
-  - component: {fileID: 1158757804351639840}
   m_Layer: 16
-  - component: {fileID: 1796377565854064446}
-  m_Layer: 13
   m_Name: Rafflesia
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -149,71 +144,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poisonPrefab: {fileID: 7991646208471986990}
---- !u!114 &1158757804351639842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158757804351639864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9d9732d53df364294b91ab45daca5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flashmat: {fileID: 2100000, guid: cf3bfe283e9a3974fb638db04c791129, type: 2}
-  flashduration: 0.1
---- !u!114 &1158757804351639843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158757804351639864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d918b1d8c87db04e846f1bedf8f364a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
-  playerDetector: {fileID: 0}
---- !u!114 &1158757804351639840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158757804351639864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4f0cd728379b7549bb530c7f11fbea3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startinglives: 4
-  Framesduration: 0
-  numberOfFlashes: 0
-  behviourcomponents:
-  - {fileID: 1158757804351639865}
-  flashing: {fileID: 1158757804351639842}
-  rb: {fileID: 0}
-  hurtSound: {fileID: 0}
-  deadSound: {fileID: 0}
-  delaySoundInSeconds: 2
---- !u!114 &1796377565854064446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158757804351639864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f0400a0bcb834441bfd53b5029c813d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dustParticle: {fileID: 0}
-  dashParticle: {fileID: 0}
-  hitParticle: {fileID: 0}
 --- !u!114 &1158757803216281492
 MonoBehaviour:
   m_ObjectHideFlags: 0
