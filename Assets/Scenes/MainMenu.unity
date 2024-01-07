@@ -1224,10 +1224,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: KeybindingPanel
       objectReference: {fileID: 0}
-    - target: {fileID: 2598728665267942386, guid: a7dd94a739ed9b04086358b8be277471, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2598728665267942387, guid: a7dd94a739ed9b04086358b8be277471, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1258,11 +1254,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2598728665267942387, guid: a7dd94a739ed9b04086358b8be277471, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1920
+      value: 2014.955
       objectReference: {fileID: 0}
     - target: {fileID: 2598728665267942387, guid: a7dd94a739ed9b04086358b8be277471, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1065.337
+      value: 947.529
       objectReference: {fileID: 0}
     - target: {fileID: 2598728665267942387, guid: a7dd94a739ed9b04086358b8be277471, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1294,11 +1290,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2598728665267942387, guid: a7dd94a739ed9b04086358b8be277471, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -1.986
       objectReference: {fileID: 0}
     - target: {fileID: 2598728665267942387, guid: a7dd94a739ed9b04086358b8be277471, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.2517
+      value: 9.79
       objectReference: {fileID: 0}
     - target: {fileID: 2598728665267942387, guid: a7dd94a739ed9b04086358b8be277471, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1316,14 +1312,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 916916111}
-    - target: {fileID: 2598728665342916580, guid: a7dd94a739ed9b04086358b8be277471, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BackToMainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 2598728665342916580, guid: a7dd94a739ed9b04086358b8be277471, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MainMenu, Assembly-CSharp
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7dd94a739ed9b04086358b8be277471, type: 3}
 --- !u!1001 &1671633078
