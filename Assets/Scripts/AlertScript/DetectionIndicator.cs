@@ -16,13 +16,13 @@ public class DetectionIndicator : MonoBehaviour
         }
     }
 
-    public void Activate()
+    public void ActivateAlert()
     {
         SetIndicatorActive(true);
         PlayAlertSound();
     }
 
-    public void Deactivate()
+    public void DeactivateAlert()
     {
         SetIndicatorActive(false);
         hasPlayedSound = false;

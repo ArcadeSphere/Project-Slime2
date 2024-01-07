@@ -58,7 +58,7 @@ public class GobbyAxe : MonoBehaviour
 
         if (detectionIndicator != null)
         {
-            detectionIndicator.Deactivate();
+            detectionIndicator.DeactivateAlert();
         }
     }
 
@@ -118,12 +118,12 @@ public class GobbyAxe : MonoBehaviour
             currentState = GobbyAxeState.DetectionDelay;
             anim.SetFloat("moveSpeed", 0f);
             detectionDelayTimer = detectionDelayDuration;
-            detectionIndicator.Activate();
+            detectionIndicator.ActivateAlert();
         }
         else
         {
             anim.SetFloat("moveSpeed", 1f);
-            detectionIndicator.Deactivate();
+            detectionIndicator.DeactivateAlert();
         }
 
         if (!isTurning)
@@ -149,7 +149,7 @@ public class GobbyAxe : MonoBehaviour
         if (detectionDelayTimer <= 0f)
         {
             currentState = GobbyAxeState.Chase;
-            detectionIndicator.Activate();
+            detectionIndicator.ActivateAlert();
         }
     }
 
@@ -190,7 +190,7 @@ public class GobbyAxe : MonoBehaviour
     {
         if (detectionIndicator != null)
         {
-            detectionIndicator.Activate();
+            detectionIndicator.ActivateAlert();
         }
     }
 
