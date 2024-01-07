@@ -11,9 +11,9 @@ public class GobbyAxe : MonoBehaviour
     public Vector2 chaseDetectorOriginOffset = Vector2.zero;
     public float attackDetectionRange = 1.5f;
     public Transform chaseDetectionZoneOrigin;
-    [SerializeField] private GameObject detectionIndicator;
     [SerializeField] private float detectionDelayDuration = 1.0f;
     private float detectionDelayTimer;
+    [SerializeField] private DetectionIndicator detectionIndicator;
 
     [Header("Goblin ChaseAttack Settings")]
     [SerializeField] private float chaseSpeed = 5f;
@@ -33,8 +33,7 @@ public class GobbyAxe : MonoBehaviour
     private bool isFacingRight = true;
     private bool isTurning = false;
 
- 
-    //Gobby different states
+    // Gobby different states
     private enum GobbyAxeState
     {
         Patrol,
@@ -59,7 +58,7 @@ public class GobbyAxe : MonoBehaviour
 
         if (detectionIndicator != null)
         {
-            detectionIndicator.SetActive(false);
+            detectionIndicator.Deactivate();
         }
     }
 
@@ -88,6 +87,7 @@ public class GobbyAxe : MonoBehaviour
                 break;
         }
     }
+
     private void Patrol()
     {
         if (isFacingRight && !isTurning)
@@ -118,13 +118,14 @@ public class GobbyAxe : MonoBehaviour
             currentState = GobbyAxeState.DetectionDelay;
             anim.SetFloat("moveSpeed", 0f);
             detectionDelayTimer = detectionDelayDuration;
-            ActivateDetectionIndicator(true);
+            detectionIndicator.Activate();
         }
         else
         {
             anim.SetFloat("moveSpeed", 1f);
-            ActivateDetectionIndicator(false);
+            detectionIndicator.Deactivate();
         }
+
         if (!isTurning)
         {
             isTurning = false;
@@ -140,7 +141,7 @@ public class GobbyAxe : MonoBehaviour
         isTurning = false;
         Flip();
     }
-    //Adds a dely before chasing
+
     private void DetectionDelay()
     {
         detectionDelayTimer -= Time.deltaTime;
@@ -148,13 +149,12 @@ public class GobbyAxe : MonoBehaviour
         if (detectionDelayTimer <= 0f)
         {
             currentState = GobbyAxeState.Chase;
-            ActivateDetectionIndicator(true);
+            detectionIndicator.Activate();
         }
     }
-    //chase state
+
     private void ChasePlayer()
     {
-
         ActivateDetectionIndicator(true);
 
         Vector2 directionToPlayer = playerTransform.position - transform.position;
@@ -186,23 +186,14 @@ public class GobbyAxe : MonoBehaviour
         }
     }
 
-        // Activate the indicator immediately when the player is detected
-        private void ActivateDetectionIndicator(bool activate)
-     {
-        if (detectionIndicator != null)
-        {
-            detectionIndicator.SetActive(activate);
-        }
-     }
-
-    // Deactivate the indicator immediately when the player is not detected
-    public void DeactivateDetectionIndicator()
+    private void ActivateDetectionIndicator(bool activate)
     {
         if (detectionIndicator != null)
         {
-            detectionIndicator.SetActive(false);
+            detectionIndicator.Activate();
         }
     }
+
     private void MoveTowardsPlayer(Vector2 direction)
     {
         transform.Translate(direction * chaseSpeed * Time.deltaTime);
@@ -213,7 +204,6 @@ public class GobbyAxe : MonoBehaviour
         anim.SetFloat("moveSpeed", 0f);
         transform.Translate(Vector2.zero);
         currentState = GobbyAxeState.Attack;
-        //ActivateDetectionIndicator(false);
     }
 
     private bool IsPlayerInAttackRange(float distanceToPlayer)
@@ -245,13 +235,14 @@ public class GobbyAxe : MonoBehaviour
 
     public void GobbyDamagePlayer()
     {
-        Collider2D[] hittarget = Physics2D.OverlapCircleAll(attackDetectionZoneOrigin.position, attackDetectionRange, playerLayer);
+        Collider2D[] hitTargets = Physics2D.OverlapCircleAll(attackDetectionZoneOrigin.position, attackDetectionRange, playerLayer);
 
-        foreach (Collider2D target in hittarget)
+        foreach (Collider2D target in hitTargets)
         {
             target.GetComponent<Health>().TakeDamage(damageAmount);
         }
     }
+
     private bool IsPlayerInChaseDetectionZone()
     {
         Vector2 offset = isFacingRight ? chaseDetectorOriginOffset : new Vector2(-chaseDetectorOriginOffset.x, chaseDetectorOriginOffset.y);
