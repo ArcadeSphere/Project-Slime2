@@ -20,11 +20,7 @@ public class SceneTransition : MonoBehaviour
     private void Start() {
         StartCoroutine(ToggleCanvasVisibility());
     }
-
-    public void SetStartTrigger(){
-        transition.SetTrigger("start");
-    }
-
+    
     public void TransitionToActiveScene() {
         StartCoroutine(Transition());
     }
