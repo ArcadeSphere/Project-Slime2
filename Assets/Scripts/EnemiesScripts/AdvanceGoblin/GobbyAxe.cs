@@ -286,7 +286,8 @@ public class GobbyAxe : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(chaseDetectionZoneOrigin.position + (Vector3)chaseDetectorOriginOffset, new Vector3(chaseDetectorSize.x, chaseDetectorSize.y, 1f));
+        Vector3 offset = isFacingRight ? chaseDetectorOriginOffset : new Vector2(-chaseDetectorOriginOffset.x, chaseDetectorOriginOffset.y);
+        Gizmos.DrawWireCube(chaseDetectionZoneOrigin.position + offset, new Vector3(chaseDetectorSize.x * (isFacingRight ? 1 : -1), chaseDetectorSize.y, 1f));
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(attackDetectionZoneOrigin.position, attackDetectionRange);
