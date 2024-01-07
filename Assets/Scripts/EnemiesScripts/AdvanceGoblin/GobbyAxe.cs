@@ -155,7 +155,7 @@ public class GobbyAxe : MonoBehaviour
 
     private void ChasePlayer()
     {
-        ActivateDetectionIndicator(true);
+        detectionIndicator.ActivateAlert();
 
         Vector2 directionToPlayer = playerTransform.position - transform.position;
         directionToPlayer.Normalize();
@@ -182,17 +182,10 @@ public class GobbyAxe : MonoBehaviour
         {
             currentState = GobbyAxeState.Patrol;
             anim.SetFloat("moveSpeed", 0f);
-            ActivateDetectionIndicator(false);
+            detectionIndicator.DeactivateAlert();
         }
     }
 
-    private void ActivateDetectionIndicator(bool activate)
-    {
-        if (detectionIndicator != null)
-        {
-            detectionIndicator.ActivateAlert();
-        }
-    }
 
     private void MoveTowardsPlayer(Vector2 direction)
     {
