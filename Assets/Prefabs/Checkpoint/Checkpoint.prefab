@@ -125,8 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0442e40c88ce4a342861da86e89122d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explode: {fileID: 8415026417064102945}
-  text: {fileID: 8415026417691984157}
+  checkedAnimation: {fileID: 8415026417064102945}
+  textAnimation: {fileID: 8415026417691984157}
   displayText: Checkpoint
 --- !u!95 &8415026417197682050
 Animator:
