@@ -14,6 +14,7 @@ public class Spider : PlayerDetector
     [SerializeField] private Transform playerTransform;
 
     [Header("Spider Jump Settings")]
+    [SerializeField] private GameObject detectionIndicator;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private float jumpCooldown = 2f;
     [SerializeField] private float SpiderJumpDelay = 1.5f;
@@ -40,9 +41,14 @@ public class Spider : PlayerDetector
             if (isGround && Time.time >= nextJumpTime)
             {
                 FlipTowardsPlayer();
+                ActivateDetectionIndicator(true);
                 StartCoroutine(DelayedSpiderJump());
                 nextJumpTime = Time.time + jumpCooldown;
             }
+        }
+        else
+        { 
+            ActivateDetectionIndicator(false);
         }
     }
 
@@ -50,7 +56,7 @@ public class Spider : PlayerDetector
     private IEnumerator DelayedSpiderJump()
     {
         yield return new WaitForSeconds(SpiderJumpDelay);
-
+      
         JumpAttack();
     }
 
@@ -58,6 +64,7 @@ public class Spider : PlayerDetector
     private void JumpAttack()
     {
         anim.SetTrigger("JumpAttack");
+       
         AudioManager.instance.PlaySoundEffects(attackSound);
         float distanceFromPlayer = playerTransform.position.x - transform.position.x;
         spiderRb.AddForce(new Vector2(distanceFromPlayer, jumpForce), ForceMode2D.Impulse);
@@ -116,4 +123,19 @@ public class Spider : PlayerDetector
         }
        
     }
+    private void ActivateDetectionIndicator(bool activate)
+    {
+        if (detectionIndicator != null)
+        {
+            detectionIndicator.SetActive(activate);
+        }
+    }
+    public void DeactivateSpiderDetectionIndicator()
+    {
+        if (detectionIndicator != null)
+        {
+            detectionIndicator.SetActive(false);
+        }
+    }
+
 }

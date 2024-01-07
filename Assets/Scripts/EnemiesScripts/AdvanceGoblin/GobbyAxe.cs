@@ -11,7 +11,7 @@ public class GobbyAxe : MonoBehaviour
     public Vector2 chaseDetectorOriginOffset = Vector2.zero;
     public float attackDetectionRange = 1.5f;
     public Transform chaseDetectionZoneOrigin;
-    public GameObject detectionIndicator;
+    [SerializeField] private GameObject detectionIndicator;
     [SerializeField] private float detectionDelayDuration = 1.0f;
     private float detectionDelayTimer;
 
