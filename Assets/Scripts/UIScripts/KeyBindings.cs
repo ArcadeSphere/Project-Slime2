@@ -8,6 +8,7 @@ public class KeyBindings : MonoBehaviour
 {
     public InputManager inputManager;
 
+   
     public Button jumpButton;
     public Button moveLeftButton;
     public Button moveRightButton;
