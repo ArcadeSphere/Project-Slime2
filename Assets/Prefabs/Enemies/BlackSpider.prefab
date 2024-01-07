@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 2155681933718817417}
   - component: {fileID: 2155681933718817422}
   - component: {fileID: 2155681935035377775}
+  - component: {fileID: 8159010915853487055}
   m_Layer: 11
   m_Name: BlackSpider
   m_TagString: Enemy
@@ -63,7 +64,7 @@ Transform:
   m_GameObject: {fileID: 2155681933718817423}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 91.20701, y: 4.105, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 2155681933698449778}
   - {fileID: 2155681934680223433}
@@ -228,6 +229,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  characterFlip: {fileID: 8159010915853487055}
 --- !u!114 &2155681933718817417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +282,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorObject: {fileID: 7172926905004526262}
   alertSound: {fileID: 8300000, guid: 6528a794fc28cb641a67eeed937223ce, type: 3}
+--- !u!114 &8159010915853487055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2155681933718817423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b0dbf5875f550445826f4c762ca5433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFacingRight: 1
 --- !u!1 &2155681934122555519
 GameObject:
   m_ObjectHideFlags: 0
