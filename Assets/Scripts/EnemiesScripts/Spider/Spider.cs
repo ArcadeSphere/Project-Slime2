@@ -8,9 +8,6 @@ public class Spider : PlayerDetector
     private Animator anim;
     private Rigidbody2D spiderRb;
     [SerializeField] private AudioClip attackSound;
-    [SerializeField] private Transform attackPoint;
-    [SerializeField] private float attackRange;
-    [SerializeField] private LayerMask playerLayer;
     [SerializeField] private Transform playerTransform;
 
     [Header("Spider Jump Settings")]
@@ -68,21 +65,6 @@ public class Spider : PlayerDetector
         AudioManager.instance.PlaySoundEffects(attackSound);
         float distanceFromPlayer = playerTransform.position.x - transform.position.x;
         spiderRb.AddForce(new Vector2(distanceFromPlayer, jumpForce), ForceMode2D.Impulse);
-    }
-
-    public void SpiderDamagePlayer()
-    {
-        Collider2D[] hittarget = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
-
-        foreach (Collider2D target in hittarget)
-        {
-            target.GetComponent<Health>().TakeDamage(damageAmount);
-        }
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
