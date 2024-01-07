@@ -125,6 +125,10 @@ public class GobbyAxe : MonoBehaviour
             anim.SetFloat("moveSpeed", 1f);
             ActivateDetectionIndicator(false);
         }
+        if (!isTurning)
+        {
+            isTurning = false;
+        }
     }
 
     private IEnumerator TurnDelay()
