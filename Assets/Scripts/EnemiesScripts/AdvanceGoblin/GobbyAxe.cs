@@ -13,7 +13,10 @@ public class GobbyAxe : MonoBehaviour
     public Transform chaseDetectionZoneOrigin;
     [SerializeField] private float detectionDelayDuration = 1.0f;
     private float detectionDelayTimer;
+
+    [Header("Reference Settings")]
     [SerializeField] private DetectionIndicator detectionIndicator;
+    [SerializeField] private CharacterFlip characterFlip;
 
     [Header("Goblin ChaseAttack Settings")]
     [SerializeField] private float chaseSpeed = 5f;
@@ -30,7 +33,6 @@ public class GobbyAxe : MonoBehaviour
     public Transform patrolPoint2;
     [SerializeField] private float patrolSpeed = 3f;
     [SerializeField] private float patrolStopDuration = 2f;
-    private bool isFacingRight = true;
     private bool isTurning = false;
 
     // Gobby different states
@@ -90,7 +92,7 @@ public class GobbyAxe : MonoBehaviour
 
     private void Patrol()
     {
-        if (isFacingRight && !isTurning)
+        if (characterFlip.isFacingRight && !isTurning)
         {
             transform.Translate(Vector2.right * patrolSpeed * Time.deltaTime);
             if (transform.position.x > patrolPoint2.position.x)
@@ -99,7 +101,7 @@ public class GobbyAxe : MonoBehaviour
                 StartCoroutine(TurnDelay());
             }
         }
-        else if (!isFacingRight && !isTurning)
+        else if (!characterFlip.isFacingRight && !isTurning)
         {
             transform.Translate(Vector2.left * patrolSpeed * Time.deltaTime);
             if (transform.position.x < patrolPoint1.position.x)
@@ -139,7 +141,7 @@ public class GobbyAxe : MonoBehaviour
         yield return new WaitForSeconds(patrolStopDuration);
 
         isTurning = false;
-        Flip();
+        characterFlip.FlipTheCharacter();
     }
 
     private void DetectionDelay()
@@ -160,7 +162,7 @@ public class GobbyAxe : MonoBehaviour
         Vector2 directionToPlayer = playerTransform.position - transform.position;
         directionToPlayer.Normalize();
 
-        FlipTowardsPlayer();
+        characterFlip.FlipTowardsTarget(playerTransform.position);
 
         float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
 
@@ -185,7 +187,6 @@ public class GobbyAxe : MonoBehaviour
             detectionIndicator.DeactivateAlert();
         }
     }
-
 
     private void MoveTowardsPlayer(Vector2 direction)
     {
@@ -238,7 +239,7 @@ public class GobbyAxe : MonoBehaviour
 
     private bool IsPlayerInChaseDetectionZone()
     {
-        Vector2 offset = isFacingRight ? chaseDetectorOriginOffset : new Vector2(-chaseDetectorOriginOffset.x, chaseDetectorOriginOffset.y);
+        Vector2 offset = characterFlip.isFacingRight ? chaseDetectorOriginOffset : new Vector2(-chaseDetectorOriginOffset.x, chaseDetectorOriginOffset.y);
         Vector2 detectionZonePosition = (Vector2)chaseDetectionZoneOrigin.position + offset;
 
         Collider2D collider = Physics2D.OverlapBox(detectionZonePosition, new Vector2(chaseDetectorSize.x, chaseDetectorSize.y), 0f, playerLayer);
@@ -246,44 +247,13 @@ public class GobbyAxe : MonoBehaviour
         return collider != null;
     }
 
-    private void Flip()
-    {
-        isFacingRight = !isFacingRight;
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
-    }
-
-    private void FlipTowardsPlayer()
-    {
-        if (playerTransform.position.x < transform.position.x)
-        {
-            if (isFacingRight)
-            {
-                Flip();
-            }
-        }
-        else
-        {
-            if (!isFacingRight)
-            {
-                Flip();
-            }
-        }
-    }
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Vector3 offset = isFacingRight ? chaseDetectorOriginOffset : new Vector2(-chaseDetectorOriginOffset.x, chaseDetectorOriginOffset.y);
-        Gizmos.DrawWireCube(chaseDetectionZoneOrigin.position + offset, new Vector3(chaseDetectorSize.x * (isFacingRight ? 1 : -1), chaseDetectorSize.y, 1f));
+        Vector3 offset = characterFlip.isFacingRight ? chaseDetectorOriginOffset : new Vector2(-chaseDetectorOriginOffset.x, chaseDetectorOriginOffset.y);
+        Gizmos.DrawWireCube(chaseDetectionZoneOrigin.position + offset, new Vector3(chaseDetectorSize.x * (characterFlip.isFacingRight ? 1 : -1), chaseDetectorSize.y, 1f));
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(attackDetectionZoneOrigin.position, attackDetectionRange);
-    }
-
-    private void PlaySoundWithDelay()
-    {
-        AudioManager.instance.PlaySoundEffects(attackSound);
     }
 }
