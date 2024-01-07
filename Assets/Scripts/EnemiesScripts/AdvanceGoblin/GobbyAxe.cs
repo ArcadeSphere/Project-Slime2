@@ -22,8 +22,6 @@ public class GobbyAxe : MonoBehaviour
     [SerializeField] private float chaseSpeed = 5f;
     [SerializeField] private float stopDistance = 1.5f;
     [SerializeField] private LayerMask playerLayer;
-    [SerializeField] private float damageAmount;
-    public Transform attackDetectionZoneOrigin;
     [SerializeField] private AudioClip attackSound;
     [SerializeField] private float attackCooldown = 2f;
     private bool isCooldown = false;
@@ -227,16 +225,6 @@ public class GobbyAxe : MonoBehaviour
         isCooldown = false;
     }
 
-    public void GobbyDamagePlayer()
-    {
-        Collider2D[] hitTargets = Physics2D.OverlapCircleAll(attackDetectionZoneOrigin.position, attackDetectionRange, playerLayer);
-
-        foreach (Collider2D target in hitTargets)
-        {
-            target.GetComponent<Health>().TakeDamage(damageAmount);
-        }
-    }
-
     private bool IsPlayerInChaseDetectionZone()
     {
         Vector2 offset = characterFlip.isFacingRight ? chaseDetectorOriginOffset : new Vector2(-chaseDetectorOriginOffset.x, chaseDetectorOriginOffset.y);
@@ -254,6 +242,7 @@ public class GobbyAxe : MonoBehaviour
         Gizmos.DrawWireCube(chaseDetectionZoneOrigin.position + offset, new Vector3(chaseDetectorSize.x * (characterFlip.isFacingRight ? 1 : -1), chaseDetectorSize.y, 1f));
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(attackDetectionZoneOrigin.position, attackDetectionRange);
+       
     }
+
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DetectionIndicator : MonoBehaviour
 {
+    //this script purpose is only to display the ! 
+    [Header("Alert Settings")]
     [SerializeField] private GameObject indicatorObject;
     private bool hasPlayedSound = false;
     [SerializeField] private AudioClip alertSound;

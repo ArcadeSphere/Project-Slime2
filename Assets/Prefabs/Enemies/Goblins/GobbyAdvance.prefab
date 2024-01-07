@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 6260551168300002144}
   - component: {fileID: 1004378744}
   - component: {fileID: 8624100530948706995}
+  - component: {fileID: 2832307845290165083}
   m_Layer: 11
   m_Name: AdvanceGobby
   m_TagString: Enemy
@@ -222,8 +223,6 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
-  damageAmount: 1
-  attackDetectionZoneOrigin: {fileID: 6260551169715253713}
   attackSound: {fileID: 8300000, guid: dc1fe11ad16134c4aa4718b6fe89a350, type: 3}
   attackCooldown: 1.5
   patrolPoint1: {fileID: 6260551169457493491}
@@ -312,6 +311,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b0dbf5875f550445826f4c762ca5433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFacingRight: 1
+--- !u!114 &2832307845290165083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6260551168300002139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c1dc3ce25456154e8fd95f251db3b3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDetectionZoneOrigin: {fileID: 6260551169715253713}
+  attackDetectionRange: 0.88
+  attackDamage: 1
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &6260551168976719403
 GameObject:
   m_ObjectHideFlags: 0
