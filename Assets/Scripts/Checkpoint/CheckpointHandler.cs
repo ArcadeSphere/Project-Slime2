@@ -21,10 +21,13 @@ public class CheckpointHandler : MonoBehaviour
 
     private void Start() {
         LoadValue();
+        // display default text if none is set
         if (displayText != "")
             textAnimation.GetComponent<TextMeshPro>().text = displayText;
         else
             textAnimation.GetComponent<TextMeshPro>().text = "Default Text";
+
+        // get animator components if not null
         if (checkedAnimation != null && textAnimation != null)
         {
             explodeAnim = checkedAnimation.GetComponent<Animator>();
@@ -49,17 +52,20 @@ public class CheckpointHandler : MonoBehaviour
         }
     }
 
+    // loads value of isActivted 
     void LoadValue()
     {
         isActivated = PlayerPrefs.GetInt(playerPrefKey, 0) == 1; // return value with the key and returns true if value is equal to 1
     }
 
+    // saves value of isActivted across scene reloads 
     void SaveValue()
     {
         PlayerPrefs.SetInt(playerPrefKey, isActivated ? 1 : 0);
         PlayerPrefs.Save();
     }
 
+    // reset value of isActive 
     void OnApplicationQuit() {
         isActivated = false;
         SaveValue();
