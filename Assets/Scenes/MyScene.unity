@@ -15729,6 +15729,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2155681933718817416, guid: 6548630cb8c72224a814803c4e4095e6, type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 714717534}
     - target: {fileID: 2985597043385288146, guid: 6548630cb8c72224a814803c4e4095e6, type: 3}
       propertyPath: m_Name
       value: BlackSpider
