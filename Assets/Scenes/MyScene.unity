@@ -10878,7 +10878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37957fee041f6c243a2e85f8063b5410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previousPositionOffset: {x: 2, y: 0}
+  previousPositionOffset: {x: 1, y: 0}
 --- !u!1001 &722809515
 PrefabInstance:
   m_ObjectHideFlags: 0

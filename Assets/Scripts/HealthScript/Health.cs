@@ -50,7 +50,9 @@ public class Health : MonoBehaviour
         {
             if (!isdead && rb != null)
             {
-                PlayerData.Instance.isPlayerDead = true;
+                if (this.CompareTag("Player")){
+                    PlayerData.Instance.isPlayerDead = true;
+                }
                 foreach (Behaviour component in behviourcomponents)
                 component.enabled = false;
                 flashing.flash_time();
