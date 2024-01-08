@@ -29,6 +29,7 @@ public class Health : MonoBehaviour
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        PlayerData.Instance.isPlayerDead = false;
     }
     public void TakeDamage(float _damage)
     {
@@ -49,7 +50,7 @@ public class Health : MonoBehaviour
         {
             if (!isdead && rb != null)
             {
-
+                PlayerData.Instance.isPlayerDead = true;
                 foreach (Behaviour component in behviourcomponents)
                 component.enabled = false;
                 flashing.flash_time();
