@@ -13564,7 +13564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasUi: {fileID: 0}
-  transitionImage: {fileID: 21300000, guid: 5eb8095848c2f0d45a836d8591abc63f, type: 3}
+  transitionImage: {fileID: 21300000, guid: 56364f2c6c93a43459ee82fa3afb9b6f, type: 3}
   maxProgress: 1.2
   minProgress: -0.1
   edgeSmoothing: 0.1
