@@ -15203,13 +15203,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 452809102, guid: 42b6c7b777ed8624988c2f88bab86d50, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -11.6
+    - target: {fileID: 6260551168300002146, guid: 42b6c7b777ed8624988c2f88bab86d50, type: 3}
+      propertyPath: chaseDetectorSize.x
+      value: 7.47
       objectReference: {fileID: 0}
-    - target: {fileID: 1467343847, guid: 42b6c7b777ed8624988c2f88bab86d50, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.88
+    - target: {fileID: 6260551168300002146, guid: 42b6c7b777ed8624988c2f88bab86d50, type: 3}
+      propertyPath: chaseDetectorSize.y
+      value: 5.34
       objectReference: {fileID: 0}
     - target: {fileID: 6260551168300002147, guid: 42b6c7b777ed8624988c2f88bab86d50, type: 3}
       propertyPath: hitParticle
@@ -15262,10 +15262,6 @@ PrefabInstance:
     - target: {fileID: 6260551169280937851, guid: 42b6c7b777ed8624988c2f88bab86d50, type: 3}
       propertyPath: m_Name
       value: GobbyAdvance
-      objectReference: {fileID: 0}
-    - target: {fileID: 6285016667369614413, guid: 42b6c7b777ed8624988c2f88bab86d50, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.357
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42b6c7b777ed8624988c2f88bab86d50, type: 3}

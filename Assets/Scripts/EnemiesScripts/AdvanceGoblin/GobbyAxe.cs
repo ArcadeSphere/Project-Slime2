@@ -170,8 +170,8 @@ public class GobbyAxe : MonoBehaviour
         Debug.Log("Distance to Player: " + distanceToPlayer);
         Debug.Log("Is Player in Detection Zone: " + IsPlayerInChaseDetectionZone());
 
-        // Check if there's an edge or hole in front
-        if (IsObjectInFront("Obstacle") || IsObjectInFront("Hole"))
+        // Check if there's an edge in front
+        if (IsObjectInFront("Hole"))
         {
             Debug.Log("Edge or Hole in Front! Stopping Chase.");
             currentState = GobbyAxeState.Patrol;
@@ -198,7 +198,7 @@ public class GobbyAxe : MonoBehaviour
             {
                 // Player is in attack range, stop and attack
                 StopAndAttack();
-                return; // Return to prevent additional movement after stopping to attack
+                return; 
             }
         }
         else
@@ -280,7 +280,7 @@ public class GobbyAxe : MonoBehaviour
 
         Collider2D collider = Physics2D.OverlapBox(detectionZonePosition, new Vector2(chaseDetectorSize.x, chaseDetectorSize.y), 0f, playerLayer);
 
-        return collider != null && collider.CompareTag("Player"); // Ensure that the detected object is the player
+        return collider != null && collider.CompareTag("Player"); 
     }
 
 
