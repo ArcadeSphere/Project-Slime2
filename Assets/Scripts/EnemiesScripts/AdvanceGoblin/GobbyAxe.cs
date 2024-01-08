@@ -33,6 +33,11 @@ public class GobbyAxe : MonoBehaviour
     [SerializeField] private float patrolStopDuration = 2f;
     private bool isTurning = false;
 
+
+    [Header("Edge Detection Settings")]
+    public Transform edgeDetector;
+    public float edgeDetectionDistance = 0.2f;
+
     // Gobby different states
     private enum GobbyAxeState
     {
@@ -61,7 +66,6 @@ public class GobbyAxe : MonoBehaviour
             detectionIndicator.DeactivateAlert();
         }
     }
-
     private void Update()
     {
         switch (currentState)
@@ -87,6 +91,7 @@ public class GobbyAxe : MonoBehaviour
                 break;
         }
     }
+
 
     private void Patrol()
     {
@@ -150,13 +155,11 @@ public class GobbyAxe : MonoBehaviour
         {
             currentState = GobbyAxeState.Chase;
             detectionIndicator.ActivateAlert();
+            detectionDelayTimer = 0f; // Reset the timer
         }
     }
-
     private void ChasePlayer()
     {
-        detectionIndicator.ActivateAlert();
-
         Vector2 directionToPlayer = playerTransform.position - transform.position;
         directionToPlayer.Normalize();
 
@@ -164,26 +167,72 @@ public class GobbyAxe : MonoBehaviour
 
         float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
 
-        if (distanceToPlayer > stopDistance)
+        Debug.Log("Distance to Player: " + distanceToPlayer);
+        Debug.Log("Is Player in Detection Zone: " + IsPlayerInChaseDetectionZone());
+
+        // Check if there's an edge in front
+        if (IsObjectInFront("Hole"))
         {
-            MoveTowardsPlayer(directionToPlayer);
-            anim.SetFloat("moveSpeed", 1f);
+            Debug.Log("Edge or Hole in Front! Stopping Chase.");
+            currentState = GobbyAxeState.Patrol;
+            anim.SetFloat("moveSpeed", 0f);
+            detectionIndicator.DeactivateAlert();
+            return;
+        }
+
+        // If the player is still in the chase detection zone, continue chasing
+        if (IsPlayerInChaseDetectionZone())
+        {
+            detectionIndicator.ActivateAlert();
+            if (distanceToPlayer > stopDistance)
+            {
+                MoveTowardsPlayer(directionToPlayer);
+                anim.SetFloat("moveSpeed", 1f);
+            }
+            else if (distanceToPlayer <= stopDistance && !IsPlayerInAttackRange(distanceToPlayer))
+            {
+                // Player is close but not in attack range, continue chasing
+                anim.SetFloat("moveSpeed", 1f);
+            }
+            else
+            {
+                // Player is in attack range, stop and attack
+                StopAndAttack();
+                return; 
+            }
         }
         else
         {
-            StopAndAttack();
-        }
-
-        if (IsPlayerInAttackRange(distanceToPlayer))
-        {
-            StopAndAttack();
-        }
-        else if (!IsPlayerInChaseDetectionZone())
-        {
+            // If the player is not in the detection zone, go back to Patrol state
             currentState = GobbyAxeState.Patrol;
             anim.SetFloat("moveSpeed", 0f);
             detectionIndicator.DeactivateAlert();
         }
+    }
+
+
+    private bool IsObjectInFront(string tag)
+    {
+        Vector2 rayDirection = characterFlip.isFacingRight ? Vector2.right : Vector2.left;
+        RaycastHit2D[] hits = Physics2D.RaycastAll(edgeDetector.position, rayDirection, edgeDetectionDistance, LayerMask.GetMask(tag));
+
+        foreach (var hit in hits)
+        {
+            if (hit.collider != null)
+            {
+                Debug.Log("Hit object: " + hit.collider.gameObject.name);
+                Debug.Log("Hit distance: " + hit.distance);
+
+                // Check if the detected object has the specified tag
+                if (hit.collider.CompareTag(tag))
+                {
+                    Debug.Log(tag + " in Front! Stopping Chase.");
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     private void MoveTowardsPlayer(Vector2 direction)
@@ -224,7 +273,6 @@ public class GobbyAxe : MonoBehaviour
     {
         isCooldown = false;
     }
-
     private bool IsPlayerInChaseDetectionZone()
     {
         Vector2 offset = characterFlip.isFacingRight ? chaseDetectorOriginOffset : new Vector2(-chaseDetectorOriginOffset.x, chaseDetectorOriginOffset.y);
@@ -232,8 +280,9 @@ public class GobbyAxe : MonoBehaviour
 
         Collider2D collider = Physics2D.OverlapBox(detectionZonePosition, new Vector2(chaseDetectorSize.x, chaseDetectorSize.y), 0f, playerLayer);
 
-        return collider != null;
+        return collider != null && collider.CompareTag("Player"); 
     }
+
 
     private void OnDrawGizmos()
     {
@@ -242,7 +291,13 @@ public class GobbyAxe : MonoBehaviour
         Gizmos.DrawWireCube(chaseDetectionZoneOrigin.position + offset, new Vector3(chaseDetectorSize.x * (characterFlip.isFacingRight ? 1 : -1), chaseDetectorSize.y, 1f));
 
         Gizmos.color = Color.blue;
-       
+
+        // Draw gizmo for the edge detection
+        Gizmos.color = Color.green;
+        Vector3 edgeDirection = characterFlip.isFacingRight ? Vector2.right : Vector2.left;
+        Gizmos.DrawRay(edgeDetector.position, edgeDirection * edgeDetectionDistance);
+
+
     }
 
 }
