@@ -11,6 +11,7 @@ TagManager:
   - MusicSlider
   - SoundSlider
   - Projectiles
+  - Hole
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - OnlyCamera
   - Collider
   - JumpadbleFoe
-  - 
+  - Hole
   - 
   - 
   - 
