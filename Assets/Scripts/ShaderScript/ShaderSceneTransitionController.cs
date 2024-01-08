@@ -39,12 +39,18 @@ public class ShaderSceneTransitionController : MonoBehaviour
     }
 
     void PlayTransition() {
-        if (reveal)
+        canvasUi.gameObject.SetActive(false);
+        if (reveal){
+            canvasUi.gameObject.SetActive(true);
             material.SetFloat(progress, ControlTransitionProgress(maxProgress));
+        }
         else{
             material.SetFloat(progress, ControlTransitionProgress(minProgress));
-            if (material.GetFloat(progress) == minProgress)
+            if (material.GetFloat(progress) == minProgress){
                 SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+                
+            }
+
         }
     }
 
