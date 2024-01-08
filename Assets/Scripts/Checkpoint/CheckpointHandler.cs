@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class CheckpointHandler : MonoBehaviour
 {
+    public static CheckpointHandler Instance { get; private set; }
     private readonly String playerPrefKey = "IsActive";
     private bool isActivated;
     [SerializeField] private GameObject checkedAnimation;
@@ -16,6 +17,7 @@ public class CheckpointHandler : MonoBehaviour
     private Animator textAnim;
 
     private void Awake() {
+        Instance = this;
         DontDestroyOnLoad(gameObject);
     }
 
@@ -65,9 +67,13 @@ public class CheckpointHandler : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    // reset value of isActive 
-    void OnApplicationQuit() {
+    public void ResetCheckpointPrefValue() {
         isActivated = false;
         SaveValue();
+    }
+
+    // reset value of isActive 
+    void OnApplicationQuit() {
+        ResetCheckpointPrefValue();
     }
 }

@@ -98,6 +98,16 @@ public class PauseMenu : MonoBehaviour
         currentState = GameState.Playing;
         Time.timeScale = 1f;
         Scene currentScene = SceneManager.GetActiveScene();
+        CheckpointHandler.Instance.ResetCheckpointPrefValue();
+        PlayerData.Instance.currentCheckpoint = null;
+        SceneManager.LoadScene(currentScene.name);
+    }
+
+    public void RestartGameFromCheckPoint()
+    {
+        currentState = GameState.Playing;
+        Time.timeScale = 1f;
+        Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }
 

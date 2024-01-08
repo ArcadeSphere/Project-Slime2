@@ -283,6 +283,30 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 20885736}
+    - target: {fileID: 1195691649450561897, guid: 3c1a2bd57ea9fce4e8be8247cd3203fb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195691649450561897, guid: 3c1a2bd57ea9fce4e8be8247cd3203fb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 20885736}
+    - target: {fileID: 1195691649450561897, guid: 3c1a2bd57ea9fce4e8be8247cd3203fb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195691649450561897, guid: 3c1a2bd57ea9fce4e8be8247cd3203fb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartGameFromCheckPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195691649450561897, guid: 3c1a2bd57ea9fce4e8be8247cd3203fb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195691649450561897, guid: 3c1a2bd57ea9fce4e8be8247cd3203fb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: PauseMenu.RestartGameFromCheckpoint()
+      objectReference: {fileID: 0}
     - target: {fileID: 1195691649844592434, guid: 3c1a2bd57ea9fce4e8be8247cd3203fb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
