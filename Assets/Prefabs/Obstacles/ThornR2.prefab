@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4821323809411066732}
   m_Layer: 7
   m_Name: ThornR2
-  m_TagString: Obstacle
+  m_TagString: Thorn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

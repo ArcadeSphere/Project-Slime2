@@ -12,6 +12,7 @@ TagManager:
   - SoundSlider
   - Projectiles
   - Hole
+  - Thorn
   layers:
   - Default
   - TransparentFX

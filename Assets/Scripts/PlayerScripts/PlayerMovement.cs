@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UIElements;
 public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
@@ -37,6 +38,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private ParticleSystem dashParticle;
     [SerializeField] private ParticleSystem landParticle;
     private GameObject currentOneWayPlatform;
+
+
+    [SerializeField] private GameObject prepos;
 
     void Update()
     {
@@ -85,6 +89,12 @@ public class PlayerMovement : MonoBehaviour
             landParticle.Play();
         }
 
+        // set playerdata variables used by backtoedge script
+        if (wasGrounded){
+            PlayerData.Instance.isFacingRight = isFacingRight; // check if player was facingright before falling into thorn
+            PlayerData.Instance.previousPosition = this.transform.position; // player's pos before falling in thorn
+        }
+
         Flip();
         wasGrounded = IsGrounded();
     }
@@ -97,8 +107,8 @@ public class PlayerMovement : MonoBehaviour
         }
         // horizontal movement using InputManager
         rb.velocity = new Vector2(horizontal * playerSpeed, rb.velocity.y);
-}
-public bool IsJumping()
+    }
+    public bool IsJumping()
     {
         return !IsGrounded() && rb.velocity.y > 0f;
     }
@@ -126,8 +136,6 @@ public bool IsJumping()
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
-
-
     }
    
     public void EnablePlayerMovement(bool enable)

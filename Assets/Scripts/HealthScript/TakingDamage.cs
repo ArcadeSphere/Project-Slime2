@@ -11,12 +11,9 @@ public class TakingDamage : MonoBehaviour
     [Header("Required if not using is trigger")]
     [SerializeField] private PlayerDetector playerDetector;
 
-
-
-
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.CompareTag("Player"))
         {
             collision.GetComponent<Health>().TakeDamage(damage);
             CameraShake.Instance.ShakeCamera(2f, 0.2f);
