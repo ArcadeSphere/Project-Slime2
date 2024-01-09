@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask jumpableLayer;
+    [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Animator animator;
     public InputManager inputManager;
 
@@ -39,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private ParticleSystem landParticle;
     private GameObject currentOneWayPlatform;
 
-
+    [Header("Testing Purposes")]
     [SerializeField] private GameObject prepos;
 
     void Update()
@@ -57,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("grounded", IsGrounded());
 
         // jump using InputManager
-        if (inputManager.GetJumpInput() && IsGrounded())
+        if (inputManager.GetJumpInput() && (IsGrounded() || IsJumpable()))
         {
             jumpParticle.Play();
             AudioManager.instance.PlaySoundEffects(jumpSound);
@@ -91,10 +92,10 @@ public class PlayerMovement : MonoBehaviour
 
         // set playerdata variables used by backtoedge script
         if (wasGrounded){
+            prepos.transform.position = this.transform.position;
             PlayerData.Instance.isFacingRight = isFacingRight; // check if player was facingright before falling into thorn
             PlayerData.Instance.previousPosition = this.transform.position; // player's pos before falling in thorn
         }
-
         Flip();
         wasGrounded = IsGrounded();
     }
@@ -118,6 +119,11 @@ public class PlayerMovement : MonoBehaviour
         return isDashing;
     }
     private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+    }
+
+    private bool IsJumpable()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, jumpableLayer);
     }
@@ -185,6 +191,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(platformDisableDuration);
         Physics2D.IgnoreCollision(playerBoxCollider, currentPlatformCollider, false);
     }
+
 
 }
 

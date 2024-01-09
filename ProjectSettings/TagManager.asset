@@ -13,6 +13,7 @@ TagManager:
   - Projectiles
   - Hole
   - Thorn
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
@@ -30,7 +31,7 @@ TagManager:
   - Obstacles
   - OnlyCamera
   - Collider
-  - JumpadbleFoe
+  - Jumpable
   - Hole
   - 
   - 
