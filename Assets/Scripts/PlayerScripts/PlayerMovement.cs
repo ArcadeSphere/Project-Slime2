@@ -60,7 +60,8 @@ public class PlayerMovement : MonoBehaviour
         // jump using InputManager
         if (inputManager.GetJumpInput() && (IsGrounded() || IsJumpable()))
         {
-            jumpParticle.Play();
+            if (jumpParticle != null)
+                jumpParticle.Play();
             AudioManager.instance.PlaySoundEffects(jumpSound);
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
@@ -72,7 +73,8 @@ public class PlayerMovement : MonoBehaviour
         // dash using InputManager
         if (inputManager.GetDashInputDown() && canDash)
         {
-            dashParticle.Play();
+            if (dashParticle != null)
+                dashParticle.Play();
             StartCoroutine(Dash());
         }
 
@@ -87,7 +89,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (Landed())
         {
-            landParticle.Play();
+            if (landParticle != null)
+                landParticle.Play();
         }
 
         // set playerdata variables used by backtoedge script
