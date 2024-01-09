@@ -10,7 +10,9 @@ public class TutorialTexts : MonoBehaviour
         PlayerAttackButton,
         Jump,
         Dash,
-        Encourage
+        Encourage,
+        N,
+        R
           
     }
 
@@ -55,6 +57,12 @@ public class TutorialTexts : MonoBehaviour
                 break;
             case DisplayFunction.Encourage:
                 DisplayEncouragement();
+                break;
+            case DisplayFunction.N:
+                DisplayNWord();
+                break;
+            case DisplayFunction.R:
+                  DisplayWin();
                 break;
             default:
                 Debug.LogError("Invalid DisplayFunction selected.");
@@ -112,5 +120,22 @@ public class TutorialTexts : MonoBehaviour
             textMeshPro.text = encourageText;
         }
     }
+    private void DisplayNWord()
+    {
+        if (inputManager != null && textMeshPro != null)
+        {
+            string NText = $"NIGGA";
 
+            textMeshPro.text = NText;
+        }
+    }
+    private void DisplayWin()
+    {
+        if (inputManager != null && textMeshPro != null)
+        {
+            string RText = $"Ryan Gosling is down there";
+
+            textMeshPro.text = RText;
+        }
+    }
 }
