@@ -54,6 +54,7 @@ public class PauseMenu : MonoBehaviour
     public void ResumeGame()
     {
         currentState = GameState.Playing;
+        AudioManager.instance.PlaySoundEffects(buttonSound);
         Time.timeScale = 1f;
         pauseMenuUI.SetActive(false);
         optionsMenuUI.SetActive(false);
@@ -65,7 +66,9 @@ public class PauseMenu : MonoBehaviour
 
     public void OpenOptions()
     {
+
         currentState = GameState.Options;
+        AudioManager.instance.PlaySoundEffects(buttonSound);
         optionsMenuUI.SetActive(true);
         pauseMenuUI.SetActive(false);
 
@@ -74,6 +77,7 @@ public class PauseMenu : MonoBehaviour
     public void OpenVolume()
     {
         currentState = GameState.Volume;
+        AudioManager.instance.PlaySoundEffects(buttonSound);
         volumeMenuUI.SetActive(true);
         optionsMenuUI.SetActive(false);
     }
@@ -81,6 +85,7 @@ public class PauseMenu : MonoBehaviour
     public void OpenKeybindings()
     {
         currentState = GameState.Keybindings;
+        AudioManager.instance.PlaySoundEffects(buttonSound);
         keybindingsMenuUI.SetActive(true);
         optionsMenuUI.SetActive(false);
     }
@@ -88,6 +93,7 @@ public class PauseMenu : MonoBehaviour
     public void BackToPauseMenu()
     {
         currentState = GameState.Paused;
+        AudioManager.instance.PlaySoundEffects(buttonSound);
         optionsMenuUI.SetActive(false);
         volumeMenuUI.SetActive(false);
         keybindingsMenuUI.SetActive(false);
@@ -97,6 +103,7 @@ public class PauseMenu : MonoBehaviour
     public void RestartGame()
     {
         currentState = GameState.Playing;
+        AudioManager.instance.PlaySoundEffects(buttonSound);
         Time.timeScale = 1f;
         Scene currentScene = SceneManager.GetActiveScene();
         CheckpointHandler.Instance.ResetCheckpointPrefValue();
@@ -107,6 +114,7 @@ public class PauseMenu : MonoBehaviour
     public void RestartGameFromCheckPoint()
     {
         currentState = GameState.Playing;
+        AudioManager.instance.PlaySoundEffects(buttonSound);
         Time.timeScale = 1f;
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
@@ -114,6 +122,7 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitGame()
     {
+        AudioManager.instance.PlaySoundEffects(buttonSound);
         Application.Quit();
     }
 }

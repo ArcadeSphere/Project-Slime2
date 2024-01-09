@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class TutorialTexts : MonoBehaviour
 {
     public enum DisplayFunction
     {
         MoveKeys,
-        PlayerAttackButton
+        PlayerAttackButton,
+        Jump,
+        Dash
     }
 
     [SerializeField] private InputManager inputManager;
-    [SerializeField] private TextMesh textMesh;
+    [SerializeField] private TextMeshPro textMeshPro;
+    [Header("GIVE A FUNCTION")]
     public DisplayFunction displayFunction = DisplayFunction.MoveKeys;
 
     private void Start()
@@ -21,9 +24,9 @@ public class TutorialTexts : MonoBehaviour
             Debug.LogError("InputManager reference is missing!");
         }
 
-        if (textMesh == null)
+        if (textMeshPro == null)
         {
-            Debug.LogError("TextMesh reference is missing!");
+            Debug.LogError("TextMeshPro reference is missing!");
         }
     }
 
@@ -42,6 +45,12 @@ public class TutorialTexts : MonoBehaviour
             case DisplayFunction.PlayerAttackButton:
                 DisplayPlayerAttackButton();
                 break;
+            case DisplayFunction.Jump:
+                DisplayJump();
+                break;
+            case DisplayFunction.Dash:
+                DisplayDash();
+                break;
             default:
                 Debug.LogError("Invalid DisplayFunction selected.");
                 break;
@@ -50,22 +59,42 @@ public class TutorialTexts : MonoBehaviour
 
     private void DisplayMoveKeys()
     {
-        if (inputManager != null && textMesh != null)
+        if (inputManager != null && textMeshPro != null)
         {
             string moveLeftText = $"Move Left: {inputManager.moveLeftKey}";
             string moveRightText = $"Move Right: {inputManager.moveRightKey}";
 
-            textMesh.text = $"{moveLeftText}\n{moveRightText}";
+            textMeshPro.text = $"{moveLeftText}\n{moveRightText}";
         }
     }
 
     private void DisplayPlayerAttackButton()
     {
-        if (inputManager != null && textMesh != null)
+        if (inputManager != null && textMeshPro != null)
         {
             string playerAttackText = $"Player Attack: {inputManager.playerAttackKey}";
 
-            textMesh.text = playerAttackText;
+            textMeshPro.text = playerAttackText;
+        }
+    }
+
+    private void DisplayJump()
+    {
+        if (inputManager != null && textMeshPro != null)
+        {
+            string jumpText = $"Jump: {inputManager.jumpKey}";
+
+            textMeshPro.text = jumpText;
+        }
+    }
+
+    private void DisplayDash()
+    {
+        if (inputManager != null && textMeshPro != null)
+        {
+            string dashText = $"Dash: {inputManager.dashKey}";
+
+            textMeshPro.text = dashText;
         }
     }
 }
