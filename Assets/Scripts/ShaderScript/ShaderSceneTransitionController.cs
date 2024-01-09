@@ -8,7 +8,6 @@ using System;
 
 public class ShaderSceneTransitionController : MonoBehaviour
 {
-    [SerializeField] private Canvas canvasUi;
     [SerializeField] private Sprite transitionImage;
     [SerializeField] private float maxProgress = 1.2f;
     [SerializeField] private float minProgress = -0.1f;
@@ -39,11 +38,7 @@ public class ShaderSceneTransitionController : MonoBehaviour
     }
 
     void PlayTransition() {
-        if (canvasUi != null)
-            canvasUi.gameObject.SetActive(false);
         if (reveal){
-            if (canvasUi != null)
-                canvasUi.gameObject.SetActive(true);
             material.SetFloat(progress, ControlTransitionProgress(maxProgress));
         }
         else{
