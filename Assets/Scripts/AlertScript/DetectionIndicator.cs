@@ -10,6 +10,10 @@ public class DetectionIndicator : MonoBehaviour
     private bool hasPlayedSound = false;
     [SerializeField] private AudioClip alertSound;
 
+    [Header("Timer Settings")]
+    [SerializeField] private float alertDuration = 5f; 
+    private Coroutine alertCoroutine;
+
     private void Start()
     {
         if (indicatorObject != null)
@@ -22,6 +26,18 @@ public class DetectionIndicator : MonoBehaviour
     {
         SetIndicatorActive(true);
         PlayAlertSound();
+
+        if (alertCoroutine != null)
+        {
+            StopCoroutine(alertCoroutine);
+        }
+        alertCoroutine = StartCoroutine(DeactivateAlertAfterDelay());
+    }
+
+    private IEnumerator DeactivateAlertAfterDelay()
+    {
+        yield return new WaitForSeconds(alertDuration);
+        DeactivateAlert();
     }
 
     public void DeactivateAlert()
