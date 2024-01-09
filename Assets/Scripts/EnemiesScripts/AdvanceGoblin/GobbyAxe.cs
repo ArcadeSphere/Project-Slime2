@@ -96,6 +96,7 @@ public class GobbyAxe : MonoBehaviour
 
     private void Patrol()
     {
+        
         if (characterFlip.isFacingRight && !isTurning)
         {
             transform.Translate(Vector2.right * patrolSpeed * Time.deltaTime);
@@ -151,6 +152,7 @@ public class GobbyAxe : MonoBehaviour
 
     private void DetectionDelay()
     {
+        detectionIndicator.ActivateAlert();
         detectionDelayTimer -= Time.deltaTime;
      
         if (detectionDelayTimer <= 0f)
@@ -162,7 +164,7 @@ public class GobbyAxe : MonoBehaviour
     }
     private void ChasePlayer()
     {
-
+  
         Vector2 directionToPlayer = playerTransform.position - transform.position;
         directionToPlayer.Normalize();
 
@@ -203,6 +205,7 @@ public class GobbyAxe : MonoBehaviour
         else
         {
             // If the player is not in the detection zone, go back to Patrol state
+            detectionIndicator.DeactivateAlert();
             currentState = GobbyAxeState.Patrol;
             anim.SetFloat("moveSpeed", 0f);
 

@@ -5551,6 +5551,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.81
       objectReference: {fileID: 0}
+    - target: {fileID: 1004378744, guid: 42b6c7b777ed8624988c2f88bab86d50, type: 3}
+      propertyPath: alertDuration
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 1467343847, guid: 42b6c7b777ed8624988c2f88bab86d50, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.27
