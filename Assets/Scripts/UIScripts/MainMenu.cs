@@ -35,6 +35,7 @@ public class MainMenu : MonoBehaviour
     {
         playerCombat.enabled = true;
         playerMove.enabled = true;
+        PlayerData.Instance.currentCheckpoint = null;
         Time.timeScale = 1f;
         SceneManager.LoadScene(1);
     }
