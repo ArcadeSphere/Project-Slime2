@@ -96,7 +96,7 @@ public class GobbyAxe : MonoBehaviour
 
     private void Patrol()
     {
-    
+        detectionIndicator.DeactivateAlert();
         if (characterFlip.isFacingRight && !isTurning)
         {
             transform.Translate(Vector2.right * patrolSpeed * Time.deltaTime);

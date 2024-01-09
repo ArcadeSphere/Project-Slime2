@@ -9,7 +9,9 @@ public class TutorialTexts : MonoBehaviour
         MoveKeys,
         PlayerAttackButton,
         Jump,
-        Dash
+        Dash,
+        Encourage
+          
     }
 
     [SerializeField] private InputManager inputManager;
@@ -51,6 +53,9 @@ public class TutorialTexts : MonoBehaviour
             case DisplayFunction.Dash:
                 DisplayDash();
                 break;
+            case DisplayFunction.Encourage:
+                DisplayEncouragement();
+                break;
             default:
                 Debug.LogError("Invalid DisplayFunction selected.");
                 break;
@@ -72,7 +77,7 @@ public class TutorialTexts : MonoBehaviour
     {
         if (inputManager != null && textMeshPro != null)
         {
-            string playerAttackText = $"Player Attack: {inputManager.playerAttackKey}";
+            string playerAttackText = $"Attack: {inputManager.playerAttackKey}";
 
             textMeshPro.text = playerAttackText;
         }
@@ -83,8 +88,9 @@ public class TutorialTexts : MonoBehaviour
         if (inputManager != null && textMeshPro != null)
         {
             string jumpText = $"Jump: {inputManager.jumpKey}";
+            string jumpHoldText = $"Hold {inputManager.jumpKey} To Jump Higher";
 
-            textMeshPro.text = jumpText;
+            textMeshPro.text = $"{jumpText}\n{jumpHoldText}";
         }
     }
 
@@ -97,4 +103,14 @@ public class TutorialTexts : MonoBehaviour
             textMeshPro.text = dashText;
         }
     }
+    private void DisplayEncouragement()
+    {
+        if (inputManager != null && textMeshPro != null)
+        {
+            string encourageText = $"Save Ryan Gosling";
+
+            textMeshPro.text = encourageText;
+        }
+    }
+
 }
