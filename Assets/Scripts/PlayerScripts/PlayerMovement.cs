@@ -92,7 +92,9 @@ public class PlayerMovement : MonoBehaviour
 
         // set playerdata variables used by backtoedge script
         if (wasGrounded){
-            prepos.transform.position = this.transform.position;
+            // for testing
+            if (prepos != null)
+                prepos.transform.position = this.transform.position;
             PlayerData.Instance.isFacingRight = isFacingRight; // check if player was facingright before falling into thorn
             PlayerData.Instance.previousPosition = this.transform.position; // player's pos before falling in thorn
         }
