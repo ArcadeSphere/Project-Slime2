@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: a0203d292c5ad6e4bad1691216ecea19
   - enabled: 1
-    path: Assets/Scenes/MebanTest.unity
-    guid: e01145cdc7aad03498495fa6f7cbbe0f
+    path: Assets/Scenes/SlimeScene.unity
+    guid: 3afbdeb95084a6a47a69ce1c41302dda
   m_configObjects: {}
