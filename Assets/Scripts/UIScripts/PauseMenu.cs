@@ -17,6 +17,7 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] private PlayerCombat playerCombat;
     [SerializeField] private PlayerMovement playerMove;
+    [SerializeField] private AudioClip buttonSound;
     public GameObject pauseMenuUI;
     public GameObject optionsMenuUI;
     public GameObject volumeMenuUI;
