@@ -96,7 +96,7 @@ public class GobbyAxe : MonoBehaviour
 
     private void Patrol()
     {
-        
+    
         if (characterFlip.isFacingRight && !isTurning)
         {
             transform.Translate(Vector2.right * patrolSpeed * Time.deltaTime);
@@ -122,7 +122,7 @@ public class GobbyAxe : MonoBehaviour
         }
         else if (IsPlayerInChaseDetectionZone())
         {
-
+           
             currentState = GobbyAxeState.DetectionDelay;
             anim.SetFloat("moveSpeed", 0f);
             detectionDelayTimer = detectionDelayDuration;
@@ -248,6 +248,7 @@ public class GobbyAxe : MonoBehaviour
         anim.SetTrigger("AttackPlayer");
         AudioManager.instance.PlaySoundEffects(attackSound);
         currentState = GobbyAxeState.Cooldown;
+        detectionIndicator.ActivateAlert();
         isCooldown = true;
         Invoke("EndCooldown", attackCooldown);
     }
